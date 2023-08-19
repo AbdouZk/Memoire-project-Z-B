@@ -1,0 +1,47 @@
+﻿
+
+
+body {
+    position: relative;
+    min-height: 100vh;
+}
+.content {
+    padding-bottom: 2.5rem;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    background-color: darkslategrey;
+    color: ghostwhite;
+}
+/* LogIn & Register page */
+
+
+.Log_Reg_Page{
+    background-color:azure;
+}
+.headerLogReg{
+    margin :20px auto;
+    padding :10px;
+    color : teal;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style:italic;
+}
+    .headerLogReg img {
+        width: 45px;
+        height: 40px;
+        margin-right: 10px;
+    }
+        .fa-school {
+    color: orangered;
+    font-size: 35px;
+    margin-left:20px;
+}
+.LogIn {
+    width: 400px;
+    align-items: center;
+    margin: 30px auto;
+}
+
