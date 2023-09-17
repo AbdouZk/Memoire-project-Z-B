@@ -44,6 +44,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Scrypt, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Scrypt.NET.1.3.0\lib\net20\Scrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -83,11 +87,19 @@
     <Content Include="Layout\js\maisScript.js" />
     <Content Include="Views\HomePage.aspx" />
     <Content Include="Views\Login_Register.aspx" />
+    <Content Include="Views\GestionComptesPage.aspx" />
+    <Content Include="Views\GestionSection.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\DataConnection.cs" />
-    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\Branchee.cs" />
+    <Compile Include="Models\CatalogeSection.cs" />
+    <Compile Include="Models\myLinqToSql.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>myLinqToSql.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs" />
     <Compile Include="Views\Login_Register.aspx.cs">
       <DependentUpon>Login_Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -110,11 +122,33 @@
     <Compile Include="Views\HomePage.aspx.designer.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\GestionComptesPage.aspx.cs">
+      <DependentUpon>GestionComptesPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GestionComptesPage.aspx.designer.cs">
+      <DependentUpon>GestionComptesPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GestionSection.aspx.cs">
+      <DependentUpon>GestionSection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GestionSection.aspx.designer.cs">
+      <DependentUpon>GestionSection.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Layout\js\bootstrap.js.map" />
     <Content Include="Views\MainPageMaster.Master" />
     <Content Include="Layout\css\bootstrap.css.map" />
+    <Content Include="Models\myLinqToSql.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>myLinqToSql.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\myLinqToSql.dbml.layout">
+      <DependentUpon>myLinqToSql.dbml</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -125,6 +159,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Includes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -8,6 +8,9 @@ body {
 .content {
     padding-bottom: 2.5rem;
 }
+.container {
+    margin-top: 25px;
+}
 footer {
     position: absolute;
     bottom: 0;
@@ -16,11 +19,20 @@ footer {
     background-color: darkslategrey;
     color: ghostwhite;
 }
+
+/* Nav bar */
+
+.divPlus{
+    margin-right:100px
+
+}
+nav li b{
+    color:red
+}
+
 /* LogIn & Register page */
-
-
-.Log_Reg_Page{
-    background-color:azure;
+.Log_Reg_Page {
+    background-color: azure;
 }
 .headerLogReg{
     margin :20px auto;

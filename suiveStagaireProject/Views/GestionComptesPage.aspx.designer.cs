@@ -7,236 +7,200 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace suiveStagaireProject
+namespace suiveStagaireProject.Views
 {
 
 
-    public partial class MainPageMaster
+    public partial class WebForm2
     {
 
         /// <summary>
-        /// Header control.
+        /// usernameAddUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Header;
+        protected global::System.Web.UI.WebControls.TextBox usernameAddUser;
 
         /// <summary>
-        /// form1 control.
+        /// passAddUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox passAddUser;
 
         /// <summary>
-        /// btnCRUDcat control.
+        /// confPassAddUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCRUDcat;
+        protected global::System.Web.UI.WebControls.TextBox confPassAddUser;
 
         /// <summary>
-        /// btnCRUDsec control.
+        /// DropDownGroupId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCRUDsec;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownGroupId;
 
         /// <summary>
-        /// btnListeStagaires control.
+        /// DropDownTrustId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnListeStagaires;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownTrustId;
 
         /// <summary>
-        /// btnOuverture control.
+        /// errors control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOuverture;
+        protected global::System.Web.UI.WebControls.Label errors;
 
         /// <summary>
-        /// btnStatistiqueSec control.
+        /// seccuss control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnStatistiqueSec;
+        protected global::System.Web.UI.WebControls.Label seccuss;
 
         /// <summary>
-        /// BtnCRUDsta control.
+        /// btnAjouterUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnCRUDsta;
+        protected global::System.Web.UI.WebControls.Button btnAjouterUser;
 
         /// <summary>
-        /// BtnCertificat control.
+        /// usernameEditUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnCertificat;
+        protected global::System.Web.UI.WebControls.TextBox usernameEditUser;
 
         /// <summary>
-        /// btnRelveSta control.
+        /// passwordEditUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRelveSta;
+        protected global::System.Web.UI.WebControls.TextBox passwordEditUser;
 
         /// <summary>
-        /// btnCRUDmodules control.
+        /// confPasswordEditUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCRUDmodules;
+        protected global::System.Web.UI.WebControls.TextBox confPasswordEditUser;
 
         /// <summary>
-        /// btnListModules control.
+        /// DropDownGroupIdEditUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnListModules;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownGroupIdEditUser;
 
         /// <summary>
-        /// btnCrudens control.
+        /// DropDownTrustIdEditUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCrudens;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownTrustIdEditUser;
 
         /// <summary>
-        /// btnListeEns control.
+        /// errorsEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnListeEns;
+        protected global::System.Web.UI.WebControls.Label errorsEdit;
 
         /// <summary>
-        /// btnMessageEns control.
+        /// successEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMessageEns;
+        protected global::System.Web.UI.WebControls.Label successEdit;
 
         /// <summary>
-        /// btnSaisieNote control.
+        /// saveEditUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaisieNote;
+        protected global::System.Web.UI.WebControls.Button saveEditUser;
 
         /// <summary>
-        /// btnSaisieNoteR control.
+        /// userToDrop control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaisieNoteR;
+        protected global::System.Web.UI.WebControls.Label userToDrop;
 
         /// <summary>
-        /// btnDeliNote control.
+        /// btnDropUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDeliNote;
+        protected global::System.Web.UI.WebControls.Button btnDropUser;
 
         /// <summary>
-        /// btnDeliNoteR control.
+        /// btnCancelDropUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDeliNoteR;
+        protected global::System.Web.UI.WebControls.Button btnCancelDropUser;
 
         /// <summary>
-        /// btnCRUDcomptes control.
+        /// btnAddUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCRUDcomptes;
+        protected global::System.Web.UI.WebControls.Button btnAddUser;
 
         /// <summary>
-        /// btnActDis control.
+        /// NotDoAlert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActDis;
-
-        /// <summary>
-        /// btnListeComp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnListeComp;
-
-        /// <summary>
-        /// BtnLogOut control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnLogOut;
-
-        /// <summary>
-        /// ContentPlaceHolder1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
-
-        /// <summary>
-        /// lblYear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblYear;
+        protected global::System.Web.UI.WebControls.Label NotDoAlert;
     }
 }

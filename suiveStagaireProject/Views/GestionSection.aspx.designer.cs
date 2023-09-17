@@ -11,124 +11,160 @@ namespace suiveStagaireProject.Views
 {
 
 
-    public partial class Login_Register
+    public partial class WebForm3
     {
 
         /// <summary>
-        /// form1 control.
+        /// dropDownBrachees control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.DropDownList dropDownBrachees;
 
         /// <summary>
-        /// usernameLog control.
+        /// codeSpe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox usernameLog;
+        protected global::System.Web.UI.WebControls.TextBox codeSpe;
 
         /// <summary>
-        /// passwordLog control.
+        /// intitulCat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passwordLog;
+        protected global::System.Web.UI.WebControls.TextBox intitulCat;
 
         /// <summary>
-        /// CheckRemember control.
+        /// dropDownFilierExigess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckRemember;
+        protected global::System.Web.UI.WebControls.DropDownList dropDownFilierExigess;
 
         /// <summary>
-        /// Button1 control.
+        /// radioNivCat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.RadioButtonList radioNivCat;
 
         /// <summary>
-        /// errorLog control.
+        /// btnAjouterCat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errorLog;
+        protected global::System.Web.UI.WebControls.Button btnAjouterCat;
 
         /// <summary>
-        /// usernameReg control.
+        /// DropDownBracheeEditCat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox usernameReg;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownBracheeEditCat;
 
         /// <summary>
-        /// passReg control.
+        /// editCatcodeSpe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passReg;
+        protected global::System.Web.UI.WebControls.TextBox editCatcodeSpe;
 
         /// <summary>
-        /// confPassReg control.
+        /// editCatintitulCat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox confPassReg;
+        protected global::System.Web.UI.WebControls.TextBox editCatintitulCat;
 
         /// <summary>
-        /// DropDownGroupId control.
+        /// dropDownFilierEditCat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownGroupId;
+        protected global::System.Web.UI.WebControls.DropDownList dropDownFilierEditCat;
 
         /// <summary>
-        /// Button2 control.
+        /// radioEditCat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.RadioButtonList radioEditCat;
 
         /// <summary>
-        /// errors control.
+        /// errorsEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errors;
+        protected global::System.Web.UI.WebControls.Label errorsEdit;
 
         /// <summary>
-        /// lblYear control.
+        /// successEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblYear;
+        protected global::System.Web.UI.WebControls.Label successEdit;
+
+        /// <summary>
+        /// btnSaveEditCat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaveEditCat;
+
+        /// <summary>
+        /// CatToDrop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CatToDrop;
+
+        /// <summary>
+        /// btnDropCtaloge control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDropCtaloge;
+
+        /// <summary>
+        /// NotDoAlert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NotDoAlert;
     }
 }

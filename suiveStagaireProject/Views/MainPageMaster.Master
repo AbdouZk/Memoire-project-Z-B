@@ -28,55 +28,109 @@
 </head>
 <body>
  
+
+  <form id="form1" runat="server">
     
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="../Layout/images/INSFP-LOGO-BLACK.jpg" width="35" height="35" style="margin:0 5px"/>INSFP</a>
+    <a class="navbar-brand" href="Homepage.aspx"><img src="../Layout/images/INSFP-LOGO-BLACK.jpg" width="35" height="35" style="margin:0 5px"/>INSFP</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link active" aria-current="page" href="Homepage.aspx">Accueil</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <b>G</b> Sections
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <li> <asp:Button ID="btnCRUDcat" CssClass="dropdown-item" runat="server" Text="Ajouter/Editer/Supprimer (Cataloges)" OnClick="btnCRUDcat_Click" />       </li>
+            <li> <asp:Button ID="btnCRUDsec" CssClass="dropdown-item" runat="server" Text="Ajouter/Editer/Supprimer" />                   </li>
+            <li> <asp:Button ID="btnListeStagaires" CssClass="dropdown-item" runat="server" Text="Liste des Stagiaires" />                </li>
+            <li> <asp:Button ID="btnOuverture" CssClass="dropdown-item" runat="server" Text="Fichier d'ouverture" />                      </li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><asp:Button ID="btnStatistiqueSec" CssClass="dropdown-item" runat="server" Text="Statistique du sections" /> </li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <b>G</b> Stagiaires
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+             <li> <asp:Button ID="BtnCRUDsta" CssClass="dropdown-item" runat="server" Text="Ajouter/Editer/Supprimer" />       </li>
+            <li> <asp:Button ID="BtnCertificat" CssClass="dropdown-item" runat="server" Text="Certificat d'inscription" />       </li>
+            <li> <asp:Button ID="btnRelveSta" CssClass="dropdown-item" runat="server" Text="Relve des notes" />       </li>
+         
+          </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <b>G</b> Modules
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+             <li> <asp:Button ID="btnCRUDmodules" CssClass="dropdown-item" runat="server" Text="Ajouter/Editer/Supprimer" />       </li>
+            <li> <asp:Button ID="btnListModules" CssClass="dropdown-item" runat="server" Text="Liste modules " />       </li>
+        
+         
+          </ul>
+        </li>
+           <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <b>G</b> Enseignant
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
+             <li> <asp:Button ID="btnCrudens" CssClass="dropdown-item" runat="server" Text="Ajouter/Editer/Supprimer" />       </li>
+            <li> <asp:Button ID="btnListeEns" CssClass="dropdown-item" runat="server" Text="Listes Enseignants" />       </li>
+            <li> <asp:Button ID="btnMessageEns" CssClass="dropdown-item" runat="server" Text="Messages" />       </li>
+         
+          </ul>
+        </li>
+
+           <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <b>G</b> Des Notes
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
+            <li> <asp:Button ID="btnSaisieNote" CssClass="dropdown-item" runat="server" Text="Saisie Notes Section" />               </li>
+            <li> <asp:Button ID="btnSaisieNoteR" CssClass="dropdown-item" runat="server" Text="Saisie Notes Section (RATT) " />       </li>
+            <li> <asp:Button ID="btnDeliNote" CssClass="dropdown-item" runat="server" Text="Delibiration des notes" />             </li>
+            <li> <asp:Button ID="btnDeliNoteR" CssClass="dropdown-item" runat="server" Text="Delibiration des notes (RATT)" />      </li>
+         
+          </ul>
+        </li>
+
+           <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() != "1") {%>disabled<% } %>" href="#" id="navbarDropdown7" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <b>G</b> Des Comptes
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown7">
+            <li> <asp:Button ID="btnCRUDcomptes" CssClass="dropdown-item" runat="server" Text="Ajouter/Editer/Supprimer" OnClick="btnCRUDcomptes_Click" />               </li>
+            <li> <asp:Button ID="btnActDis" CssClass="dropdown-item" runat="server" Text="Active/Disactive " OnClick="btnActDis_Click" />       </li>
+            <li> <asp:Button ID="btnListeComp" CssClass="dropdown-item" runat="server" Text="Listes Des Comptes" OnClick="btnListeComp_Click" />             </li>
+            
+         
+          </ul>
+        </li>
+
           </ul>
         </div>
-      <div class="">
+      <div class="divPlus ">
           <ul class="navbar-nav">
-           <li class="nav-item ">
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-           </li> 
+          
               <li class="nav-item dropdown" >
-                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-              </a>
+                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Plus </a>
 
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                <li><a class="dropdown-item" href="#">Action</a></li>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown6">
                 <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">About us</a></li>
+                
+                <li><hr class="dropdown-divider"></li>
+
+              <li><asp:Button ID="BtnLogOut" CssClass="dropdown-item" runat="server" Text="Log Out" OnClick="BtnLogOut_Click" /></li>
+
               </ul>
 
               </li>
@@ -86,7 +140,7 @@
 </nav>
 
 
-    <form id="form1" runat="server">
+   
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
@@ -98,7 +152,7 @@
 
     <footer class="">
         <center> 
-		<p>&copy All Right Reserved <% DateTime.Now.Year.ToString(); %></p>
+		<p>&copy All Right Reserved <asp:Label ID="lblYear" runat="server" Text=""></asp:Label></p>
         </center>
     </footer>
 

@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SuiveStagiaire" Class="myLinqToSqlDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-6AQC65B\SQLSERVER;Initial Catalog=SuiveStagiaire;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SuiveStagiaireConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Enseiginant" Member="Enseiginants">
+    <Type Name="Enseiginant">
+      <Column Name="idEnseiginant" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nom" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="prenom" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="dateNais" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="sexe" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="adresse" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="tel" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="dateDebut" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="specialite" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_Enseiginant" Member="User" ThisKey="userId" OtherKey="id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Administrateur" Member="Administrateurs">
+    <Type Name="Administrateur">
+      <Column Name="idAdmin" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nom" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="prenom" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_Administrateur" Member="User" ThisKey="userId" OtherKey="id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AgentService" Member="AgentServices">
+    <Type Name="AgentService">
+      <Column Name="idAgent" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nom" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="prenom" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_AgentService" Member="User" ThisKey="userId" OtherKey="id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="groupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="trustID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="User_Enseiginant" Member="Enseiginants" ThisKey="id" OtherKey="userId" Type="Enseiginant" />
+      <Association Name="User_Administrateur" Member="Administrateurs" ThisKey="id" OtherKey="userId" Type="Administrateur" />
+      <Association Name="User_AgentService" Member="AgentServices" ThisKey="id" OtherKey="userId" Type="AgentService" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Section" Member="Sections">
+    <Type Name="Section">
+      <Column Name="idSec" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="libeleSec" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="libeleSecAr" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="dateOuv" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="numSection" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="modeGestionForm" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nivQualification" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="debutFor" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="modeOrgaForm" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="finFor" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="tuteurSection" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="idCat" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CatalogeSection_Section" Member="CatalogeSection" ThisKey="idCat" OtherKey="idCataloge" Type="CatalogeSection" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CatalogeSection" Member="CatalogeSections">
+    <Type Name="CatalogeSection">
+      <Column Name="idCataloge" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="brancheId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codeSpe" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="intituleSpe" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="fileresExigees" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="niveauFormation" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CatalogeSection_Section" Member="Sections" ThisKey="idCataloge" OtherKey="idCat" Type="Section" />
+      <Association Name="Branchee_CatalogeSection" Member="Branchee" ThisKey="brancheId" OtherKey="idBrache" Type="Branchee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Branchees" Member="Branchees">
+    <Type Name="Branchee">
+      <Column Name="idBrache" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="libileBrache" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Branchee_CatalogeSection" Member="CatalogeSections" ThisKey="idBrache" OtherKey="brancheId" Type="CatalogeSection" />
+    </Type>
+  </Table>
+</Database>
