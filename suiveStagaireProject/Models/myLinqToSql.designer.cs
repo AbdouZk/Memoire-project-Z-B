@@ -66,6 +66,15 @@ namespace suiveStagaireProject.Models
     partial void InsertStg_Exm(Stg_Exm instance);
     partial void UpdateStg_Exm(Stg_Exm instance);
     partial void DeleteStg_Exm(Stg_Exm instance);
+    partial void InsertSec_Mod(Sec_Mod instance);
+    partial void UpdateSec_Mod(Sec_Mod instance);
+    partial void DeleteSec_Mod(Sec_Mod instance);
+    partial void InsertEns_Sec(Ens_Sec instance);
+    partial void UpdateEns_Sec(Ens_Sec instance);
+    partial void DeleteEns_Sec(Ens_Sec instance);
+    partial void InsertEns_Mod(Ens_Mod instance);
+    partial void UpdateEns_Mod(Ens_Mod instance);
+    partial void DeleteEns_Mod(Ens_Mod instance);
     #endregion
 		
 		public myLinqToSqlDataContext() : 
@@ -191,6 +200,30 @@ namespace suiveStagaireProject.Models
 			get
 			{
 				return this.GetTable<Stg_Exm>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Sec_Mod> Sec_Mods
+		{
+			get
+			{
+				return this.GetTable<Sec_Mod>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Ens_Sec> Ens_Secs
+		{
+			get
+			{
+				return this.GetTable<Ens_Sec>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Ens_Mod> Ens_Mods
+		{
+			get
+			{
+				return this.GetTable<Ens_Mod>();
 			}
 		}
 	}
@@ -1731,6 +1764,10 @@ namespace suiveStagaireProject.Models
 		
 		private EntitySet<Examen> _Examens;
 		
+		private EntitySet<Sec_Mod> _Sec_Mods;
+		
+		private EntitySet<Ens_Mod> _Ens_Mods;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1748,6 +1785,8 @@ namespace suiveStagaireProject.Models
 		public Module()
 		{
 			this._Examens = new EntitySet<Examen>(new Action<Examen>(this.attach_Examens), new Action<Examen>(this.detach_Examens));
+			this._Sec_Mods = new EntitySet<Sec_Mod>(new Action<Sec_Mod>(this.attach_Sec_Mods), new Action<Sec_Mod>(this.detach_Sec_Mods));
+			this._Ens_Mods = new EntitySet<Ens_Mod>(new Action<Ens_Mod>(this.attach_Ens_Mods), new Action<Ens_Mod>(this.detach_Ens_Mods));
 			OnCreated();
 		}
 		
@@ -1844,6 +1883,32 @@ namespace suiveStagaireProject.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Module_Sec_Mod", Storage="_Sec_Mods", ThisKey="idModule", OtherKey="modId")]
+		public EntitySet<Sec_Mod> Sec_Mods
+		{
+			get
+			{
+				return this._Sec_Mods;
+			}
+			set
+			{
+				this._Sec_Mods.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Module_Ens_Mod", Storage="_Ens_Mods", ThisKey="idModule", OtherKey="modId")]
+		public EntitySet<Ens_Mod> Ens_Mods
+		{
+			get
+			{
+				return this._Ens_Mods;
+			}
+			set
+			{
+				this._Ens_Mods.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1875,6 +1940,30 @@ namespace suiveStagaireProject.Models
 			this.SendPropertyChanging();
 			entity.Module = null;
 		}
+		
+		private void attach_Sec_Mods(Sec_Mod entity)
+		{
+			this.SendPropertyChanging();
+			entity.Module = this;
+		}
+		
+		private void detach_Sec_Mods(Sec_Mod entity)
+		{
+			this.SendPropertyChanging();
+			entity.Module = null;
+		}
+		
+		private void attach_Ens_Mods(Ens_Mod entity)
+		{
+			this.SendPropertyChanging();
+			entity.Module = this;
+		}
+		
+		private void detach_Ens_Mods(Ens_Mod entity)
+		{
+			this.SendPropertyChanging();
+			entity.Module = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Enseiginant")]
@@ -1892,6 +1981,10 @@ namespace suiveStagaireProject.Models
 		private System.Nullable<int> _userId;
 		
 		private System.Nullable<int> _personnelInfosId;
+		
+		private EntitySet<Ens_Sec> _Ens_Secs;
+		
+		private EntitySet<Ens_Mod> _Ens_Mods;
 		
 		private EntityRef<User> _User;
 		
@@ -1915,6 +2008,8 @@ namespace suiveStagaireProject.Models
 		
 		public Enseiginant()
 		{
+			this._Ens_Secs = new EntitySet<Ens_Sec>(new Action<Ens_Sec>(this.attach_Ens_Secs), new Action<Ens_Sec>(this.detach_Ens_Secs));
+			this._Ens_Mods = new EntitySet<Ens_Mod>(new Action<Ens_Mod>(this.attach_Ens_Mods), new Action<Ens_Mod>(this.detach_Ens_Mods));
 			this._User = default(EntityRef<User>);
 			this._PersonnelInfo = default(EntityRef<PersonnelInfo>);
 			OnCreated();
@@ -2028,6 +2123,32 @@ namespace suiveStagaireProject.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Enseiginant_Ens_Sec", Storage="_Ens_Secs", ThisKey="idEnseiginant", OtherKey="ensId")]
+		public EntitySet<Ens_Sec> Ens_Secs
+		{
+			get
+			{
+				return this._Ens_Secs;
+			}
+			set
+			{
+				this._Ens_Secs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Enseiginant_Ens_Mod", Storage="_Ens_Mods", ThisKey="idEnseiginant", OtherKey="ensId")]
+		public EntitySet<Ens_Mod> Ens_Mods
+		{
+			get
+			{
+				return this._Ens_Mods;
+			}
+			set
+			{
+				this._Ens_Mods.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Enseiginant", Storage="_User", ThisKey="userId", OtherKey="id", IsForeignKey=true)]
 		public User User
 		{
@@ -2115,6 +2236,30 @@ namespace suiveStagaireProject.Models
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_Ens_Secs(Ens_Sec entity)
+		{
+			this.SendPropertyChanging();
+			entity.Enseiginant = this;
+		}
+		
+		private void detach_Ens_Secs(Ens_Sec entity)
+		{
+			this.SendPropertyChanging();
+			entity.Enseiginant = null;
+		}
+		
+		private void attach_Ens_Mods(Ens_Mod entity)
+		{
+			this.SendPropertyChanging();
+			entity.Enseiginant = this;
+		}
+		
+		private void detach_Ens_Mods(Ens_Mod entity)
+		{
+			this.SendPropertyChanging();
+			entity.Enseiginant = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Section")]
@@ -2138,6 +2283,10 @@ namespace suiveStagaireProject.Models
 		private System.Nullable<int> _idDetails;
 		
 		private EntitySet<Stagiaire> _Stagiaires;
+		
+		private EntitySet<Sec_Mod> _Sec_Mods;
+		
+		private EntitySet<Ens_Sec> _Ens_Secs;
 		
 		private EntityRef<CatalogeSection> _CatalogeSection;
 		
@@ -2166,6 +2315,8 @@ namespace suiveStagaireProject.Models
 		public Section()
 		{
 			this._Stagiaires = new EntitySet<Stagiaire>(new Action<Stagiaire>(this.attach_Stagiaires), new Action<Stagiaire>(this.detach_Stagiaires));
+			this._Sec_Mods = new EntitySet<Sec_Mod>(new Action<Sec_Mod>(this.attach_Sec_Mods), new Action<Sec_Mod>(this.detach_Sec_Mods));
+			this._Ens_Secs = new EntitySet<Ens_Sec>(new Action<Ens_Sec>(this.attach_Ens_Secs), new Action<Ens_Sec>(this.detach_Ens_Secs));
 			this._CatalogeSection = default(EntityRef<CatalogeSection>);
 			this._DetailsSection = default(EntityRef<DetailsSection>);
 			OnCreated();
@@ -2332,6 +2483,32 @@ namespace suiveStagaireProject.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Section_Sec_Mod", Storage="_Sec_Mods", ThisKey="idSec", OtherKey="secId")]
+		public EntitySet<Sec_Mod> Sec_Mods
+		{
+			get
+			{
+				return this._Sec_Mods;
+			}
+			set
+			{
+				this._Sec_Mods.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Section_Ens_Sec", Storage="_Ens_Secs", ThisKey="idSec", OtherKey="secId")]
+		public EntitySet<Ens_Sec> Ens_Secs
+		{
+			get
+			{
+				return this._Ens_Secs;
+			}
+			set
+			{
+				this._Ens_Secs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CatalogeSection_Section", Storage="_CatalogeSection", ThisKey="idCat", OtherKey="idCataloge", IsForeignKey=true)]
 		public CatalogeSection CatalogeSection
 		{
@@ -2427,6 +2604,30 @@ namespace suiveStagaireProject.Models
 		}
 		
 		private void detach_Stagiaires(Stagiaire entity)
+		{
+			this.SendPropertyChanging();
+			entity.Section = null;
+		}
+		
+		private void attach_Sec_Mods(Sec_Mod entity)
+		{
+			this.SendPropertyChanging();
+			entity.Section = this;
+		}
+		
+		private void detach_Sec_Mods(Sec_Mod entity)
+		{
+			this.SendPropertyChanging();
+			entity.Section = null;
+		}
+		
+		private void attach_Ens_Secs(Ens_Sec entity)
+		{
+			this.SendPropertyChanging();
+			entity.Section = this;
+		}
+		
+		private void detach_Ens_Secs(Ens_Sec entity)
 		{
 			this.SendPropertyChanging();
 			entity.Section = null;
@@ -3113,6 +3314,582 @@ namespace suiveStagaireProject.Models
 						this._stgId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Stagiaire");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Sec_Mod")]
+	public partial class Sec_Mod : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idSec_Mod;
+		
+		private System.Nullable<int> _secId;
+		
+		private System.Nullable<int> _modId;
+		
+		private EntityRef<Module> _Module;
+		
+		private EntityRef<Section> _Section;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidSec_ModChanging(int value);
+    partial void OnidSec_ModChanged();
+    partial void OnsecIdChanging(System.Nullable<int> value);
+    partial void OnsecIdChanged();
+    partial void OnmodIdChanging(System.Nullable<int> value);
+    partial void OnmodIdChanged();
+    #endregion
+		
+		public Sec_Mod()
+		{
+			this._Module = default(EntityRef<Module>);
+			this._Section = default(EntityRef<Section>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idSec_Mod", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idSec_Mod
+		{
+			get
+			{
+				return this._idSec_Mod;
+			}
+			set
+			{
+				if ((this._idSec_Mod != value))
+				{
+					this.OnidSec_ModChanging(value);
+					this.SendPropertyChanging();
+					this._idSec_Mod = value;
+					this.SendPropertyChanged("idSec_Mod");
+					this.OnidSec_ModChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_secId", DbType="Int")]
+		public System.Nullable<int> secId
+		{
+			get
+			{
+				return this._secId;
+			}
+			set
+			{
+				if ((this._secId != value))
+				{
+					if (this._Section.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnsecIdChanging(value);
+					this.SendPropertyChanging();
+					this._secId = value;
+					this.SendPropertyChanged("secId");
+					this.OnsecIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modId", DbType="Int")]
+		public System.Nullable<int> modId
+		{
+			get
+			{
+				return this._modId;
+			}
+			set
+			{
+				if ((this._modId != value))
+				{
+					if (this._Module.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnmodIdChanging(value);
+					this.SendPropertyChanging();
+					this._modId = value;
+					this.SendPropertyChanged("modId");
+					this.OnmodIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Module_Sec_Mod", Storage="_Module", ThisKey="modId", OtherKey="idModule", IsForeignKey=true)]
+		public Module Module
+		{
+			get
+			{
+				return this._Module.Entity;
+			}
+			set
+			{
+				Module previousValue = this._Module.Entity;
+				if (((previousValue != value) 
+							|| (this._Module.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Module.Entity = null;
+						previousValue.Sec_Mods.Remove(this);
+					}
+					this._Module.Entity = value;
+					if ((value != null))
+					{
+						value.Sec_Mods.Add(this);
+						this._modId = value.idModule;
+					}
+					else
+					{
+						this._modId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Module");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Section_Sec_Mod", Storage="_Section", ThisKey="secId", OtherKey="idSec", IsForeignKey=true)]
+		public Section Section
+		{
+			get
+			{
+				return this._Section.Entity;
+			}
+			set
+			{
+				Section previousValue = this._Section.Entity;
+				if (((previousValue != value) 
+							|| (this._Section.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Section.Entity = null;
+						previousValue.Sec_Mods.Remove(this);
+					}
+					this._Section.Entity = value;
+					if ((value != null))
+					{
+						value.Sec_Mods.Add(this);
+						this._secId = value.idSec;
+					}
+					else
+					{
+						this._secId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Section");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Ens_Sec")]
+	public partial class Ens_Sec : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idEns_Sec;
+		
+		private System.Nullable<int> _ensId;
+		
+		private System.Nullable<int> _secId;
+		
+		private EntityRef<Enseiginant> _Enseiginant;
+		
+		private EntityRef<Section> _Section;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidEns_SecChanging(int value);
+    partial void OnidEns_SecChanged();
+    partial void OnensIdChanging(System.Nullable<int> value);
+    partial void OnensIdChanged();
+    partial void OnsecIdChanging(System.Nullable<int> value);
+    partial void OnsecIdChanged();
+    #endregion
+		
+		public Ens_Sec()
+		{
+			this._Enseiginant = default(EntityRef<Enseiginant>);
+			this._Section = default(EntityRef<Section>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEns_Sec", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idEns_Sec
+		{
+			get
+			{
+				return this._idEns_Sec;
+			}
+			set
+			{
+				if ((this._idEns_Sec != value))
+				{
+					this.OnidEns_SecChanging(value);
+					this.SendPropertyChanging();
+					this._idEns_Sec = value;
+					this.SendPropertyChanged("idEns_Sec");
+					this.OnidEns_SecChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ensId", DbType="Int")]
+		public System.Nullable<int> ensId
+		{
+			get
+			{
+				return this._ensId;
+			}
+			set
+			{
+				if ((this._ensId != value))
+				{
+					if (this._Enseiginant.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnensIdChanging(value);
+					this.SendPropertyChanging();
+					this._ensId = value;
+					this.SendPropertyChanged("ensId");
+					this.OnensIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_secId", DbType="Int")]
+		public System.Nullable<int> secId
+		{
+			get
+			{
+				return this._secId;
+			}
+			set
+			{
+				if ((this._secId != value))
+				{
+					if (this._Section.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnsecIdChanging(value);
+					this.SendPropertyChanging();
+					this._secId = value;
+					this.SendPropertyChanged("secId");
+					this.OnsecIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Enseiginant_Ens_Sec", Storage="_Enseiginant", ThisKey="ensId", OtherKey="idEnseiginant", IsForeignKey=true)]
+		public Enseiginant Enseiginant
+		{
+			get
+			{
+				return this._Enseiginant.Entity;
+			}
+			set
+			{
+				Enseiginant previousValue = this._Enseiginant.Entity;
+				if (((previousValue != value) 
+							|| (this._Enseiginant.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Enseiginant.Entity = null;
+						previousValue.Ens_Secs.Remove(this);
+					}
+					this._Enseiginant.Entity = value;
+					if ((value != null))
+					{
+						value.Ens_Secs.Add(this);
+						this._ensId = value.idEnseiginant;
+					}
+					else
+					{
+						this._ensId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Enseiginant");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Section_Ens_Sec", Storage="_Section", ThisKey="secId", OtherKey="idSec", IsForeignKey=true)]
+		public Section Section
+		{
+			get
+			{
+				return this._Section.Entity;
+			}
+			set
+			{
+				Section previousValue = this._Section.Entity;
+				if (((previousValue != value) 
+							|| (this._Section.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Section.Entity = null;
+						previousValue.Ens_Secs.Remove(this);
+					}
+					this._Section.Entity = value;
+					if ((value != null))
+					{
+						value.Ens_Secs.Add(this);
+						this._secId = value.idSec;
+					}
+					else
+					{
+						this._secId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Section");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Ens_Mod")]
+	public partial class Ens_Mod : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idEns_Mod;
+		
+		private System.Nullable<int> _ensId;
+		
+		private System.Nullable<int> _modId;
+		
+		private EntityRef<Enseiginant> _Enseiginant;
+		
+		private EntityRef<Module> _Module;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidEns_ModChanging(int value);
+    partial void OnidEns_ModChanged();
+    partial void OnensIdChanging(System.Nullable<int> value);
+    partial void OnensIdChanged();
+    partial void OnmodIdChanging(System.Nullable<int> value);
+    partial void OnmodIdChanged();
+    #endregion
+		
+		public Ens_Mod()
+		{
+			this._Enseiginant = default(EntityRef<Enseiginant>);
+			this._Module = default(EntityRef<Module>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEns_Mod", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idEns_Mod
+		{
+			get
+			{
+				return this._idEns_Mod;
+			}
+			set
+			{
+				if ((this._idEns_Mod != value))
+				{
+					this.OnidEns_ModChanging(value);
+					this.SendPropertyChanging();
+					this._idEns_Mod = value;
+					this.SendPropertyChanged("idEns_Mod");
+					this.OnidEns_ModChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ensId", DbType="Int")]
+		public System.Nullable<int> ensId
+		{
+			get
+			{
+				return this._ensId;
+			}
+			set
+			{
+				if ((this._ensId != value))
+				{
+					if (this._Enseiginant.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnensIdChanging(value);
+					this.SendPropertyChanging();
+					this._ensId = value;
+					this.SendPropertyChanged("ensId");
+					this.OnensIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modId", DbType="Int")]
+		public System.Nullable<int> modId
+		{
+			get
+			{
+				return this._modId;
+			}
+			set
+			{
+				if ((this._modId != value))
+				{
+					if (this._Module.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnmodIdChanging(value);
+					this.SendPropertyChanging();
+					this._modId = value;
+					this.SendPropertyChanged("modId");
+					this.OnmodIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Enseiginant_Ens_Mod", Storage="_Enseiginant", ThisKey="ensId", OtherKey="idEnseiginant", IsForeignKey=true)]
+		public Enseiginant Enseiginant
+		{
+			get
+			{
+				return this._Enseiginant.Entity;
+			}
+			set
+			{
+				Enseiginant previousValue = this._Enseiginant.Entity;
+				if (((previousValue != value) 
+							|| (this._Enseiginant.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Enseiginant.Entity = null;
+						previousValue.Ens_Mods.Remove(this);
+					}
+					this._Enseiginant.Entity = value;
+					if ((value != null))
+					{
+						value.Ens_Mods.Add(this);
+						this._ensId = value.idEnseiginant;
+					}
+					else
+					{
+						this._ensId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Enseiginant");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Module_Ens_Mod", Storage="_Module", ThisKey="modId", OtherKey="idModule", IsForeignKey=true)]
+		public Module Module
+		{
+			get
+			{
+				return this._Module.Entity;
+			}
+			set
+			{
+				Module previousValue = this._Module.Entity;
+				if (((previousValue != value) 
+							|| (this._Module.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Module.Entity = null;
+						previousValue.Ens_Mods.Remove(this);
+					}
+					this._Module.Entity = value;
+					if ((value != null))
+					{
+						value.Ens_Mods.Add(this);
+						this._modId = value.idModule;
+					}
+					else
+					{
+						this._modId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Module");
 				}
 			}
 		}
