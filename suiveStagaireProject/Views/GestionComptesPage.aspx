@@ -95,12 +95,17 @@
              
 	                              </div> 
 
-                                 <asp:Label ID="errors" runat="server" CssClass="alert alert-danger" Visible="false" ></asp:Label>
-                                 <asp:Label ID="seccuss" runat="server" CssClass="alert alert-success" Visible="false" ></asp:Label>
+                                
 	
 	                              <!-- Submit button -->
-	                              <asp:Button ID="btnAjouterUser" runat="server" CssClass="btn btn-primary btn-block" Text="Ajouter" OnClick="btnAjouterUser_Click" />
-	    
+	                              <asp:Button ID="btnAjouterUser" runat="server" CssClass="btn btn-primary " Text="Ajouter" OnClick="btnAjouterUser_Click" />
+	                               <a href="GestionComptesPage.aspx?id=<%=Session["id"]%>&do=" class="btn btn-secondary ">Annuler</a>
+                                <br />
+                                <br />
+                                 <asp:Label ID="errors" runat="server" CssClass="alert alert-danger" Visible="false" ></asp:Label>
+                                 <asp:Label ID="seccuss" runat="server" CssClass="alert alert-success" Visible="false" ></asp:Label>
+
+
 	                          </div>
                             
                             
@@ -175,12 +180,17 @@
              
 	                              </div> 
                             <br />
+                            
+	                              <!-- Submit button -->
+	                              <asp:Button ID="saveEditUser" runat="server" CssClass="btn btn-success " Text="Save" OnClick="saveEditUser_Click" />
+                                    <a href="GestionComptesPage.aspx?id=<%=Session["id"]%>&do=" class="btn btn-secondary ">Annuler</a>
+	    
+                            <br />
+                            <br />
                                  <asp:Label ID="errorsEdit" runat="server" CssClass="alert alert-danger" Visible="false" ></asp:Label>
                                  <asp:Label ID="successEdit" runat="server" CssClass="alert alert-success" Visible="false" ></asp:Label>
-                            <br />
-	                              <!-- Submit button -->
-	                              <asp:Button ID="saveEditUser" runat="server" CssClass="btn btn-success btn-block" Text="Save" OnClick="saveEditUser_Click" /><a href="GestionSection.aspx?id=<%=Session["id"]%>&do=" class="btn btn-primary btn-block mb-4">Annuler</a>
-	    
+
+
 	                          </div>
                             
                            
@@ -224,7 +234,7 @@
                            
          %> 
 
-                        <h3 class=" d-block p-2 bg-info text-white"> Gestion Des Compte</h3>
+                        <h3 class=" d-block p-2 bg-info text-white"> Liste Des Comptes</h3>
                      <table class="table">
                           <thead class="table-dark">
                             <tr>

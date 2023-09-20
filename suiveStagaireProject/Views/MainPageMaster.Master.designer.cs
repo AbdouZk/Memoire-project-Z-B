@@ -51,15 +51,6 @@ namespace suiveStagaireProject
         protected global::System.Web.UI.WebControls.Button btnCRUDsec;
 
         /// <summary>
-        /// btnListeStagaires control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnListeStagaires;
-
-        /// <summary>
         /// btnOuverture control.
         /// </summary>
         /// <remarks>
@@ -67,15 +58,6 @@ namespace suiveStagaireProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnOuverture;
-
-        /// <summary>
-        /// btnStatistiqueSec control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnStatistiqueSec;
 
         /// <summary>
         /// BtnCRUDsta control.
@@ -94,6 +76,15 @@ namespace suiveStagaireProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnCertificat;
+
+        /// <summary>
+        /// btnListeStagaires control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnListeStagaires;
 
         /// <summary>
         /// btnRelveSta control.
@@ -211,6 +202,15 @@ namespace suiveStagaireProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnListeComp;
+
+        /// <summary>
+        /// btnStatistiqueSec control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnStatistiqueSec;
 
         /// <summary>
         /// BtnLogOut control.

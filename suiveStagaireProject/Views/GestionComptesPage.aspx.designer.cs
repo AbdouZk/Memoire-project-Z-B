@@ -60,6 +60,15 @@ namespace suiveStagaireProject.Views
         protected global::System.Web.UI.WebControls.DropDownList DropDownTrustId;
 
         /// <summary>
+        /// btnAjouterUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAjouterUser;
+
+        /// <summary>
         /// errors control.
         /// </summary>
         /// <remarks>
@@ -76,15 +85,6 @@ namespace suiveStagaireProject.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label seccuss;
-
-        /// <summary>
-        /// btnAjouterUser control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAjouterUser;
 
         /// <summary>
         /// usernameEditUser control.
@@ -132,6 +132,15 @@ namespace suiveStagaireProject.Views
         protected global::System.Web.UI.WebControls.DropDownList DropDownTrustIdEditUser;
 
         /// <summary>
+        /// saveEditUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button saveEditUser;
+
+        /// <summary>
         /// errorsEdit control.
         /// </summary>
         /// <remarks>
@@ -148,15 +157,6 @@ namespace suiveStagaireProject.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label successEdit;
-
-        /// <summary>
-        /// saveEditUser control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button saveEditUser;
 
         /// <summary>
         /// userToDrop control.

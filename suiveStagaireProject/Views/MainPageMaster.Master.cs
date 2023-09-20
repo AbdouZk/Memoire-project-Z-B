@@ -70,7 +70,12 @@ namespace suiveStagaireProject
 
         protected void btnCRUDcat_Click(object sender, EventArgs e)
         {
-            Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=All");
+            Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllCat");
+        }
+
+        protected void btnCRUDsec_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllSec");
         }
     }
 }

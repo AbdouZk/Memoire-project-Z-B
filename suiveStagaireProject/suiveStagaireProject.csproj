@@ -89,6 +89,10 @@
     <Content Include="Views\Login_Register.aspx" />
     <Content Include="Views\GestionComptesPage.aspx" />
     <Content Include="Views\GestionSection.aspx" />
+    <Content Include="Views\GestionModules.aspx" />
+    <Content Include="Views\GestionStagiaires.aspx" />
+    <Content Include="Views\GestionEnseignants.aspx" />
+    <Content Include="Views\GestionNotes.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +103,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>myLinqToSql.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\PersonnelInfo.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Views\Login_Register.aspx.cs">
       <DependentUpon>Login_Register.aspx</DependentUpon>
@@ -135,6 +140,34 @@
     </Compile>
     <Compile Include="Views\GestionSection.aspx.designer.cs">
       <DependentUpon>GestionSection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GestionModules.aspx.cs">
+      <DependentUpon>GestionModules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GestionModules.aspx.designer.cs">
+      <DependentUpon>GestionModules.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GestionStagiaires.aspx.cs">
+      <DependentUpon>GestionStagiaires.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GestionStagiaires.aspx.designer.cs">
+      <DependentUpon>GestionStagiaires.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GestionEnseignants.aspx.cs">
+      <DependentUpon>GestionEnseignants.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GestionEnseignants.aspx.designer.cs">
+      <DependentUpon>GestionEnseignants.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GestionNotes.aspx.cs">
+      <DependentUpon>GestionNotes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GestionNotes.aspx.designer.cs">
+      <DependentUpon>GestionNotes.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

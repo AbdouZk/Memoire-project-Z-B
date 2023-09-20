@@ -27,7 +27,7 @@ namespace suiveStagaireProject.Views
                     Response.Redirect("HomePage.aspx?id=" + Session["id"]);
                 }
 
-                if (Request.QueryString["do"].Equals("add") && Request.QueryString["idCat"] != null)
+                if (Request.QueryString["do"].Equals("addCat") && Request.QueryString["idCat"] != null)
                 {
                     CatalogeSection cat = new CatalogeSection();
                     Branchee branche = new Branchee();
@@ -47,7 +47,7 @@ namespace suiveStagaireProject.Views
                 }
 
 
-                if (Request.QueryString["do"].Equals("edit") && Request.QueryString["idCat"] != null)
+                if (Request.QueryString["do"].Equals("editCat") && Request.QueryString["idCat"] != null)
                 {
                     CatalogeSection cat = new CatalogeSection();
                     Branchee branche = new Branchee();
@@ -76,7 +76,7 @@ namespace suiveStagaireProject.Views
                 }
 
 
-                if (Request.QueryString["do"].Equals("delete") && Request.QueryString["idCat"] != null)
+                if (Request.QueryString["do"].Equals("deleteCat") && Request.QueryString["idCat"] != null)
                 {
 
                     CatToDrop.Text = cataloge.getCatalogeCode(int.Parse(Request.QueryString["idCat"]));
@@ -129,7 +129,7 @@ namespace suiveStagaireProject.Views
 
                 CatalogeSection cat = cataloge.getCatalogeSec(int.Parse(Request.QueryString["idCat"]));
                 cataloge.deleteCatalogeSec(cat);
-                Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=");
+                Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllCat");
             }
             catch (Exception ex)
             {
