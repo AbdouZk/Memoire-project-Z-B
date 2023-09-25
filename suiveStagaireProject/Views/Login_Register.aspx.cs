@@ -96,9 +96,9 @@ namespace suiveStagaireProject.Views
                     pass = encoder.Encode(pass);
                     User us = new User(use, pass,groupId);
                     u.registerUser(us);
-   
-                    errors.Text = "You have been register sucsessfuly";
-                    errors.Visible = true;
+
+                    successEg.Text = "You have been register sucsessfuly";
+                    successEg.Visible = true;
                     errorLog.Visible = false;
 
 

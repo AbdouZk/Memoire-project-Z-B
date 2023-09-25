@@ -80,6 +80,8 @@
     <Content Include="Layout\images\pic1.jpg" />
     <Content Include="Layout\images\pic2.jpg" />
     <Content Include="Layout\images\pic3.jpg" />
+    <Content Include="Layout\images\Stagiaires\MyPic.jpg" />
+    <Content Include="Layout\images\Stagiaires\photoProfile.png" />
     <Content Include="Layout\js\fontawesome.js" />
     <Content Include="Layout\js\bootstrap.js" />
     <Content Include="Layout\js\jquery.dataTables.min.js" />
@@ -93,17 +95,28 @@
     <Content Include="Views\GestionStagiaires.aspx" />
     <Content Include="Views\GestionEnseignants.aspx" />
     <Content Include="Views\GestionNotes.aspx" />
+    <Content Include="Views\reports\AttestationDeStage.aspx" />
+    <Content Include="Views\reports\ProcesVerbalSection.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Branchee.cs" />
     <Compile Include="Models\CatalogeSection.cs" />
+    <Compile Include="Models\DetailsStagiaire.cs" />
+    <Compile Include="Models\Donnees\Coordonnees.cs" />
+    <Compile Include="Models\Enseignant.cs" />
+    <Compile Include="Models\Metier\detailsSection.cs" />
+    <Compile Include="Models\Metier\detailsStagiaire.cs" />
+    <Compile Include="Models\Metier\ListeSections.cs" />
+    <Compile Include="Models\Metier\ListeStagiaires.cs" />
     <Compile Include="Models\myLinqToSql.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>myLinqToSql.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\PersonnelInfo.cs" />
+    <Compile Include="Models\Section.cs" />
+    <Compile Include="Models\Stagiaire.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Views\Login_Register.aspx.cs">
       <DependentUpon>Login_Register.aspx</DependentUpon>
@@ -169,6 +182,27 @@
     <Compile Include="Views\GestionNotes.aspx.designer.cs">
       <DependentUpon>GestionNotes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\reports\ReporsMaster.Master.cs">
+      <DependentUpon>ReporsMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\reports\ReporsMaster.Master.designer.cs">
+      <DependentUpon>ReporsMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\reports\AttestationDeStage.aspx.cs">
+      <DependentUpon>AttestationDeStage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\reports\AttestationDeStage.aspx.designer.cs">
+      <DependentUpon>AttestationDeStage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\reports\ProcesVerbalSection.aspx.cs">
+      <DependentUpon>ProcesVerbalSection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\reports\ProcesVerbalSection.aspx.designer.cs">
+      <DependentUpon>ProcesVerbalSection.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Layout\js\bootstrap.js.map" />
@@ -183,6 +217,7 @@
       <DependentUpon>myLinqToSql.dbml</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <Content Include="Views\reports\ReporsMaster.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

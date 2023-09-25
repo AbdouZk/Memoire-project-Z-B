@@ -42,6 +42,15 @@ namespace suiveStagaireProject
         protected global::System.Web.UI.WebControls.Button btnCRUDcat;
 
         /// <summary>
+        /// btnListcat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnListcat;
+
+        /// <summary>
         /// btnCRUDsec control.
         /// </summary>
         /// <remarks>
@@ -51,13 +60,13 @@ namespace suiveStagaireProject
         protected global::System.Web.UI.WebControls.Button btnCRUDsec;
 
         /// <summary>
-        /// btnOuverture control.
+        /// btnListSec control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOuverture;
+        protected global::System.Web.UI.WebControls.Button btnListSec;
 
         /// <summary>
         /// BtnCRUDsta control.
@@ -69,15 +78,6 @@ namespace suiveStagaireProject
         protected global::System.Web.UI.WebControls.Button BtnCRUDsta;
 
         /// <summary>
-        /// BtnCertificat control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnCertificat;
-
-        /// <summary>
         /// btnListeStagaires control.
         /// </summary>
         /// <remarks>
@@ -85,15 +85,6 @@ namespace suiveStagaireProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnListeStagaires;
-
-        /// <summary>
-        /// btnRelveSta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRelveSta;
 
         /// <summary>
         /// btnCRUDmodules control.

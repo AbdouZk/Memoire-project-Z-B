@@ -9,7 +9,7 @@ body {
     padding-bottom: 2.5rem;
 }
 .container {
-    margin-top: 25px;
+    margin-top: 20px;
 }
 footer {
 
@@ -20,6 +20,23 @@ footer {
     background-color: darkslategrey;
     color: ghostwhite;
 }
+
+/* No print */
+
+@media print {
+       
+    .no-print {
+        display: none;
+    }
+    .page-break-before {
+        page-break-before: always;
+    }
+
+    .page-break-after {
+        page-break-after: always;
+    }
+}
+
 
 /* Nav bar */
 
@@ -56,5 +73,26 @@ nav li b{
     width: 400px;
     align-items: center;
     margin: 30px auto;
+}
+
+
+
+/* Gestion Stagiaire page */
+
+.addStagiaireBody{
+    background-color:floralwhite;
+}
+
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #f6d365;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right bottom, rgb(59 139 130 / 62%), rgb(246 245 172))
+}
+
+.gradient-custom-body {
+    background: linear-gradient(to right bottom, rgb(238 253 251 / 52%), rgb(243 229 226));
 }
 

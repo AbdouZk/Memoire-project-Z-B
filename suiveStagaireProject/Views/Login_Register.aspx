@@ -169,6 +169,7 @@
 						<br />
 						<div>
 						<asp:Label ID="errors" runat="server" CssClass="alert alert-danger" Visible="false" />
+						<asp:Label ID="successEg" runat="server" CssClass="alert alert-success" Visible="false" />
 
 						</div>
 				<!-- Pills content -->

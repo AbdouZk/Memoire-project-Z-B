@@ -70,12 +70,35 @@ namespace suiveStagaireProject
 
         protected void btnCRUDcat_Click(object sender, EventArgs e)
         {
-            Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllCat");
+            Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=addCat");
         }
 
         protected void btnCRUDsec_Click(object sender, EventArgs e)
         {
+            Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=addSec");
+        }
+
+        protected void btnListSec_Click(object sender, EventArgs e)
+        {
             Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllSec");
+
+        }
+
+        protected void BtnCRUDsta_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionStagiaires.aspx?id=" + Session["id"] + "&do=add");
+
+        }
+
+        protected void btnListeStagaires_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionStagiaires.aspx?id=" + Session["id"] + "&do=AllStg");
+
+        }
+
+        protected void btnListcat_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllCat");
         }
     }
 }

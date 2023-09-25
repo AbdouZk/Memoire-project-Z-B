@@ -10,7 +10,10 @@ namespace suiveStagaireProject.Views
 {
     public partial class WebForm3 : System.Web.UI.Page
     {
+        Section section = new Section();
         CatalogeSection cataloge = new CatalogeSection();
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -27,7 +30,7 @@ namespace suiveStagaireProject.Views
                     Response.Redirect("HomePage.aspx?id=" + Session["id"]);
                 }
 
-                if (Request.QueryString["do"].Equals("addCat") && Request.QueryString["idCat"] != null)
+                if (Request.QueryString["do"].Equals("addCat") )
                 {
                     CatalogeSection cat = new CatalogeSection();
                     Branchee branche = new Branchee();
@@ -41,17 +44,12 @@ namespace suiveStagaireProject.Views
                     }
                     
                 }
-                else
-                {
-                 
-                }
-
 
                 if (Request.QueryString["do"].Equals("editCat") && Request.QueryString["idCat"] != null)
                 {
                     CatalogeSection cat = new CatalogeSection();
                     Branchee branche = new Branchee();
-                    cat = cataloge.getCatalogeSec(int.Parse(Request.QueryString["idCat"]));
+                    cat = cat.getCatalogeSec(int.Parse(Request.QueryString["idCat"]));
 
                     if (DropDownBracheeEditCat.Items.Count == 0)
                     {
@@ -68,13 +66,14 @@ namespace suiveStagaireProject.Views
                         dropDownFilierEditCat.SelectedValue = cat.fileresExigees;
                         if (cat.niveauFormation == 4) { radioEditCat.SelectedValue = "4"; } else { radioEditCat.SelectedValue = "5"; }
                     }
+
+                    
                 }
                 else
                 {
-                    errorsEdit.Text = "User Introuvable !";
+                    errorsEdit.Text = "Cataloge Introuvable !";
                     errorsEdit.Visible = true;
                 }
-
 
                 if (Request.QueryString["do"].Equals("deleteCat") && Request.QueryString["idCat"] != null)
                 {
@@ -90,6 +89,77 @@ namespace suiveStagaireProject.Views
                     CatToDrop.Visible = false;
                 }
 
+                if (Request.QueryString["do"].Equals("addSec") )
+                {
+                    CatalogeSection cat = new CatalogeSection();
+                    Section sec = new Section();
+                    Enseignant ens = new Enseignant();
+
+                    if (DropDownFormationAdd.Items.Count == 0)
+                    {
+                        DropDownFormationAdd.DataSource = cat.getListeCatalogeSec();
+                        DropDownFormationAdd.DataTextField = "codeSpe";
+                        DropDownFormationAdd.DataValueField = "idCataloge";
+
+                        DropDownFormationAdd.DataBind();
+                    }
+
+                    if (DropDowntuteurSecAdd.Items.Count == 0)
+                    {
+                        DropDowntuteurSecAdd.DataSource = ens.getEnseignantsNames();
+                       
+                        DropDowntuteurSecAdd.DataValueField = "nameEns";
+                        DropDowntuteurSecAdd.DataTextField = "nameEns";
+
+                        DropDowntuteurSecAdd.DataBind();
+                    }
+
+                  
+                }
+
+                if (Request.QueryString["do"].Equals("editSec") && Request.QueryString["idSec"] != null)
+                {
+                    CatalogeSection cat = new CatalogeSection();
+                    Section sec = new Section();
+                    Enseignant ens = new Enseignant();
+                    sec = sec.getSection(int.Parse(Request.QueryString["idSec"]));
+
+                    
+
+                    if (DropDownFormationEdit.Items.Count == 0)
+                    {
+                        // Fill all formations
+                        DropDownFormationEdit.DataSource = cat.getListeCatalogeSec();
+                        DropDownFormationEdit.DataTextField = "codeSpe";
+                        DropDownFormationEdit.DataValueField = "idCataloge";
+                        DropDownFormationEdit.DataBind();
+
+                        // Fill all Enseignats names
+                        DropDowntuteurSecEdit.DataSource = ens.getEnseignantsNames();
+                        DropDowntuteurSecEdit.DataValueField = "nameEns";
+                        DropDowntuteurSecEdit.DataTextField = "nameEns";
+                        DropDowntuteurSecEdit.DataBind();
+
+
+                        DropDownFormationEdit.SelectedValue = sec.idCat.ToString();
+                        numSectionEdit.Text = sec.numSection.ToString();
+                        DropDownListSemestreEdit.SelectedValue = sec.semestre.ToString();
+                        modeOrgEdit.Text = sec.modeOrgaForm;
+                        RadioButtonmodeGesEdit.SelectedValue = sec.modeGestionForm.ToString();
+
+                        string debut = sec.dateOuv.ToString("yyyy-MM-dd");
+                        string fin = sec.dateFin.Value.ToString("yyyy-MM-dd");
+
+                        debutForEdit.Value = debut;
+                        finForEdit.Value = fin;
+                        DropDowntuteurSecEdit.SelectedValue = sec.tuteurSection;
+                    }
+                }
+                else
+                {
+                    errorsEdit.Text = "Section Introuvable !";
+                    errorsEdit.Visible = true;
+                }
             }
             catch (Exception ex)
             {
@@ -157,6 +227,77 @@ namespace suiveStagaireProject.Views
             catch (Exception ex)
             {
                 NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>Operation Echéc</div>";
+            }
+        }
+
+        protected void btnAddSection_Click(object sender, EventArgs e)
+        {
+            try 
+            {
+                int idCataloge =int.Parse( DropDownFormationAdd.SelectedValue);
+                int numSection = int.Parse(numSectionAdd.Text);
+                char semestre = char.Parse(DropDownListSemestreAdd.SelectedValue);
+                string modeOrg = modeOrgAdd.Text;
+                char modeGes = char.Parse(RadioButtonmodeGesAdd.SelectedValue);
+                string debut = debutForAdd.Value ;
+                string fin = finForAdd.Value;
+                string tuteur = DropDowntuteurSecAdd.SelectedValue;
+
+                Section sec = new Section(DateTime.Parse(debut), DateTime.Parse(fin), numSection,semestre,tuteur,modeGes,modeOrg,idCataloge);
+
+                section.addSection(sec);
+
+                NotDoAlert.Text = "<div class='alert alert-success' role='alert'>Bien Ajouter</div><br/>";
+
+            }
+            catch (Exception ex)
+            {
+                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>"+ex.Message+" </div><br/>";
+
+            }
+        }
+
+        protected void btnEditSection_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(Request.QueryString["idSec"]);
+
+                int idCataloge = int.Parse(DropDownFormationEdit.SelectedValue);
+                int numSection = int.Parse(numSectionEdit.Text);
+                char semestre = char.Parse(DropDownListSemestreEdit.SelectedValue);
+                string modeOrg = modeOrgEdit.Text;
+                char modeGes = char.Parse(RadioButtonmodeGesEdit.SelectedValue);
+                string debut = debutForEdit.Value.ToString();
+                string fin = finForEdit.Value.ToString();
+                string tuteur = DropDowntuteurSecEdit.SelectedValue;
+
+                Section sec = new Section(DateTime.Parse(debut), DateTime.Parse(fin), numSection, semestre, tuteur, modeGes, modeOrg, idCataloge);
+
+                section.editSection(sec,id);
+
+                NotDoAlert.Text = "<div class='alert alert-success' role='alert'>Bien Modifer</div><br/>";
+
+            }
+            catch (Exception ex)
+            {
+                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>Echèc du Modification </div><br/>";
+
+            }
+        }
+
+        protected void btnDropSection_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                Section sec = section.getSection(int.Parse(Request.QueryString["idSec"]));
+                section.deleteSection(sec);
+                Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllSec");
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }

@@ -24,3 +24,7 @@ function toLogin() {
 	btnLogin.classList.add("active")
 	
 }
+
+
+// Attestation de stage
+
