@@ -18,6 +18,7 @@
 
     <!-- data tables css file  -->
     <link href="../Layout/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="../Layout/css/mdb.min.css" rel="stylesheet" />
 
     <!-- main css file  -->
     <link href="../Layout/css/mainStyle.css" rel="stylesheet" />
@@ -34,8 +35,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="Homepage.aspx"><img src="../Layout/images/INSFP-LOGO-BLACK.jpg" width="35" height="35" style="margin:0 5px"/>INSFP</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarToggleExternalContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -73,8 +82,8 @@
             <b>G</b> Modules
           </a>
           <ul class="dropdown-menu " aria-labelledby="navbarDropdown3">
-             <li> <asp:Button ID="btnCRUDmodules" CssClass="dropdown-item" runat="server" Text="Ajouter/Editer/Supprimer" />       </li>
-             <li> <asp:Button ID="btnListModules" CssClass="dropdown-item" runat="server" Text="Liste modules " />       </li>
+             <li> <asp:Button ID="btnCRUDmodules" CssClass="dropdown-item" runat="server" Text="Ajouter/Editer/Supprimer" OnClick="btnCRUDmodules_Click"/>       </li>
+             <li> <asp:Button ID="btnListModules" CssClass="dropdown-item" runat="server" Text="Liste modules " OnClick="btnListModules_Click"/>       </li>
         
          
           </ul>
@@ -84,8 +93,8 @@
             <b>G</b> Enseignant
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
-            <li> <asp:Button ID="btnCrudens"    CssClass="dropdown-item"   runat="server" Text="Ajouter/Editer/Supprimer" />       </li>
-            <li> <asp:Button ID="btnListeEns"   CssClass="dropdown-item"   runat="server" Text="Listes Enseignants" />       </li>
+            <li> <asp:Button ID="btnCrudens"    CssClass="dropdown-item"   runat="server" Text="Ajouter/Editer/Supprimer" OnClick="btnCrudens_Click" />       </li>
+            <li> <asp:Button ID="btnListeEns"   CssClass="dropdown-item"   runat="server" Text="Listes Enseignants" OnClick="btnListeEns_Click"/>       </li>
             <li> <asp:Button ID="btnMessageEns" CssClass="dropdown-item"   runat="server" Text="Messages" />       </li>
          
           </ul>
@@ -174,6 +183,8 @@
 
     <!-- data tables js file  -->
     <script src="../Layout/js/jquery.dataTables.min.js"></script>
+
+    <script src="../Layout/js/mdb.min.js"></script>
 
     <!-- main script js file  -->
     <script src="../Layout/js/maisScript.js"></script>

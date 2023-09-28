@@ -25,6 +25,3 @@ function toLogin() {
 	
 }
 
-
-// Attestation de stage
-

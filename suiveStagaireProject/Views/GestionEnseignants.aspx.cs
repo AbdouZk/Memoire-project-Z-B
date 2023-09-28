@@ -1,4 +1,6 @@
-﻿using System;
+﻿using suiveStagaireProject.Models;
+using suiveStagaireProject.Models.Metier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +11,9 @@ namespace suiveStagaireProject.Views
 {
     public partial class WebForm6 : System.Web.UI.Page
     {
+        Enseignant enseignant = new Enseignant();
+        PersonnelInfo personnelInfo = new PersonnelInfo();
+        detailsEnseignant dens = new detailsEnseignant();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -25,47 +30,160 @@ namespace suiveStagaireProject.Views
                     Response.Redirect("HomePage.aspx?id=" + Session["id"]);
                 }
 
-                if (Request.QueryString["do"].Equals("add") && Request.QueryString["id"] != null)
-                {
-                   
 
-                }
-                else
+                if (Request.QueryString["do"].Equals("add-edit") && Request.QueryString["opt"] != null)
                 {
 
+                    if (Request.QueryString["opt"].Equals("add"))
+                    {
+                        btnAjouterEnsAdd.Visible = true;
+                       
+
+                    }else if (Request.QueryString["opt"].Equals("edit") && Request.QueryString["idEns"] != null)
+                    {
+
+                        if (filiereAdd.Value.Equals("")) {
+                            dens = enseignant.getDetailsEnseignant(int.Parse(Request.QueryString["idEns"]));
+
+                            nomAdd.Text = dens.Nom; prenomAdd.Text = dens.Prenom;
+
+                            dateNaiAdd.Value = dens.DateNai.ToString("yyyy-MM-dd");
+
+                            lieuNaisAdd.Text = dens.LieuNai;
+                            RadioButtonListSex.SelectedValue = dens.Sexe; adresseadd.Value = dens.Adresse;
+                            emailAdd.Value = dens.Email; telPerAdd.Value = dens.Telephone;
+                            filiereAdd.Value = dens.Specialite; dateDebutAdd.Value = dens.DateDebut.ToString("yyyy-MM-dd");
+                        }
+                        
+                        btnSaveEns.Visible = true;
+                    }
+                    else
+                    {
+                        Response.Redirect("404-page.aspx");
+                    }
                 }
+               
 
 
-                if (Request.QueryString["do"].Equals("edit") && Request.QueryString["id"] != null)
+                if (Request.QueryString["do"].Equals("delete") && Request.QueryString["idEns"] == null)
                 {
 
-                   
-                }
-                else
-                {
-                    //errorsEdit.Text = "User Introuvable !";
-                   // errorsEdit.Visible = true;
-                }
 
-
-                if (Request.QueryString["do"].Equals("delete") && Request.QueryString["id"] != null)
-                {
-
-                    //CatToDrop.Text = cataloge.getCatalogeCode(int.Parse(Request.QueryString["idCat"]));
-                    //CatToDrop.Visible = true;
-
+                    Response.Redirect("404-page.aspx");
 
 
                 }
-                else
-                {
-                    //CatToDrop.Visible = false;
-                }
+
 
             }
             catch (Exception ex)
             {
 
+            }
+        }
+
+        protected void btnAddEns_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnsearchEns_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!searchEns.Value.Equals(""))
+                {
+                    Response.Redirect("GestionEnseignants.aspx?id=" + Session["id"] + "&do=AllEns&searchEns=" + searchEns.Value);
+                }
+                else
+                {
+                    Response.Redirect("GestionEnseignants.aspx?id=" + Session["id"] + "&do=AllEns");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        protected void btnAjouterEnsAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dateNai = DateTime.Parse(dateNaiAdd.Value);
+                DateTime dateDebut = DateTime.Parse(dateDebutAdd.Value);
+                string
+                    nom = nomAdd.Text, prenom = prenomAdd.Text, filier = filiereAdd.Value,
+                    lieuNai = lieuNaisAdd.Text, sexe = RadioButtonListSex.SelectedValue, adresse = adresseadd.Value,
+                    email = emailAdd.Value, telp = telPerAdd.Value;
+                int
+                    idPer = personnelInfo.getLastId()+1;
+
+                PersonnelInfo pInfo = new PersonnelInfo(idPer,nom,prenom,dateNai,lieuNai,sexe,adresse,email,telp);
+                personnelInfo.addPersonnelInfo(pInfo);
+
+                Enseignant ens = new Enseignant(dateDebut, filier,null,idPer);
+                enseignant.addEnseignant(ens);
+
+                msgEns.Text = "Bien Ajouter";
+                msgEns.Visible = true;
+
+
+            }
+            catch (Exception ex)
+            {
+                msgEns.Text = "Echèc d'ajouter";
+                msgEns.Visible = false;
+            }
+        }
+
+        protected void btnDropEnseignant_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idEns =int.Parse( Request.QueryString["idEns"]);
+                Enseignant ens = enseignant.getEnseignat(idEns);
+                enseignant.deleteEnseignant(ens);
+
+                personnelInfo.deletePersonnelInfo(personnelInfo.getPersonnelInfo((int)ens.personnelInfosId));
+
+                Response.Redirect("GestionEnseignants.aspx?id="+Session["id"]+"&do=AllEns");
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        protected void btnSaveEns_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dateNai = DateTime.Parse(dateNaiAdd.Value);
+                DateTime dateDebut = DateTime.Parse(dateDebutAdd.Value);
+                string
+                    nom = nomAdd.Text, prenom = prenomAdd.Text, filier = filiereAdd.Value,
+                    lieuNai = lieuNaisAdd.Text, sexe = RadioButtonListSex.SelectedValue, adresse = adresseadd.Value,
+                    email = emailAdd.Value, telp = telPerAdd.Value;
+                int
+                    idEns =int.Parse( Request.QueryString["idEns"]),
+                    idPer =(int) enseignant.getEnseignat(idEns).personnelInfosId;
+
+                PersonnelInfo pInfo = new PersonnelInfo(idPer, nom, prenom, dateNai, lieuNai, sexe, adresse, email, telp);
+                personnelInfo.editPersonnelInfo(pInfo,idPer);
+
+                Enseignant ens = new Enseignant(dateDebut, filier, null, idPer);
+                enseignant.editEnseignant(ens,idEns);
+
+                msgEns.Text = "Bien Modifier";
+                msgEns.Visible = true;
+
+
+            }
+            catch (Exception ex)
+            {
+                msgEns.Text = "Echèc de Modifier";
+                msgEns.Visible = false;
             }
         }
     }

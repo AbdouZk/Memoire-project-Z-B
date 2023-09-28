@@ -31,7 +31,7 @@
                                 <div class="col-6  mt-3">Prénom	 : <b><%=Dstag.Prenom %></b></div>
                                 <div class="col-6 mt-3">Nom     :<b> <%=Dstag.Nom %></b></div>
                                 
-                                <div class="col-6  mt-3">Date et lieu de naissance :	<b><%=Dstag.DateNai.ToShortDateString() %></b> </div>
+                                <div class="col-12  mt-3">Date et lieu de naissance :	<b><%=Dstag.DateNai.ToShortDateString() %></b> </div>
                                 <div class="col-6  mt-3">À  :    <b>  <%=Dstag.LieuNai %>       </b>               </div>
 
 

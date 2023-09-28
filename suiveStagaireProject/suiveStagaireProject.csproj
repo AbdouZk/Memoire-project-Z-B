@@ -75,6 +75,7 @@
     <Content Include="Layout\css\fontawesome.css" />
     <Content Include="Layout\css\jquery.dataTables.min.css" />
     <Content Include="Layout\css\mainStyle.css" />
+    <Content Include="Layout\css\mdb.min.css" />
     <Content Include="Layout\images\EntrerINSFP.jpg" />
     <Content Include="Layout\images\HomePic.jpg" />
     <Content Include="Layout\images\pic1.jpg" />
@@ -87,6 +88,8 @@
     <Content Include="Layout\js\jquery.dataTables.min.js" />
     <Content Include="Layout\js\jqueryc.js" />
     <Content Include="Layout\js\maisScript.js" />
+    <Content Include="Layout\js\mdb.min.js" />
+    <Content Include="Views\404-page.aspx" />
     <Content Include="Views\HomePage.aspx" />
     <Content Include="Views\Login_Register.aspx" />
     <Content Include="Views\GestionComptesPage.aspx" />
@@ -97,6 +100,8 @@
     <Content Include="Views\GestionNotes.aspx" />
     <Content Include="Views\reports\AttestationDeStage.aspx" />
     <Content Include="Views\reports\ProcesVerbalSection.aspx" />
+    <Content Include="Views\reports\ListeStagiairesIncorpores.aspx" />
+    <Content Include="Views\Statistiques.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -105,10 +110,15 @@
     <Compile Include="Models\DetailsStagiaire.cs" />
     <Compile Include="Models\Donnees\Coordonnees.cs" />
     <Compile Include="Models\Enseignant.cs" />
+    <Compile Include="Models\Ens_Mod.cs" />
+    <Compile Include="Models\Examen.cs" />
+    <Compile Include="Models\Metier\detailsEnseignant.cs" />
     <Compile Include="Models\Metier\detailsSection.cs" />
     <Compile Include="Models\Metier\detailsStagiaire.cs" />
+    <Compile Include="Models\Metier\ListeEnseignant.cs" />
     <Compile Include="Models\Metier\ListeSections.cs" />
     <Compile Include="Models\Metier\ListeStagiaires.cs" />
+    <Compile Include="Models\Module.cs" />
     <Compile Include="Models\myLinqToSql.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -116,8 +126,16 @@
     </Compile>
     <Compile Include="Models\PersonnelInfo.cs" />
     <Compile Include="Models\Section.cs" />
+    <Compile Include="Models\Sec_Mod_Sem.cs" />
     <Compile Include="Models\Stagiaire.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Views\404-page.aspx.cs">
+      <DependentUpon>404-page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\404-page.aspx.designer.cs">
+      <DependentUpon>404-page.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login_Register.aspx.cs">
       <DependentUpon>Login_Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -202,6 +220,20 @@
     </Compile>
     <Compile Include="Views\reports\ProcesVerbalSection.aspx.designer.cs">
       <DependentUpon>ProcesVerbalSection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\reports\ListeStagiairesIncorpores.aspx.cs">
+      <DependentUpon>ListeStagiairesIncorpores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\reports\ListeStagiairesIncorpores.aspx.designer.cs">
+      <DependentUpon>ListeStagiairesIncorpores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistiques.aspx.cs">
+      <DependentUpon>Statistiques.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Statistiques.aspx.designer.cs">
+      <DependentUpon>Statistiques.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

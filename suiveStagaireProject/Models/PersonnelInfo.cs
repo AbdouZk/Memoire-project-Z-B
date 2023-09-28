@@ -69,9 +69,20 @@ namespace suiveStagaireProject.Models
         public void editPersonnelInfo(PersonnelInfo pi,int id)
         {
             
-            dc.ExecuteCommand("UPDATE PersonnelInfo SET nom={0},prenom={1},dateNai={2},lieuNai={3},sexe={4},adresse={5},email={6},telephone={7} WHERE idPersonne={8} )",
-                                                            pi.nom,pi.prenom,pi.dateNai,pi.lieuNai,pi.sexe,pi.adresse,pi.email,pi.telephone,pi.idPersonne);
+          
+            var query = from pinfo in dc.PersonnelInfos where pinfo.idPersonne == id select pinfo;
 
+            foreach (var pinfo in query)
+            {
+                pinfo.nom = pi.nom;
+                pinfo.prenom = pi.prenom;
+                pinfo.dateNai = pi.dateNai;
+                pinfo.lieuNai = pi.lieuNai;
+                pinfo.sexe = pi.sexe;
+                pinfo.adresse = pi.adresse;
+                pinfo.email = pi.email;
+                pinfo.telephone = pi.telephone;
+            }
 
             dc.SubmitChanges();
         }

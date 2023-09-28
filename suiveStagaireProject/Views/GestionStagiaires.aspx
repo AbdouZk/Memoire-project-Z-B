@@ -25,7 +25,7 @@
 
 
 
-               if (Request.QueryString["do"].Equals("add"))
+               if (Request.QueryString["do"].Equals("add-edit"))
                {%>
                             
           <div class="addStagiaireBody">
@@ -38,7 +38,7 @@
                         <div class="row"> 
 							
 							<div class="col-12 ">
-								<div class="form-outline mb-4">
+								<div class=" mb-4">
 								
 								<label for="numInscAdd" class="form-label">numero d'inscription : </label>
 								
@@ -49,13 +49,13 @@
 							
                             <div class="col-6 ">
 						
-								<div class="form-outline mb-4">
+								<div class=" mb-4">
 									<label class="form-label"  for="nomAdd">Nom : </label>
 									<asp:TextBox ID="nomAdd" CssClass="form-control" runat="server"></asp:TextBox>
 								</div>
 							</div>
 							<div class="col-6 ">
-								<div class="form-outline mb-4">
+								<div class=" mb-4">
 									<label class="form-label"  for="prenomAdd">Prenom : </label>
 									<asp:TextBox ID="prenomAdd" CssClass="form-control" runat="server"></asp:TextBox>
 								</div>
@@ -65,7 +65,7 @@
 
 							<div class="col-6 col-md-4">
 						
-								<div class="form-outline mb-4">
+								<div class=" mb-4">
 									<label class="form-label"  for="dateNaiAdd">Date Naissance : </label>
 									<input type="date" name="dateNaiAdd" id="dateNaiAdd" runat="server" class="form-control">
 								</div>
@@ -73,7 +73,7 @@
 							</div>
 							<div class="col-6 col-md-4">
 								
-								<div class="form-outline mb-4">
+								<div class=" mb-4">
 									<label class="form-label" for="lieuNaisAdd">Lieu Naissance : </label>
 									<asp:TextBox ID="lieuNaisAdd" CssClass="form-control" runat="server"></asp:TextBox>
 			
@@ -83,7 +83,7 @@
 
 							<div class="col-12 col-md-4">
 								
-								<div class="form-outline mb-4">
+								<div class=" mb-4">
 									<label class="form-label"  for="nat">Nationalité : </label>
 									<asp:TextBox  ID="natAdd" CssClass="form-control" runat="server"></asp:TextBox>
 								</div>
@@ -92,7 +92,7 @@
 
 
 								<div class="col-12 col-md-6">
-									<div class="form-outline mb-4 btn-group">
+									<div class=" mb-4 btn-group">
 										<label class="form-label">Sexe: </label>
 										
 										<asp:RadioButtonList CssClass="form-check" ID="RadioButtonListSex" runat="server">
@@ -108,7 +108,7 @@
 								</div>
 							
 								<div class=" col-12">
-									<div class="form-outline mb-4 ">
+									<div class=" mb-4 ">
 										<label class="form-label">Situations Familiare : </label>
 
 										<asp:DropDownList CssClass="form-control" runat="server" ID="dropDownSitFamAdd">
@@ -120,14 +120,14 @@
 								</div>	
 				
 								<div class=" col-6">
-									<div class="form-outline mb-4 ">
+									<div class=" mb-4 ">
 										<label class="form-label" for="emailAdd">Email : </label>
 										<input class="form-control" type="email" name="emailAdd" id="emailAdd" runat="server">
 									</div>
 								</div>
 							
 								<div class=" col-6">
-									<div class="form-outline mb-4 ">
+									<div class=" mb-4 ">
 										<label class="form-label" for="telPerAdd">Téléphone Pérsonnelle : </label>
 										<input class="form-control" type="text" name="telPerAdd" id="telPerAdd" runat="server">
 									</div>
@@ -136,7 +136,7 @@
 
 						
 							<div class=" col-12">
-									<div class="form-outline mb-4 ">
+									<div class=" mb-4 ">
 										<label class="form-label" for="img">Photo personnel: </label>
 										<asp:FileUpload ID="FileUploadImgAdd" CssClass="form-control" runat="server" />
 									</div>
@@ -152,7 +152,7 @@
 						<div class="row">
 
 							<div class="col-12 col-md-6">
-									<div class="form-outline mb-4 btn-group">
+									<div class=" mb-4 btn-group">
 										<label class="form-label">Situation Médicale : </label>
 										
 										<asp:RadioButtonList CssClass="form-check" ID="RadioButtonListsitMed" runat="server">
@@ -168,7 +168,7 @@
 								</div>
 
 							<div class=" col-12 col-md-6">
-									<div class="form-outline mb-4 ">
+									<div class=" mb-4 ">
 										<label class="form-label">Group sanguin : </label>
 
 										<asp:DropDownList CssClass="form-control" runat="server" ID="DropDownListSangAdd">
@@ -190,9 +190,6 @@
 
 						</div>		
 
-							
-								
-
 
 						
 					</fieldset>
@@ -205,14 +202,14 @@
 									<div class="row">
 
 										<div class="col-6 col-md-6">
-											<div class="form-outline mb-4 ">
+											<div class=" mb-4 ">
 												<label class="form-label" for="ppereadd">Prenom Père : </label>												
 												<input type="text" class="form-control" name="ppereadd" id="ppereadd" runat="server">
 											</div>
 										</div>
 
 										<div class="col-6 col-md-6">
-											<div class="form-outline mb-4 ">
+											<div class=" mb-4 ">
 												<label class="form-label" for="profPereadd">Profession du père  : </label>												
 												<input type="text" class="form-control" name="profPereadd" id="profPereadd" runat="server">
 											</div>
@@ -220,42 +217,42 @@
 
 
 										<div class="col-6 col-md-4">
-											<div class="form-outline mb-4 ">
+											<div class=" mb-4 ">
 												<label class="form-label" for="nmereadd">Nom Mère: </label>												
 												<input type="text" class="form-control" name="nmereadd" id="nmereadd" runat="server">
 											</div>
 										</div>
 
 										<div class="col-6 col-md-4">
-											<div class="form-outline mb-4 ">
+											<div class=" mb-4 ">
 												<label class="form-label" for="pmereadd">Prenom Mère: </label>												
 												<input type="text" class="form-control" name="pmereadd" id="pmereadd" runat="server">
 											</div>
 										</div>
 
 										<div class="col-12 col-md-4">
-											<div class="form-outline mb-4 ">
+											<div class=" mb-4 ">
 												<label class="form-label" for="profMereadd">Profession de la mère  : </label>												
 												<input type="text" class="form-control" name="profMereadd" id="profMereadd" runat="server">
 											</div>
 										</div>
 
 										<div class="col-6 col-md-6">
-											<div class="form-outline mb-4 ">
+											<div class=" mb-4 ">
 												<label class="form-label" for="adresseadd">Adresse : </label>												
 												<input type="text" class="form-control" name="adresseadd" id="adresseadd" runat="server">
 											</div>
 										</div>
 
 										<div class="col-6 col-md-6">
-											<div class="form-outline mb-4 ">
+											<div class=" mb-4 ">
 												<label class="form-label" for="telTuteuradd">Téléphone Tuteur :  </label>												
 												<input type="text" class="form-control" name="telTuteuradd" id="telTuteuradd" runat="server">
 											</div>
 										</div>
 
 										<div class=" col-12">
-											<div class="form-outline mb-4 ">
+											<div class=" mb-4 ">
 												<label class="form-label">Situation familiare des parents : </label>
 
 												<asp:DropDownList CssClass="form-control" runat="server" ID="DropDownListSitFamAdd">
@@ -279,14 +276,14 @@
                         <div class="row">
 
 							<div class="col-12 col-md-6">
-								<div class="form-outline mb-4 ">
+								<div class=" mb-4 ">
 									<label class="form-label" for="derEtabFreadd">Dernier établissement fréquenté : </label>												
 									<input type="text" class="form-control" name="derEtabFreadd" id="derEtabFreadd" runat="server">
 								</div>
 							</div>
 
 							<div class="col-12 col-md-6">
-								<div class="form-outline mb-4 ">
+								<div class=" mb-4 ">
 									<label class="form-label" for="dropDownNivScolaireAdd">Niveau Scolaire : </label>												
 									<asp:DropDownList ID="dropDownNivScolaireAdd" CssClass="form-select" runat="server">
 
@@ -319,7 +316,7 @@
                         <legend class="badge bg-info">Informations De la Section</legend>
                         <div class="row">
 								<div class="col-12">
-									<div class="form-outline mb-4 ">
+									<div class=" mb-4 ">
 										<label class="form-label" for="codeSecadd">ID / Section : </label>												
 										<asp:DropDownList ID="DropDownListcodeSecadd" CssClass="form-control" runat="server"></asp:DropDownList>
 									</div>
@@ -330,15 +327,17 @@
 					</fieldset>			
 					<div class="row">
 						<div class="col-12 col-md-6">
-							<div class="form-outline mb-4 ">
+							<div class=" mb-4 ">
 
-								<asp:Button Text="Ajouter" ID="btnAjouterStgAdd" runat="server" CssClass="btn btn-success form-control " OnClick="btnAjouterStgAdd_Click"/>
+								<asp:Button Text="Ajouter" ID="btnAjouterStgAdd" runat="server" CssClass="btn btn-success form-control " OnClick="btnAjouterStgAdd_Click" Visible="false"/>
+							    <asp:Button Text="Save" ID="btnsaveEditStg" runat="server" CssClass="btn btn-success form-control" OnClick="saveEditStg_Click"  Visible="false"/>
 
 							</div>
 						</div>
+						
 
 						<div class="col-12 col-md-6">
-							<div class="form-outline mb-4 ">
+							<div class=" mb-4 ">
 
 								<a  class="btn btn-secondary form-control" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&do=AllStg">Annuler</a>
 
@@ -350,342 +349,6 @@
 								
 
 		</div>
-                    <%}
-                        else
-if (Request.QueryString["do"].Equals("edit"))
-                        {
-
-                    %>               
-					
-			
-		  <div class="addStagiaireBody">
-	
-					<h2 class="d-block p-2 text-center bg-info ">Modifier Stagiaire</h2>
-					<fieldset>
-						<legend class="badge bg-info">Informations Personnel</legend>
-
-					
-                        <div class="row"> 
-							
-							<div class="col-12 ">
-								<div class="form-outline mb-4">
-								
-								<label for="numInsc" class="form-label">numero d'inscription : </label>
-								
-								<asp:TextBox ID="numInscEdit" CssClass="form-control " runat="server"></asp:TextBox>
-								
-								</div>
-							</div>
-							
-                            <div class="col-6 ">
-						
-								<div class="form-outline mb-4">
-									<label class="form-label"  for="nomEdit">Nom : </label>
-									<asp:TextBox ID="nomEdit" CssClass="form-control" runat="server"></asp:TextBox>
-								</div>
-							</div>
-							<div class="col-6 ">
-								<div class="form-outline mb-4">
-									<label class="form-label"  for="prenomEdit">Prenom : </label>
-									<asp:TextBox ID="prenomEdit" CssClass="form-control" runat="server"></asp:TextBox>
-								</div>
-							</div>
-							
-
-
-							<div class="col-6 col-md-4">
-						
-								<div class="form-outline mb-4">
-									<label class="form-label"  for="dateNaiEdit">Date Naissance : </label>
-									<input type="date" name="dateNaiEdit" id="dateNaiEdit" runat="server" class="form-control">
-								</div>
-
-							</div>
-							<div class="col-6 col-md-4">
-								
-								<div class="form-outline mb-4">
-									<label class="form-label" for="lieuNaisEdit">Lieu Naissance : </label>
-									<asp:TextBox ID="lieuNaisEdit" CssClass="form-control" runat="server"></asp:TextBox>
-			
-								</div>
-							</div>
-
-
-							<div class="col-12 col-md-4">
-								
-								<div class="form-outline mb-4">
-									<label class="form-label"  for="natEdit">Nationalité : </label>
-									<asp:TextBox  ID="natEdit" CssClass="form-control" runat="server"></asp:TextBox>
-								</div>
-
-							</div>
-
-
-								<div class="col-12 col-md-6">
-									<div class="form-outline mb-4 btn-group">
-										<label class="form-label">Sexe: </label>
-										
-										<asp:RadioButtonList CssClass="form-check" ID="RadioButtonListSexEdit" runat="server">
-											
-												
-												<asp:ListItem Value="Homme"> Homme </asp:ListItem>
-												<asp:ListItem Value="Femme"> Femme </asp:ListItem>
-											
-
-										</asp:RadioButtonList>
-									
-									</div>
-								</div>
-							
-								<div class=" col-12">
-									<div class="form-outline mb-4 ">
-										<label class="form-label">Situations Familiare : </label>
-
-										<asp:DropDownList CssClass="form-control" runat="server" ID="DropDownListSitFamEdit">
-											<asp:ListItem Value="Célibataire">Célibataire</asp:ListItem>
-											<asp:ListItem Value="Marié">Marié</asp:ListItem>
-											<asp:ListItem Value="Divorcé">Divorcé</asp:ListItem>
-										</asp:DropDownList>
-									</div>
-								</div>	
-				
-								<div class=" col-6">
-									<div class="form-outline mb-4 ">
-										<label class="form-label" for="emailAEdit">Email : </label>
-										<input class="form-control" type="email" name="emailAEdit" id="emailAEdit" runat="server">
-									</div>
-								</div>
-							
-								<div class=" col-6">
-									<div class="form-outline mb-4 ">
-										<label class="form-label" for="telPerEdit">Téléphone Pérsonnelle : </label>
-										<input class="form-control" type="text" name="telPerEdit" id="telPerEdit" runat="server">
-									</div>
-								</div>
-							
-
-						
-							<div class=" col-12">
-									<div class="form-outline mb-4 ">
-										<label class="form-label" for="img">Photo personnel: </label>
-										<asp:FileUpload ID="FileUploadImgEditStg" CssClass="form-control" runat="server" />
-									</div>
-							</div>
-							
-						</div>							
-					</fieldset>
-		
-		
-
-					<fieldset>	
-						<legend class="badge bg-info">Informatons medicale</legend>
-						<div class="row">
-
-							<div class="col-12 col-md-6">
-									<div class="form-outline mb-4 btn-group">
-										<label class="form-label">Situation Médicale : </label>
-										
-										<asp:RadioButtonList CssClass="form-check" ID="RadioButtonListSitMedEdit" runat="server">
-											
-												
-												<asp:ListItem Value="1"> En santé </asp:ListItem>
-												<asp:ListItem Value="0"> Handicape </asp:ListItem>
-											
-
-										</asp:RadioButtonList>
-									
-									</div>
-								</div>
-
-							<div class=" col-12 col-md-6">
-									<div class="form-outline mb-4 ">
-										<label class="form-label">Group sanguin : </label>
-
-										<asp:DropDownList CssClass="form-control" runat="server" ID="DropDownListSangEdit">
-											<asp:ListItem Value="O+">O+</asp:ListItem>
-											<asp:ListItem Value="O-">O-</asp:ListItem>
-											<asp:ListItem Value="A+">A+</asp:ListItem>
-											<asp:ListItem Value="A-">A-</asp:ListItem>
-											<asp:ListItem Value="B+">B+</asp:ListItem>
-											<asp:ListItem Value="B-">B-</asp:ListItem>
-											<asp:ListItem Value="AB+">AB+</asp:ListItem>
-											<asp:ListItem Value="AB-">AB-</asp:ListItem>
-										</asp:DropDownList>
-									</div>
-								</div>	
-
-	
-
-						</div>		
-
-						
-					</fieldset>
-			
-			
-					<fieldset>
-
-						<legend class="badge bg-info">Informatons familaire</legend>
-						
-									<div class="row">
-
-										<div class="col-6 col-md-6">
-											<div class="form-outline mb-4 ">
-												<label class="form-label" for="ppereEdit">Prenom Père : </label>												
-												<input type="text" class="form-control" name="ppereEdit" id="ppereEdit" runat="server">
-											</div>
-										</div>
-
-										<div class="col-6 col-md-6">
-											<div class="form-outline mb-4 ">
-												<label class="form-label" for="profPereEdit">Profession du père  : </label>												
-												<input type="text" class="form-control" name="profPereEdit" id="profPereEdit" runat="server">
-											</div>
-										</div>
-
-
-										<div class="col-6 col-md-4">
-											<div class="form-outline mb-4 ">
-												<label class="form-label" for="nmereEdit">Nom Mère: </label>												
-												<input type="text" class="form-control" name="nmereEdit" id="nmereEdit" runat="server">
-											</div>
-										</div>
-
-										<div class="col-6 col-md-4">
-											<div class="form-outline mb-4 ">
-												<label class="form-label" for="pmereEdit">Prenom Mère: </label>												
-												<input type="text" class="form-control" name="pmereEdit" id="pmereEdit" runat="server">
-											</div>
-										</div>
-
-										<div class="col-12 col-md-4">
-											<div class="form-outline mb-4 ">
-												<label class="form-label" for="profMereEdit">Profession de la mère  : </label>												
-												<input type="text" class="form-control" name="profMereEdit" id="profMereEdit" runat="server">
-											</div>
-										</div>
-
-										<div class="col-6 col-md-6">
-											<div class="form-outline mb-4 ">
-												<label class="form-label" for="adresseEdit">Adresse : </label>												
-												<input type="text" class="form-control" name="adresseEdit" id="adresseEdit" runat="server">
-											</div>
-										</div>
-
-										<div class="col-6 col-md-6">
-											<div class="form-outline mb-4 ">
-												<label class="form-label" for="telTuteurEdit">Téléphone Tuteur :  </label>												
-												<input type="text" class="form-control" name="telTuteurEdit" id="telTuteurEdit" runat="server">
-											</div>
-										</div>
-
-										<div class=" col-12">
-											<div class="form-outline mb-4 ">
-												<label class="form-label">Situation familiare des parents : </label>
-
-												<asp:DropDownList CssClass="form-control" runat="server" ID="DropDownListSitFamParEdit">
-													<asp:ListItem Value="Marié">Marié</asp:ListItem>
-													<asp:ListItem Value="Divorcé">Divorcé</asp:ListItem>
-													<asp:ListItem Value="Décédé">Décédé</asp:ListItem>
-												</asp:DropDownList>
-											</div>
-										</div>	
-
-									</div>
-									
-
-				
-					</fieldset>
-
-					<fieldset>
-
-						<legend class="badge bg-info">Informations scolaire</legend>
-								
-                        <div class="row">
-
-							<div class="col-12 col-md-6">
-								<div class="form-outline mb-4 ">
-									<label class="form-label" for="derEtabFreEdit">Dernier établissement fréquenté : </label>												
-									<input type="text" class="form-control" name="derEtabFreEdit" id="derEtabFreEdit" runat="server">
-								</div>
-							</div>
-
-							<div class="col-12 col-md-6">
-								<div class="form-outline mb-4 ">
-									<label class="form-label" for="dropDownNivScolaireEdit">Niveau Scolaire : </label>												
-									<asp:DropDownList ID="dropDownNivScolaireEdit" CssClass="form-select" runat="server">
-
-					                        <asp:ListItem Value="-1" >SVP Sélectionne</asp:ListItem>  
-					                        <asp:ListItem Value="2eme année secondaire Series: Sciences et Gestion ">2eme année secondaire Series: Sciences et Gestion </asp:ListItem>  
-					                        <asp:ListItem Value="2eme année secondaire Series: Sciences">2eme année secondaire Series: Sciences</asp:ListItem>  
-					                        <asp:ListItem Value="2eme année secondaire Series: Gestion">2eme année secondaire Series: Gestion</asp:ListItem>  
-					                        <asp:ListItem Value="2eme année secondaire Series: Littéraire">2eme année secondaire Series: Littéraire</asp:ListItem>  
-					                        <asp:ListItem Value="2eme année secondaire Series: Tout series">2eme année secondaire Series: Tout series</asp:ListItem>  
-					                        <asp:ListItem Value="3eme année secondaire Series: Sciences et Gestion">3eme année secondaire Series: Sciences et Gestion </asp:ListItem>  
-					                        <asp:ListItem Value="3eme année secondaire Series: Sciences">3eme année secondaire Series: Sciences</asp:ListItem>  
-					                        <asp:ListItem Value="3eme année secondaire Series: Gestion">3eme année secondaire Series: Gestion</asp:ListItem> 
-					                        <asp:ListItem Value="3eme année secondaire Series: Littéraire">3eme année secondaire Series: Littéraire</asp:ListItem> 
-					                        <asp:ListItem Value="3eme année secondaire Series: Tout series">3eme année secondaire Series: Tout series</asp:ListItem> 
-					  
-			                          </asp:DropDownList>
-								</div>
-							</div>
-
-
-
-                        </div>
-									
-								
-			
-							
-					</fieldset>
-					
-					<fieldset>
-                        <legend class="badge bg-info">Informations De la Section</legend>
-                        <div class="row">
-								<div class="col-12">
-									<div class="form-outline mb-4 ">
-										<label class="form-label" for="codeSecadd">ID / Section : </label>												
-										<asp:DropDownList ID="DropDownListCodeSecEdit" CssClass="form-control" runat="server"></asp:DropDownList>
-									</div>
-								</div>
-						</div>
-
-
-					</fieldset>			
-					<div class="row">
-						<div class="col-12 col-md-6">
-							<div class="form-outline mb-4 ">
-
-								<asp:Button Text="Save" ID="saveEditStg" runat="server" CssClass="btn btn-success form-control" OnClick="saveEditStg_Click"/>
-
-							</div>
-						</div>
-
-						<div class="col-12 col-md-6">
-							<div class="form-outline mb-4 ">
-
-								<a  class="btn btn-secondary form-control" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&do=AllStg">Annuler</a>
-
-							</div>
-						</div>
-
-						<div class="col-12">
-							<div class="form-outline mb-4 ">
-
-								
-								<a target="_blank"  class="btn btn-danger form-control" href="reports/AttestationDeStage.aspx?id=<%=Session["id"]%>&do=impression&idStg=<%=Request.QueryString["idStg"]%>">Attestation du stage</a>
-
-
-							</div>
-						</div>
-					</div>
-              <br />
-              <br />
-								
-
-		</div>
-                                
-                           
                     <%}
                         else
 if (Request.QueryString["do"].Equals("delete"))
@@ -693,7 +356,7 @@ if (Request.QueryString["do"].Equals("delete"))
 
 
                                     %> 
-        					        <h2 class="badge bg-primary">Supprimer une fromation </h2>
+        					        <h2 class="badge bg-primary">Supprimer un Stagiaire </h2>
 
                                         <div class='alert alert-danger' role='alert'>
                                                 <h3> Voulez vous confirmer de supprimer Le Stagiaire  :<b><asp:Label ID="StgToDrop" runat="server" Text=""> </asp:Label> </b></h3>
@@ -781,14 +444,14 @@ if (Request.QueryString["do"].Equals("details"))
 								</div>
 							  </div>
 									<div class="col-12 col-md-6">
-										<div class="form-outline mb-4 ">
+										<div class=" mb-4 ">
 
 											<a  class="btn btn-secondary form-control" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&do=AllStg"><i class="fas fa-arrow-alt-circle-left"></i> Reteur</a>
 
 										</div>
 									</div>
 									<div class="col-12 col-md-6 ">
-										<div class="form-outline mb-4 ">
+										<div class=" mb-4 ">
 
 											<a  class="btn btn-warning form-control" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&do=edit&idStg=<%=Dstag.Id %>"><i class="fas fa-info-circle"></i> Details </a>
 
@@ -812,7 +475,7 @@ if (Request.QueryString["do"].Equals("details"))
 
 						<div class="row justify-content-end">
                             <div class="col-8 col-md-4"">
-							  <div class="form-outline">
+							  <div class="">
 								<input type="search" id="searchStg" class="form-control mb-2 mt-5" placeholder="Recharher" runat="server"/>
 								
 							  </div>
@@ -831,6 +494,7 @@ if (Request.QueryString["do"].Equals("details"))
                               <th scope="col">Nom / Prenom</th>
                               <th scope="col">Date/Lieu Naissance</th>
                               <th scope="col">Section</th>
+                              <th scope="col">Statut</th>
                               <th scope="col">Options</th>
                             </tr>
                           </thead>
@@ -843,12 +507,13 @@ if (Request.QueryString["do"].Equals("details"))
                                   <td><%=s.Nom +"  "+s.Prenom%> </td>
                                   <td><%=s.DateLieuNais%> </td>
                                   <td><%=s.CodeSec%> </td>
+                                  <td><%=s.Status%> </td>
                               
                                   <td>
                                       <!-- Ajouter -->
                                       <asp:Button ID="btnAddStag" CssClass="btn btn-primary" runat="server" Text="Ajouter" OnClick="btnAddStag_Click" />
                                       <!-- Editer -->
-                                      <a class="btn btn-warning" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&idStg=<%=s.IdStg%>&do=edit">Details</a>
+                                      <a class="btn btn-warning" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&idStg=<%=s.IdStg%>&do=add-edit&opt=edit">Details</a>
                                       <!-- Supprimer -->  
                                       <a class="btn btn-danger" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&idStg=<%=s.IdStg%>&do=delete">Supprimer</a> 
 									  <!-- Detalis -->  

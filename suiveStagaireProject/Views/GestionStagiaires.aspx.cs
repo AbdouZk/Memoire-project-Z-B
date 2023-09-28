@@ -21,7 +21,7 @@ namespace suiveStagaireProject.Views
 
             try
             {
-               
+
 
 
                 if (Session["id"] == null)
@@ -36,77 +36,76 @@ namespace suiveStagaireProject.Views
                     Response.Redirect("HomePage.aspx?id=" + Session["id"]);
                 }
 
-                if (Request.QueryString["do"].Equals("add") && Request.QueryString["id"] != null)
+                if (Request.QueryString["do"] != null)
                 {
-                    if (DropDownListcodeSecadd.Items.Count==0)
+                    if (Request.QueryString["do"].Equals("add-edit") && Request.QueryString["opt"] != null)
                     {
-                        DropDownListcodeSecadd.DataSource = section.viewSections();
-                        DropDownListcodeSecadd.DataValueField = "idSec";
-                        DropDownListcodeSecadd.DataTextField  = "codeSec";
-                        DropDownListcodeSecadd.DataBind();
+
+                        if (Request.QueryString["opt"].Equals("add"))
+                        {
+                            if (DropDownListcodeSecadd.Items.Count == 0)
+                            {
+                                DropDownListcodeSecadd.DataSource = section.viewSections();
+                                DropDownListcodeSecadd.DataValueField = "idSec";
+                                DropDownListcodeSecadd.DataTextField = "codeSec";
+                                DropDownListcodeSecadd.DataBind();
+                            }
+                            btnAjouterStgAdd.Visible = true;
+                        }
+                        else
+                        if (Request.QueryString["opt"].Equals("edit") && Request.QueryString["idStg"] != null)
+                        {
+                            Stagiaire stag = new Stagiaire();
+                            detailsStagiaire detStag = new detailsStagiaire();
+
+                            detStag = stagiaire.detailsStagiaires(int.Parse(Request.QueryString["idStg"]));
+
+                            if (DropDownListcodeSecadd.Items.Count == 0)
+                            {
+                                DropDownListcodeSecadd.DataSource = section.viewSections();
+                                DropDownListcodeSecadd.DataValueField = "idSec";
+                                DropDownListcodeSecadd.DataTextField = "codeSec";
+                                DropDownListcodeSecadd.DataBind();
+
+
+
+                                numInscAdd.Text = detStag.NumInsc; nomAdd.Text = detStag.Nom; prenomAdd.Text = detStag.Prenom;
+                                RadioButtonListSex.SelectedValue = detStag.Sexe;
+                                string dateNai = detStag.DateNai.ToString("yyyy-MM-dd");
+                                dateNaiAdd.Value = dateNai;
+                                lieuNaisAdd.Text = detStag.LieuNai; natAdd.Text = detStag.Nat;
+                                DropDownListSitFamAdd.SelectedValue = detStag.SitFam; telPerAdd.Value = detStag.Telephone; emailAdd.Value = detStag.Email;
+                                DropDownListSangAdd.SelectedValue = detStag.Sang; ppereadd.Value = detStag.PrenomPere; nmereadd.Value = detStag.NomMere; pmereadd.Value = detStag.PrenomMere;
+                                profPereadd.Value = detStag.ProfPere; profMereadd.Value = detStag.ProfMere; adresseadd.Value = detStag.Adresse; telTuteuradd.Value = detStag.TelTuteur;
+                                DropDownListSitFamAdd.SelectedValue = detStag.SitFamParents; derEtabFreadd.Value = detStag.DerEtabFre; dropDownNivScolaireAdd.SelectedValue = detStag.NivScolaire;
+
+                                RadioButtonListsitMed.SelectedValue = detStag.SitMedical.ToString();
+                                DropDownListcodeSecadd.SelectedValue = detStag.IdSection.ToString();
+
+                                btnsaveEditStg.Visible = true;
+                            }
+                        }
+                       
                     }
+                        if (Request.QueryString["do"].Equals("delete") && Request.QueryString["idStg"] != null)
+                        {
 
-                }
-                else
-                {
-
-                }
-
-
-                if (Request.QueryString["do"].Equals("edit") && Request.QueryString["idStg"] != null)
-                {
-
-                    Stagiaire stag = new Stagiaire();
-                    detailsStagiaire detStag = new detailsStagiaire();
-
-                    detStag = stagiaire.detailsStagiaires(int.Parse(Request.QueryString["idStg"]));
-
-                    if (DropDownListCodeSecEdit.Items.Count == 0)
-                    {
-                        DropDownListCodeSecEdit.DataSource = section.viewSections();
-                        DropDownListCodeSecEdit.DataValueField = "idSec";
-                        DropDownListCodeSecEdit.DataTextField = "codeSec";
-                        DropDownListCodeSecEdit.DataBind();
-                    }
-
-
-                    numInscEdit.Text = detStag.NumInsc; nomEdit.Text = detStag.Nom;  prenomEdit.Text = detStag.Prenom;
-                    RadioButtonListSexEdit.SelectedValue = detStag.Sexe;
-                    string dateNai = detStag.DateNai.ToString("yyyy-MM-dd");
-                    dateNaiEdit.Value = dateNai;
-                    lieuNaisEdit.Text = detStag.LieuNai; natEdit.Text = detStag.Nat;
-                    DropDownListSitFamEdit.SelectedValue = detStag.SitFam; telPerEdit.Value = detStag.Telephone;  emailAEdit.Value = detStag.Email;
-                    DropDownListSangEdit.SelectedValue = detStag.Sang; ppereEdit.Value = detStag.PrenomPere; nmereEdit.Value = detStag.NomMere; pmereEdit.Value = detStag.PrenomMere;
-                    profPereEdit.Value = detStag.ProfPere; profMereEdit.Value = detStag.ProfMere; adresseEdit.Value = detStag.Adresse; telTuteurEdit.Value = detStag.TelTuteur;
-                    DropDownListSitFamParEdit.SelectedValue = detStag.SitFamParents;  derEtabFreEdit.Value = detStag.DerEtabFre; dropDownNivScolaireEdit.SelectedValue= detStag.NivScolaire;
-
-                    RadioButtonListSitMedEdit.SelectedValue = detStag.SitMedical.ToString();
-                    DropDownListCodeSecEdit.SelectedValue = detStag.IdSection.ToString();
+                            StgToDrop.Text = stagiaire.detailsStagiaires(int.Parse(Request.QueryString["idStg"])).Nom + " " + stagiaire.detailsStagiaires(int.Parse(Request.QueryString["idStg"])).Prenom;
+                            StgToDrop.Visible = true;
 
 
 
-
-                }
-                else
-                {
+                        }
+                        else
+                        {
+                            StgToDrop.Visible = false;
+                        }
                     
                 }
-
-
-                if (Request.QueryString["do"].Equals("delete") && Request.QueryString["idStg"] != null)
-                {
-
-                    StgToDrop.Text = stagiaire.detailsStagiaires(int.Parse(Request.QueryString["idStg"])).Nom +" "+ stagiaire.detailsStagiaires(int.Parse(Request.QueryString["idStg"])).Prenom;
-                    StgToDrop.Visible = true;
-
-
-
-                }
                 else
                 {
-                    StgToDrop.Visible = false;
+                    Response.Redirect("404-page.aspx");
                 }
-
             }
             catch (Exception ex)
             {
@@ -116,7 +115,7 @@ namespace suiveStagaireProject.Views
 
         protected void btnAddStag_Click(object sender, EventArgs e)
         {
-            Response.Redirect("GestionStagiaires.aspx?id="+Session["id"]+"&do=add");
+            Response.Redirect("GestionStagiaires.aspx?id="+Session["id"]+"&do=add-edit&opt=add");
         }
 
         protected void btnAjouterStgAdd_Click(object sender, EventArgs e)
@@ -175,51 +174,48 @@ namespace suiveStagaireProject.Views
             try
             {
                 // Recupération des données 
-                string
-                    numInsc = numInscEdit.Text, nom = nomEdit.Text, prenom = prenomEdit.Text,
-                    sexe = RadioButtonListSexEdit.SelectedValue, lieuNais = lieuNaisEdit.Text, nat = natEdit.Text,
-                    sitFam = DropDownListSitFamEdit.SelectedValue, telephone = telPerEdit.Value, email = emailAEdit.Value,
-                    sang = DropDownListSangEdit.SelectedValue, pPere = ppereEdit.Value, nMere = nmereEdit.Value, pMere = pmereEdit.Value,
-                    proPere = profPereEdit.Value, proMere = profMereEdit.Value, adress = adresseEdit.Value, telTuteur = telTuteurEdit.Value,
-                    sitFamP = DropDownListSitFamParEdit.SelectedValue, derEtaFre = derEtabFreEdit.Value, nivSco = dropDownNivScolaireEdit.SelectedValue,
-                    
-                img = FileUploadImgEditStg.FileName;
-                FileUploadImgEditStg.SaveAs(Server.MapPath("~/Layout/images/Stagiaires/") + Path.GetFileName(FileUploadImgEditStg.FileName));
+                string numInsc = numInscAdd.Text, nom = nomAdd.Text, prenom = prenomAdd.Text,
+                    sexe = RadioButtonListSex.SelectedValue, lieuNais = lieuNaisAdd.Text, nat = natAdd.Text,
+                    sitFam = dropDownSitFamAdd.SelectedValue, telephone = telPerAdd.Value, email = emailAdd.Value,
+                    sang = DropDownListSangAdd.SelectedValue, pPere = ppereadd.Value, nMere = nmereadd.Value, pMere = pmereadd.Value,
+                    proPere = profPereadd.Value, proMere = profMereadd.Value, adress = adresseadd.Value, telTuteur = telTuteuradd.Value,
+                    sitFamP = DropDownListSitFamAdd.SelectedValue, derEtaFre = derEtabFreadd.Value, nivSco = dropDownNivScolaireAdd.SelectedValue,
 
-                int sitMed = int.Parse(RadioButtonListSitMedEdit.SelectedValue),
-                    codeSec = int.Parse(DropDownListCodeSecEdit.SelectedValue),
-                    idStg= int.Parse(Request.QueryString["idStg"].ToString()),
-                    idPersonne = (int)stagiaire.getStagiaire(idStg).personnelInfoId,
-                    idDetails = (int)stagiaire.getStagiaire(idStg).detailsInfoId;
+                    img = FileUploadImgAdd.FileName;
+                FileUploadImgAdd.SaveAs(Server.MapPath("~/Layout/images/Stagiaires/") + Path.GetFileName(FileUploadImgAdd.FileName));
 
+                int sitMed = int.Parse(RadioButtonListsitMed.SelectedValue),
+                    codeSec = int.Parse(DropDownListcodeSecadd.SelectedValue),
+                    idPersonne, idDetails = 0, idStg =int.Parse( Request.QueryString["isStg"]);
 
+                idDetails = detailsStagiaire.getLastId() + 1;
+                idPersonne = personnelInfo.getLastId() + 1;
 
 
-                DateTime dateNai = DateTime.Parse(dateNaiEdit.Value);
-
-               
-
-                // edit Personne part
-
-               // PersonnelInfo per = new PersonnelInfo(idPersonne, nom, prenom, dateNai, lieuNais, sexe, adress, email, telephone);
-                //personnelInfo.editPersonnelInfo(per,idPersonne);
-
-                //edit Details Stagiaire
-
-               // DetailsStagiaire ds = new DetailsStagiaire(idDetails, sang, sitMed, pPere, nMere, pMere, telTuteur, nat, derEtaFre, nivSco, sitFam, proPere, proMere, sitFamP);
-                //detailsStagiaire.editDetailStagiaire(ds,idDetails);
+                DateTime dateNai = DateTime.Parse(dateNaiAdd.Value);
 
 
-                //edit Stagiaire
+                // Add Personne part
+
+                PersonnelInfo per = new PersonnelInfo(idPersonne, nom, prenom, dateNai, lieuNais, sexe, adress, email, telephone);
+                personnelInfo.editPersonnelInfo(per,idPersonne);
+
+                //add Details Stagiaire
+
+                DetailsStagiaire ds = new DetailsStagiaire(idDetails, sang, sitMed, pPere, nMere, pMere, telTuteur, nat, derEtaFre, nivSco, sitFam, proPere, proMere, sitFamP);
+                detailsStagiaire.editDetailStagiaire(ds,idDetails);
+
+                //add Stagiaire
                 Stagiaire stg = new Stagiaire(numInsc, img, codeSec, idPersonne, idDetails);
-                stagiaire.editStagiaire(stg, idStg);
+                stagiaire.editStagiaire(stg,idStg);
+
 
                 NotDoAlert.Text = "<div class='alert alert-success' role='alert'>Stagiaire Bien Modifier</div><br/>";
 
             }
             catch (Exception ex)
             {
-                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>" + ex.Message + " </div><br/>";
+                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>Echèc De Mofification </div><br/>";
 
             }
         }

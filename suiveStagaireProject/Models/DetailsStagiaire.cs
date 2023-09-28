@@ -71,9 +71,25 @@ namespace suiveStagaireProject.Models
         public void editDetailStagiaire(DetailsStagiaire dStg,int id)
         {
 
-            dc.ExecuteCommand("UPDATE DetailsStagiaire SET sang={0},sitMedical={1},prenomPere={2},nomMere={3},prenomMere={4},telTuteur={5},nat={6},derEtabFre={7},nivScolaire={8},sitFam={9},profPere={10},profMere={11},sitFamParents={12} Where id={13})",
-                              dStg.sang, dStg.sitMedical, dStg.prenomPere, dStg.nomMere, dStg.prenomMere, dStg.telTuteur, dStg.nat, dStg.derEtabFre, dStg.nivScolaire, dStg.sitFam, dStg.profPere, dStg.profMere, dStg.sitFamParents,dStg.id);
+          
+            var query = from ds in dc.DetailsStagiaires where ds.id == id select ds;
 
+            foreach (var ds in query)
+            {
+                ds.sang = dStg.sang;
+                ds.sitMedical = dStg.sitMedical;
+                ds.prenomPere = dStg.prenomPere;
+                ds.nomMere = dStg.nomMere;
+                ds.prenomMere = dStg.prenomMere;
+                ds.telTuteur = dStg.telTuteur;
+                ds.nat = dStg.nat;
+                ds.derEtabFre = dStg.derEtabFre;
+                ds.nivScolaire = dStg.nivScolaire;
+                ds.sitFam = dStg.sitFam;
+                ds.profPere = dStg.profPere;
+                ds.profMere = dStg.profMere;
+                ds.sitFamParents = dStg.sitFamParents;
+            }
 
             dc.SubmitChanges();
         }

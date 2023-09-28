@@ -37,7 +37,8 @@ namespace suiveStagaireProject.Models.Metier
         private int id;
         private string numInsc;
         private string img;
-        private int idSection;
+        private string statusStg;
+        private int idSection;  
         private int personnelInfoId;
         private int detailsInfoId;
 
@@ -57,7 +58,7 @@ namespace suiveStagaireProject.Models.Metier
         {
         }
 
-        public detailsStagiaire(string sang, int sitMedical, string prenomPere, string nomMere, string prenomMere, string telTuteur, string nat, string derEtabFre, string nivScolaire, string sitFam, string profPere, string profMere, string sitFamParents, string nom, string prenom, DateTime dateNai, string lieuNai, string sexe, string adresse, string email, string telephone, int id, string numInsc, string img, int idSection, int personnelInfoId, int detailsInfoId, int ididSec, DateTime dateOuv, DateTime dateFin, int numSection, string modeGes, string libForm, string nivForm, string codeFor)
+        public detailsStagiaire(string sang, int sitMedical, string prenomPere, string nomMere, string prenomMere, string telTuteur, string nat, string derEtabFre, string nivScolaire, string sitFam, string profPere, string profMere, string sitFamParents, string nom, string prenom, DateTime dateNai, string lieuNai, string sexe, string adresse, string email, string telephone, int id, string numInsc, string img, string statusStg, int idSection, int personnelInfoId, int detailsInfoId, int ididSec, DateTime dateOuv, DateTime dateFin, int numSection, string modeGes, string libForm, string nivForm, string codeFor)
         {
             this.Sang = sang;
             this.SitMedical = sitMedical;
@@ -83,6 +84,7 @@ namespace suiveStagaireProject.Models.Metier
             this.Id = id;
             this.NumInsc = numInsc;
             this.Img = img;
+            this.StatusStg =  statusStg;
             this.IdSection = idSection;
             this.PersonnelInfoId = personnelInfoId;
             this.DetailsInfoId = detailsInfoId;
@@ -120,6 +122,7 @@ namespace suiveStagaireProject.Models.Metier
         public int Id { get => id; set => id = value; }
         public string NumInsc { get => numInsc; set => numInsc = value; }
         public string Img { get => img; set => img = value; }
+        public string StatusStg { get => statusStg; set => statusStg = value; }
         public int IdSection { get => idSection; set => idSection = value; }
         public int PersonnelInfoId { get => personnelInfoId; set => personnelInfoId = value; }
         public int DetailsInfoId { get => detailsInfoId; set => detailsInfoId = value; }

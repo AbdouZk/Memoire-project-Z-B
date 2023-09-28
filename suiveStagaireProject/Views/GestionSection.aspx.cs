@@ -12,6 +12,8 @@ namespace suiveStagaireProject.Views
     {
         Section section = new Section();
         CatalogeSection cataloge = new CatalogeSection();
+        Branchee branche = new Branchee();
+        Module module = new Module();
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -30,10 +32,15 @@ namespace suiveStagaireProject.Views
                     Response.Redirect("HomePage.aspx?id=" + Session["id"]);
                 }
 
+                if (Request.QueryString["do"]==null)
+                {
+                    Response.Redirect("HomePage.aspx?id=" + Session["id"]);
+                }
+
                 if (Request.QueryString["do"].Equals("addCat") )
                 {
-                    CatalogeSection cat = new CatalogeSection();
-                    Branchee branche = new Branchee();
+                   
+                   
 
                     if (dropDownBrachees.Items.Count==0) {
                         dropDownBrachees.DataSource = branche.getListeBranchees();
@@ -47,8 +54,8 @@ namespace suiveStagaireProject.Views
 
                 if (Request.QueryString["do"].Equals("editCat") && Request.QueryString["idCat"] != null)
                 {
+
                     CatalogeSection cat = new CatalogeSection();
-                    Branchee branche = new Branchee();
                     cat = cat.getCatalogeSec(int.Parse(Request.QueryString["idCat"]));
 
                     if (DropDownBracheeEditCat.Items.Count == 0)
@@ -67,7 +74,7 @@ namespace suiveStagaireProject.Views
                         if (cat.niveauFormation == 4) { radioEditCat.SelectedValue = "4"; } else { radioEditCat.SelectedValue = "5"; }
                     }
 
-                    
+                    errorsEdit.Visible = false;
                 }
                 else
                 {
@@ -91,13 +98,12 @@ namespace suiveStagaireProject.Views
 
                 if (Request.QueryString["do"].Equals("addSec") )
                 {
-                    CatalogeSection cat = new CatalogeSection();
-                    Section sec = new Section();
+                    
                     Enseignant ens = new Enseignant();
 
                     if (DropDownFormationAdd.Items.Count == 0)
                     {
-                        DropDownFormationAdd.DataSource = cat.getListeCatalogeSec();
+                        DropDownFormationAdd.DataSource = cataloge.getListeCatalogeSec();
                         DropDownFormationAdd.DataTextField = "codeSpe";
                         DropDownFormationAdd.DataValueField = "idCataloge";
 
@@ -107,14 +113,30 @@ namespace suiveStagaireProject.Views
                     if (DropDowntuteurSecAdd.Items.Count == 0)
                     {
                         DropDowntuteurSecAdd.DataSource = ens.getEnseignantsNames();
-                       
                         DropDowntuteurSecAdd.DataValueField = "nameEns";
                         DropDowntuteurSecAdd.DataTextField = "nameEns";
 
                         DropDowntuteurSecAdd.DataBind();
                     }
 
-                  
+                    if (DropDownEnsAdd.Items.Count == 0)
+                    {
+                        DropDownEnsAdd.DataSource = ens.getEnseignantsNames();
+                        DropDownEnsAdd.DataValueField = "idEns";
+                        DropDownEnsAdd.DataTextField = "nameEns";
+
+                        DropDownEnsAdd.DataBind();
+                    }
+                    if (DropDownModules.Items.Count == 0)
+                    {
+                        DropDownModules.DataSource = module.getModulesNames();
+                        DropDownModules.DataValueField = "idMod";
+                        DropDownModules.DataTextField = "libMod";
+
+                        DropDownModules.DataBind();
+                    }
+
+
                 }
 
                 if (Request.QueryString["do"].Equals("editSec") && Request.QueryString["idSec"] != null)
@@ -143,7 +165,7 @@ namespace suiveStagaireProject.Views
 
                         DropDownFormationEdit.SelectedValue = sec.idCat.ToString();
                         numSectionEdit.Text = sec.numSection.ToString();
-                        DropDownListSemestreEdit.SelectedValue = sec.semestre.ToString();
+                        //DropDownListSemestreEdit.SelectedValue = sec.semestre.ToString();
                         modeOrgEdit.Text = sec.modeOrgaForm;
                         RadioButtonmodeGesEdit.SelectedValue = sec.modeGestionForm.ToString();
 
@@ -155,11 +177,7 @@ namespace suiveStagaireProject.Views
                         DropDowntuteurSecEdit.SelectedValue = sec.tuteurSection;
                     }
                 }
-                else
-                {
-                    errorsEdit.Text = "Section Introuvable !";
-                    errorsEdit.Visible = true;
-                }
+               
             }
             catch (Exception ex)
             {
@@ -237,14 +255,17 @@ namespace suiveStagaireProject.Views
                 int idCataloge =int.Parse( DropDownFormationAdd.SelectedValue);
                 int numSection = int.Parse(numSectionAdd.Text);
                 char semestre = char.Parse(DropDownListSemestreAdd.SelectedValue);
+                if (semestre == '0') { semestre = '1'; }
                 string modeOrg = modeOrgAdd.Text;
                 char modeGes = char.Parse(RadioButtonmodeGesAdd.SelectedValue);
                 string debut = debutForAdd.Value ;
                 string fin = finForAdd.Value;
                 string tuteur = DropDowntuteurSecAdd.SelectedValue;
 
-                Section sec = new Section(DateTime.Parse(debut), DateTime.Parse(fin), numSection,semestre,tuteur,modeGes,modeOrg,idCataloge);
-
+                Section sec = new Section(DateTime.Parse(debut), DateTime.Parse(fin), numSection,tuteur,modeGes,modeOrg,idCataloge);
+                
+                
+                
                 section.addSection(sec);
 
                 NotDoAlert.Text = "<div class='alert alert-success' role='alert'>Bien Ajouter</div><br/>";
@@ -272,7 +293,7 @@ namespace suiveStagaireProject.Views
                 string fin = finForEdit.Value.ToString();
                 string tuteur = DropDowntuteurSecEdit.SelectedValue;
 
-                Section sec = new Section(DateTime.Parse(debut), DateTime.Parse(fin), numSection, semestre, tuteur, modeGes, modeOrg, idCataloge);
+                Section sec = new Section(DateTime.Parse(debut), DateTime.Parse(fin), numSection, tuteur, modeGes, modeOrg, idCataloge);
 
                 section.editSection(sec,id);
 
@@ -298,6 +319,113 @@ namespace suiveStagaireProject.Views
             catch (Exception ex)
             {
 
+            }
+        }
+
+        protected void btnAffecEnsSec_Click(object sender, EventArgs e)
+        {
+            try {
+                string idEns = DropDownEnsAdd.SelectedValue;
+                string nameEns = DropDownEnsAdd.SelectedItem.Text;
+                
+
+                List<ListItem> allEns = new List<ListItem>();
+
+            
+                foreach (ListItem item in listEnseignants.Items)
+                {
+                    
+                    allEns.Add(item);
+                }              
+
+
+                if (allEns.Count == 0)
+                {
+                    listEnseignants.Items.Add("#" + idEns + " " + nameEns);
+                    listEnseignants.DataBind();
+                }
+                else
+                {
+                    bool find = false;
+                    foreach (ListItem item in allEns)
+                    {
+                        if (item.Value.Equals("#" + idEns + " " + nameEns))
+                        {
+                            find = true;
+                            break;
+                            
+                        }
+                       
+
+                    }
+                    if (!find)
+                    {
+                        listEnseignants.Items.Add("#" + idEns + " " + nameEns);
+                        listEnseignants.DataBind();
+                    }
+                }
+                
+                
+            } catch (Exception ex) 
+            {
+            }
+
+        }
+
+        protected void btnAffecModSec_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!confMod.Value.Equals("") && !noteEl.Value.Equals(""))
+                {
+                    string idMod = DropDownModules.SelectedValue;
+                    string libMod = DropDownModules.SelectedItem.Text;
+                    string nEli = noteEl.Value;
+                    string cof = confMod.Value;
+
+
+                    List<ListItem> allMod = new List<ListItem>();
+
+
+                    foreach (ListItem item in listBoxModules.Items)
+                    {
+
+                        allMod.Add(item);
+                    }
+
+
+                    if (allMod.Count == 0)
+                    {
+                        listBoxModules.Items.Add("#" + idMod + " " + libMod + " Coenf:" + cof + " Note Eli:" + nEli);
+                        listBoxModules.DataBind();
+                    }
+                    else
+                    {
+                        bool find = false;
+                        foreach (ListItem item in allMod)
+                        {
+                            if (item.Value=="#" + idMod + " " + libMod + " Coenf:" + cof + " Note Eli:" + nEli)
+                            {
+                                find = true;
+                                break;
+
+                            }
+
+                        }
+                        if (!find)
+                        {
+                            listBoxModules.Items.Add("#" + idMod + " " + libMod + " Coenf:" + cof + " Note Eli:" + nEli);
+                            listBoxModules.DataBind();
+                        }
+                    }
+
+                }
+
+               
+
+            }
+            catch (Exception ex)
+            {
             }
         }
     }

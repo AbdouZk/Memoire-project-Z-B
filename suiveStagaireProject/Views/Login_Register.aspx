@@ -66,14 +66,14 @@
 
 								<!-- user input -->
 
-							  <div class="form-outline mb-4" >
+							  <div class=" mb-4" >
 								<asp:TextBox ID="usernameLog" runat="server" CssClass="form-control" ></asp:TextBox>
 								<label class="form-label" for="username">
 								  Username</label>
 							  </div>
 
 							  <!-- Password input -->
-							  <div class="form-outline mb-4">
+							  <div class=" mb-4">
 								<asp:TextBox ID="passwordLog" runat="server" CssClass="form-control" TextMode="Password" ></asp:TextBox>
 								<label class="form-label" for="password">Password</label>
 							  </div>
@@ -113,14 +113,14 @@
 	
 	    
 					  <!-- Username input -->
-					  <div class="form-outline mb-4">
+					  <div class=" mb-4">
 			
 						<asp:TextBox ID="usernameReg" runat="server" CssClass="form-control" MaxLength="10" ></asp:TextBox>
 						<label class="form-label" for="registerName">UserName</label>
 					  </div>
 	
 					  <!-- Password input -->
-					  <div class="form-outline mb-4">
+					  <div class=" mb-4">
 
 			
 						  <asp:TextBox ID="passReg" runat="server" CssClass="form-control" MaxLength="10"  TextMode="Password"></asp:TextBox>
@@ -129,7 +129,7 @@
 					  </div>
 
 					  <!--Confirmation Password input -->
-					  <div class="form-outline mb-4">
+					  <div class=" mb-4">
 
 			
 						<asp:TextBox ID="confPassReg" runat="server" CssClass="form-control" MaxLength="10" TextMode="Password" ></asp:TextBox>
@@ -141,7 +141,7 @@
 					  </div>
 
 					<%--  <!--Group ID  Select --%>
-					  <div class="form-outline mb-4">
+					  <div class=" mb-4">
 
 
 						<label class="form-label" for="confpassword">Group ID </label>

@@ -86,7 +86,7 @@ namespace suiveStagaireProject
 
         protected void BtnCRUDsta_Click(object sender, EventArgs e)
         {
-            Response.Redirect("GestionStagiaires.aspx?id=" + Session["id"] + "&do=add");
+            Response.Redirect("GestionStagiaires.aspx?id=" + Session["id"] + "&do=add-edit&opt=add");
 
         }
 
@@ -99,6 +99,28 @@ namespace suiveStagaireProject
         protected void btnListcat_Click(object sender, EventArgs e)
         {
             Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllCat");
+        }
+
+        protected void btnListModules_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionModules.aspx?id="+Session["id"]+"&do=AllModules");
+        }
+
+        protected void btnCRUDmodules_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionModules.aspx?id=" + Session["id"] + "&do=add-edit&opt=add");
+
+        }
+
+        protected void btnListeEns_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionEnseignants.aspx?id=" + Session["id"] + "&do=AllEns");
+
+        }
+
+        protected void btnCrudens_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionEnseignants.aspx?id=" + Session["id"] + "&do=add-edit&opt=add");
         }
     }
 }

@@ -38,14 +38,14 @@
 		                    <h2 class="badge bg-primary">Ajouter User</h2>
 	    
 	                              <!-- Username input -->
-	                              <div class="form-outline mb-4">
+	                              <div class=" mb-4">
 			
 			                        <asp:TextBox ID="usernameAddUser" runat="server" CssClass="form-control" MaxLength="10" ></asp:TextBox>
 			                        <label class="form-label" for="registerName">UserName</label>
 	                              </div>
 	
 	                              <!-- Password input -->
-	                              <div class="form-outline mb-4">
+	                              <div class=" mb-4">
 
 			                          <asp:TextBox ID="passAddUser" runat="server" CssClass="form-control" MaxLength="10"  TextMode="Password"></asp:TextBox>
 	                                <label class="form-label" for="passAddUser">Password</label>
@@ -53,7 +53,7 @@
 	                              </div>
 
 		                          <!--Confirmation Password input -->
-	                              <div class="form-outline mb-4">
+	                              <div class=" mb-4">
 	
 			                        <asp:TextBox ID="confPassAddUser" runat="server" CssClass="form-control" MaxLength="10" TextMode="Password" ></asp:TextBox>
 	                                <label class="form-label" for="confPassAddUser">Confirmation Password</label>
@@ -63,7 +63,7 @@
 	                              </div>
 
 		                        <%--  <!--Group ID  Select --%>
-	                              <div class="form-outline mb-4">
+	                              <div class=" mb-4">
 
 	                                <label class="form-label" for="DropDownGroupId">Group Users </label>
 			                          <asp:DropDownList ID="DropDownGroupId" CssClass="form-select" runat="server">
@@ -80,7 +80,7 @@
 	                              </div> 
 
                                  <%--  <!--Trust ID  Select --%>
-	                              <div class="form-outline mb-4">
+	                              <div class=" mb-4">
 
 	                                <label class="form-label" for="DropDownTrustId">Activé / Disactiver</label>
 			                          <asp:DropDownList ID="DropDownTrustId" CssClass="form-select" runat="server">
@@ -98,7 +98,7 @@
                                 
 	
 	                              <!-- Submit button -->
-	                              <asp:Button ID="btnAjouterUser" runat="server" CssClass="btn btn-primary " Text="Ajouter" OnClick="btnAjouterUser_Click" />
+	                              <asp:Button ID="btnAjouterUser" runat="server" CssClass="btn btn-primary form-control" Text="Ajouter" OnClick="btnAjouterUser_Click" />
 	                               <a href="GestionComptesPage.aspx?id=<%=Session["id"]%>&do=" class="btn btn-secondary ">Annuler</a>
                                 <br />
                                 <br />
@@ -123,14 +123,14 @@
 		                    <h2 class="badge bg-primary">Editer User</h2>
 	    
 	                              <!-- Username input -->
-	                              <div class="form-outline mb-4">
+	                              <div class=" mb-4">
 			
 			                        <asp:TextBox ID="usernameEditUser" runat="server" CssClass="form-control" MaxLength="10" ></asp:TextBox>
 			                        <label class="form-label" for="usernameEditUser">UserName</label>
 	                              </div>
 	
 	                              <!-- Password input -->
-	                              <div class="form-outline mb-4">
+	                              <div class=" mb-4">
 
 			                          <asp:TextBox ID="passwordEditUser" runat="server" CssClass="form-control" MaxLength="10"  TextMode="Password"></asp:TextBox>
 	                                <label class="form-label" for="passwordEditUser">New Password</label>
@@ -138,7 +138,7 @@
 	                              </div>
 
 		                          <!--Confirmation Password input -->
-	                              <div class="form-outline mb-4">
+	                              <div class=" mb-4">
 	
 			                        <asp:TextBox ID="confPasswordEditUser" runat="server" CssClass="form-control" MaxLength="10" TextMode="Password" ></asp:TextBox>
 	                                <label class="form-label" for="confPasswordEditUser">Confirmation New Password</label>
@@ -148,7 +148,7 @@
 	                              </div>
 
 		                        <%--  <!--Group ID  Select --%>
-	                              <div class="form-outline mb-4">
+	                              <div class=" mb-4">
 
 	                                <label class="form-label" for="DropDownGroupIdEditUser">Group Users </label>
 			                          <asp:DropDownList ID="DropDownGroupIdEditUser" CssClass="form-select" runat="server">
@@ -165,7 +165,7 @@
 	                              </div> 
 
                                  <%--  <!--Trust ID  Select --%>
-	                              <div class="form-outline mb-4">
+	                              <div class=" mb-4">
 
 	                                <label class="form-label" for="DropDownTrustIdEditUser">Activé / Disactiver</label>
 			                          <asp:DropDownList ID="DropDownTrustIdEditUser" CssClass="form-select" runat="server">

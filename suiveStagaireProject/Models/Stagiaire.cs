@@ -26,6 +26,16 @@ namespace suiveStagaireProject.Models
             PersonnelInfo = personnelInfo;
         }
 
+        public Stagiaire(string numInsc, string img, string statusStg, int? idSection, int? personnelInfoId, int? detailsInfoId)
+        {
+            this.numInsc = numInsc;
+            this.img = img;
+            this.statusStg = statusStg;
+            this.idSection = idSection;
+            this.personnelInfoId = personnelInfoId;
+            this.detailsInfoId = detailsInfoId;
+        }
+
         public List<Stagiaire> getStagiaires()
         {
             return (from s in dc.Stagiaires select s).ToList<Stagiaire>();
@@ -74,7 +84,7 @@ namespace suiveStagaireProject.Models
                        join ss in dc.Sections on s.idSection equals ss.idSec
                        join pi in dc.PersonnelInfos on s.personnelInfoId equals pi.idPersonne
                        join cs in dc.CatalogeSections on ss.idCat equals cs.idCataloge
-                       select new ListeStagiaires(s.id,s.numInsc,cs.codeSpe+" "+ss.numSection.ToString(),pi.dateNai.ToString()+" "+pi.lieuNai,pi.nom,pi.prenom,s.img)
+                       select new ListeStagiaires(s.id,s.numInsc,cs.codeSpe+" "+ss.numSection.ToString(),pi.dateNai.ToString()+" "+pi.lieuNai, s.statusStg,pi.nom,pi.prenom,s.img)
                        ).ToList<ListeStagiaires>();
 
             return query;
@@ -86,12 +96,31 @@ namespace suiveStagaireProject.Models
                          join ss in dc.Sections on s.idSection equals ss.idSec
                          join pi in dc.PersonnelInfos on s.personnelInfoId equals pi.idPersonne
                          join cs in dc.CatalogeSections on ss.idCat equals cs.idCataloge
-                         where pi.nom.Contains(name)
-                         select new ListeStagiaires(s.id, s.numInsc, cs.codeSpe + " " + ss.numSection.ToString(), pi.dateNai.ToString() + " " + pi.lieuNai, pi.nom, pi.prenom, s.img)
+                         where pi.nom.Contains(name) || pi.prenom.Contains(name)
+                         select new ListeStagiaires(s.id, s.numInsc, cs.codeSpe + " " + ss.numSection.ToString(), pi.dateNai.ToString() + " " + pi.lieuNai,s.statusStg, pi.nom, pi.prenom, s.img)
                        ).ToList<ListeStagiaires>();
 
             return query;
         }
+
+        public List<detailsStagiaire> listeStagiairesSection(int id)
+        {
+            List<detailsStagiaire> liste = (from s in dc.Stagiaires
+                         join ss in dc.Sections on s.idSection equals ss.idSec
+                         join pi in dc.PersonnelInfos on s.personnelInfoId equals pi.idPersonne
+                         join ds in dc.DetailsStagiaires on s.detailsInfoId equals ds.id
+                         join cs in dc.CatalogeSections on ss.idCat equals cs.idCataloge
+                         where s.idSection == id
+                         select new detailsStagiaire(ds.sang, (int)ds.sitMedical, ds.prenomPere, ds.nomMere, ds.prenomMere, ds.telTuteur, ds.nat, ds.derEtabFre, ds.nivScolaire, ds.sitFam, ds.profPere, ds.profMere, ds.sitFamParents,
+                                                     pi.nom, pi.prenom, (DateTime)pi.dateNai, pi.lieuNai, pi.sexe, pi.adresse, pi.email, pi.telephone,
+                                                     s.id, s.numInsc, s.img,s.statusStg, (int)s.idSection, (int)s.personnelInfoId, (int)s.detailsInfoId,
+                                                     ss.idSec, (DateTime)ss.dateOuv, (DateTime)ss.dateFin, (int)ss.numSection, ss.modeGestionForm.ToString(),
+                                                     cs.intituleSpe, cs.niveauFormation.ToString(), cs.codeSpe)
+                       ).ToList<detailsStagiaire>();
+
+            return liste;
+        }
+
 
         public detailsStagiaire detailsStagiaires(int id)
         {
@@ -103,7 +132,7 @@ namespace suiveStagaireProject.Models
                          where s.id==id
                          select new detailsStagiaire(ds.sang,(int)ds.sitMedical,ds.prenomPere,ds.nomMere,ds.prenomMere,ds.telTuteur,ds.nat,ds.derEtabFre,ds.nivScolaire,ds.sitFam,ds.profPere,ds.profMere,ds.sitFamParents,
                                                      pi.nom,pi.prenom,(DateTime)pi.dateNai,pi.lieuNai,pi.sexe,pi.adresse,pi.email,pi.telephone,
-                                                     s.id,s.numInsc,s.img, (int)s.idSection, (int)s.personnelInfoId, (int)s.detailsInfoId,
+                                                     s.id,s.numInsc,s.img, s.statusStg, (int)s.idSection, (int)s.personnelInfoId, (int)s.detailsInfoId,
                                                      ss.idSec, (DateTime)ss.dateOuv, (DateTime)ss.dateFin, (int)ss.numSection, ss.modeGestionForm.ToString(),
                                                      cs.intituleSpe,cs.niveauFormation.ToString(),cs.codeSpe)
                        ).Single();

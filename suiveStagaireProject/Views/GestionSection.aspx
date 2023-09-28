@@ -33,31 +33,31 @@
 
                if (Request.QueryString["do"].Equals("addCat"))
                {%>
-                        	<h2 class="badge bg-primary">Ajouter une formation au cataloge</h2>
+                        	<h2 class="text-center text-white bg-primary">Ajouter une formation au cataloge</h2>
 
                           <!-- Braches input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                               <label class="form-label" for="dropDownBrachees">Branches Professionnelles</label>
-                              <asp:DropDownList ID="dropDownBrachees" runat="server"></asp:DropDownList>
+                              <asp:DropDownList ID="dropDownBrachees" runat="server" CssClass="form-control"></asp:DropDownList>
                             
                           </div>
 
                           <!-- code specialite input -->
-                          <div class="form-outline mb-4">   
+                          <div class=" mb-4">   
                               <label class="form-label" for="codeSpe">Code de spécialité</label>
                             <asp:TextBox ID="codeSpe" runat="server" CssClass="form-control"></asp:TextBox>
                             
                           </div>
 
                           <!-- intitulé de la specialite input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                               <label class="form-label" for="intitulCat">Intitulé de la specialite</label>
                              <asp:TextBox ID="intitulCat" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3"></asp:TextBox>
                             
                           </div> 
                             
                            <!-- Filier exigees pour l'accès à la formation input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                              
                             <label class="form-label" for="dropDownFilierExigess">Filier exigees pour l'accès à la formation</label>
 			                <asp:DropDownList ID="dropDownFilierExigess" CssClass="form-select" runat="server">
@@ -80,7 +80,7 @@
                           </div> 
 
                             <!-- Niveau input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                             
                             <label class="form-label" for="radioNivCat">Niveau formation</label>
 
@@ -94,41 +94,56 @@
                           </div>
 
 
-                          <!-- Submit button -->
-                         
-                           <asp:Button ID="btnAjouterCat" CssClass="btn btn-primary btn-block mb-4" runat="server" Text="Ajouter" OnClick="btnAjouterCat_Click" /> <a href="GestionSection.aspx?id=<%=Session["id"]%>&do=AllCat" class="btn btn-secondary btn-block mb-4">Annuler</a>
                         
+                        
+         <!-- Submit button -->
+                            <div class="row justify-content-center">
+                                <div class="col-4">
+                                                   
+                                    <asp:Button ID="btnAjouterCat" CssClass=" btn-primary btn text-center" runat="server" Text="Ajouter" OnClick="btnAjouterCat_Click" />                                                
+                                </div>
+                                                
+                                <div class="col-4">
+                                    <a href="GestionSection.aspx?id=<%=Session["id"]%>&do=AllCat" class=" btn-secondary btn text-center">Annuler</a>
+                                </div>
+                                               
+
+                            </div> 
+                            <br />
+                                    <asp:Label ID="Label1" runat="server" CssClass="alert alert-danger" Visible="false" ></asp:Label>
+                                    <asp:Label ID="Label2" runat="server" CssClass="alert alert-success" Visible="false" ></asp:Label>
+                    <br /><br />
                                            
                             
                     <%}
                         else
 if (Request.QueryString["do"].Equals("editCat"))
                         {%>
-                           					<h2 class="badge bg-primary">Modifier Formation</h2>
+                           					<h3 class="text-center text-white bg-primary">Modifier Formation</h3>
 
                                         <!-- Braches input -->
-                                          <div class="form-outline mb-4">
+                                          <div class=" mb-4">
                                               <label class="form-label" for="bracheeEditCat">Branches Professionnelles</label>
-                                               <asp:DropDownList ID="DropDownBracheeEditCat" runat="server"></asp:DropDownList>
+                                               <asp:DropDownList ID="DropDownBracheeEditCat" CssClass="form-control" runat="server"></asp:DropDownList>
                             
                                           </div>
 
                                           <!-- code specialite input -->
-                                          <div class="form-outline mb-4">   
+                                          <div class=" mb-4">   
                                               <label class="form-label" for="editCatcodeSpe">Code de spécialité</label>
                                             <asp:TextBox ID="editCatcodeSpe" runat="server" CssClass="form-control"></asp:TextBox>
                             
                                           </div>
 
                                           <!-- intitulé de la specialite input -->
-                                          <div class="form-outline mb-4">
+                                          <div class=" mb-4">
                                               <label class="form-label" for="editCatintitulCat">Intitulé de la specialite</label>
                                              <asp:TextBox ID="editCatintitulCat" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3"></asp:TextBox>
                             
                                           </div> 
                             
                                            <!-- Filier exigees pour l'accès à la formation input -->
-                                          <div class="form-outline mb-4">
+                                          <div class=" mb-4">
                              
                                             <label class="form-label" for="dropDownFilierEditCat">Filier exigees pour l'accès à la formation</label>
 			                                <asp:DropDownList ID="dropDownFilierEditCat" CssClass="form-select" runat="server">
@@ -149,11 +164,11 @@ if (Request.QueryString["do"].Equals("editCat"))
                                           </div> 
 
                                             <!-- Niveau input -->
-                                          <div class="form-outline mb-4">
+                                          <div class=" ">
                             
                                             <label class="form-label" for="radioEditCat">Niveau formation</label>
 
-                                              <asp:RadioButtonList ID="radioEditCat" runat="server" CssClass="form-control">
+                                              <asp:RadioButtonList ID="radioEditCat" runat="server" CssClass="form-control mb-3">
 
                                                   <asp:ListItem Value="4">Niveau 4</asp:ListItem>
                                                   <asp:ListItem Value="5">Niveau 5</asp:ListItem>
@@ -161,16 +176,28 @@ if (Request.QueryString["do"].Equals("editCat"))
                                               </asp:RadioButtonList>
 
                                           </div>
+                                           
+                                           
+
+                                          <!-- Submit button -->
+                                            <div class="row justify-content-center">
+                                                <div class="col-4">
+                                                   
+                                                   <asp:Button ID="btnSaveEditCat" CssClass=" btn-primary btn text-center" runat="server" Text="Save" OnClick="btnSaveEditCat_Click" />
+                                                
+                                                </div>
+                                                
+                                                <div class="col-4">
+                                                    <a href="GestionSection.aspx?id=<%=Session["id"]%>&do=AllCat" class=" btn-secondary btn text-center">Annuler</a>
+                                                </div>
+                                               
+
+                                            </div> 
                                             <br />
                                                  <asp:Label ID="errorsEdit" runat="server" CssClass="alert alert-danger" Visible="false" ></asp:Label>
                                                  <asp:Label ID="successEdit" runat="server" CssClass="alert alert-success" Visible="false" ></asp:Label>
-                                            <br />
-
-                                          <!-- Submit button -->
-                         
-                                           <asp:Button ID="btnSaveEditCat" CssClass="btn btn-primary btn-block mb-4" runat="server" Text="Save" OnClick="btnSaveEditCat_Click" /> <a href="GestionSection.aspx?id=<%=Session["id"]%>&do=AllCat" class="btn btn-secondary btn-block mb-4">Annuler</a>
-                        
-                                            
+                                 <br /><br />
+        
                             
 
                           
@@ -184,9 +211,9 @@ if (Request.QueryString["do"].Equals("deleteCat"))
                                         <div class='alert alert-danger' role='alert'>
                                                 <h3> Voulez vous confirmer de supprimer La  :<b><asp:Label ID="CatToDrop" runat="server" Text=""> </asp:Label> </b></h3>
 
-                                                <asp:Button ID="btnDropCtaloge" CssClass="btn btn-danger" runat="server" Text="Confirmer" OnClick="btnDropCtaloge_Click"/> 
+                                                <asp:Button ID="btnDropCtaloge" CssClass="btn btn-danger text-center" runat="server" Text="Confirmer" OnClick="btnDropCtaloge_Click"/> 
                             
-                                                <a href="GestionSection.aspx?id=<%=Session["id"]%>&do=AllCat" class="btn btn-secondary"> Annuler</a>
+                                                <a href="GestionSection.aspx?id=<%=Session["id"]%>&do=AllCat" class="btn btn-secondary text-center"> Annuler</a>
 
                                                </div>
 
@@ -197,7 +224,7 @@ if (Request.QueryString["do"].Equals("AllCat"))
                                             listeCataloges = cataloge.getListeCatalogeSec();
 
                     %>
-                        					<h2 class="badge bg-primary">Affichage de tous les fromation </h2>
+                        					
             
                     <h3 class=" d-block p-2 bg-info text-white"> Liste Des Formations Existants </h3>
 
@@ -308,28 +335,32 @@ if (Request.QueryString["do"].Equals("AllSec"))
 if (Request.QueryString["do"].Equals("addSec"))
                  
               {%>
-                  					<h2 class="badge bg-primary">Ajouter Section</h2>
+                  					<h3 class="text-center text-white bg-primary">Ajouter Section</h3>
 
+                <div class="row">
+                    <div class="col-6">
                       <!-- Cataloge input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                               <label class="form-label" for="DropDownFormationAdd">Formation Professionnelles</label>
-                              <asp:DropDownList ID="DropDownFormationAdd" runat="server"></asp:DropDownList>
+                              <asp:DropDownList ID="DropDownFormationAdd"  CssClass="form-control"  runat="server"></asp:DropDownList>
                             
                           </div>
-
+                    </div>
+                    <div class="col-6">
                           <!-- Numero de la section input -->
-                          <div class="form-outline mb-4">   
+                          <div class=" mb-4">   
                               <label class="form-label" for="numSectionAdd">Numéro de la section</label>
                             <asp:TextBox ID="numSectionAdd" runat="server" CssClass="form-control"></asp:TextBox>
                             
                           </div>
-
+                    </div>
+                    <div class="col-12">
                           <!-- Semestre input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                               <label class="form-label" for="DropDownListSemestreAdd">Semestre</label>
-                              <asp:DropDownList ID="DropDownListSemestreAdd" CssClass="form-select" runat="server">
+                              <asp:DropDownList ID="DropDownListSemestreAdd" CssClass="form-control" runat="server">
 
-					                        <asp:ListItem Value="1" >SVP Sélectionne</asp:ListItem>  
+					                        <asp:ListItem Value="0" >SVP Sélectionne</asp:ListItem>  
 					                        <asp:ListItem Value="1" >1ere Semestre</asp:ListItem>  
 					                        <asp:ListItem Value="2" >2eme Semestre</asp:ListItem>  
 					                        <asp:ListItem Value="3" >3eme Semestre</asp:ListItem>  
@@ -339,18 +370,20 @@ if (Request.QueryString["do"].Equals("addSec"))
 			                          </asp:DropDownList>
                             
                           </div> 
-                            
+                     </div> 
+                     <div class="col-6">       
                            <!-- Mode Organisation input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                              
                             <label class="form-label" for="modeOrgAdd">Mode Organisation de la section</label>
                             <asp:TextBox ID="modeOrgAdd" runat="server" CssClass="form-control"></asp:TextBox>
 
 
                           </div> 
-
+                      </div> 
+                    <div class="col-6">
                             <!-- Mode Gestion input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                             
                             <label class="form-label" for="modeGesAdd">Mode Gestion</label>
 
@@ -362,9 +395,80 @@ if (Request.QueryString["do"].Equals("addSec"))
                               </asp:RadioButtonList>
 
                           </div>
+                      </div>
+        
+                 
+        
+                    <fieldset id="listeEnseignants">
+                    <legend class="badge bg-info">Enseignants de la section</legend>
 
+                   <div class="col-12 mb-5">
+                       <div class="row">
+                       <div class="col-6">
+
+                              <div class="row">
+                                  <div class="col-12">
+                                <label class="form-label" for="DropDownModules">Enseignants </label>
+                                <asp:DropDownList ID="DropDownEnsAdd" CssClass="form-control" runat="server"></asp:DropDownList>
+                                   </div>
+                                 
+                                  <div class="col-12 col-md-4">
+                                <label class="form-label mb-2 text-white" for="btnAffecModSec">Add</label>
+                                <asp:Button ID="btnAffecEnsSec" CssClass="btn btn-success  mt-3"  runat="server" Text="Ajouter" OnClick="btnAffecEnsSec_Click"></asp:Button>
+                                   </div>
+                              </div>
+                        </div>
+                       
+                       <div class="col-6">
+
+                               <label class="form-label" for="modeGesAdd">Enseignants de la section</label>
+                                <asp:ListBox Height="200" ID="listEnseignants" runat="server" CssClass="form-control"></asp:ListBox>
+
+                          </div>
+                    </div>
+                 </div>    
+               </fieldset>
+                          
+               <fieldset id="listModules">
+                   <legend class="badge bg-info">Modules de la section</legend>
+
+                   <div class="col-12 mb-5">
+                       <div class="row">
+                       <div class="col-6">
+
+                              <div class="row">
+                                  <div class="col-12">
+                                <label class="form-label" for="DropDownModules">Modules de la section</label>
+                                <asp:DropDownList ID="DropDownModules" CssClass="form-control" runat="server"></asp:DropDownList>
+                                   </div>
+                                  <div class="col-12 col-md-6">
+                                <label class="form-label" for="noteElim">Note Eliminatoire</label>
+                                <input id="noteEl" name="noteEl" runat="server" class="form-control"  />
+                                   </div>
+                                   <div class="col-12 col-md-6">
+                                <label class="form-label" for="conf">Confession</label>
+                                <input id="confMod" name="confMod" runat="server" class="form-control"  />
+                                   </div>
+                                  <div class="col-12 col-md-6">
+                                <label class="form-label mb-2 text-white" for="btnAffecModSec">Add</label>
+                                <asp:Button ID="btnAffecModSec" CssClass="btn mt-3 btn-success " runat="server" Text="Ajouter" OnClick="btnAffecModSec_Click"></asp:Button>
+                                   </div>
+                              </div>
+                        </div>
+                       
+                       <div class="col-6">
+
+                            <label class="form-label" for="modeGesAdd">Modules de la section</label>
+                            <asp:ListBox Height="200" ID="listBoxModules"  CssClass="form-control" runat="server"></asp:ListBox>
+
+                          </div>
+                    </div>
+                 </div>    
+               </fieldset>
+
+                    </div>
                          <!-- Date debut input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                              
                             <label class="form-label" for="debutForAdd">Date Début</label>
                             <input id="debutForAdd" name = "debutForAdd"  class="form-control" runat="server" type="Date" value="2023-09-28"/>
@@ -373,7 +477,7 @@ if (Request.QueryString["do"].Equals("addSec"))
                           </div> 
 
                         <!-- Date fin input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                              
                             <label class="form-label" for="finForAdd">Date Fin</label>
                             <input id="finForAdd" name = "finForAdd"  class="form-control" runat="server" type="Date" value="2023-09-28"/>
@@ -382,45 +486,52 @@ if (Request.QueryString["do"].Equals("addSec"))
                           </div> 
 
                         <!-- Tuteur Section input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                              
                             <label class="form-label" for="DropDowntuteurSecAdd">Tuteur Section</label>
-                            <asp:DropDownList ID="DropDowntuteurSecAdd" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDowntuteurSecAdd" CssClass="form-control" runat="server"></asp:DropDownList>
 
 
 
                           </div> 
+                        
+                       
             
-
+                      <div class="row">
 
                           <!-- Submit button -->
-                         
-                           <asp:Button ID="btnAddSection" CssClass="btn btn-primary btn-block mb-4" runat="server" Text="Ajouter" OnClick="btnAddSection_Click" /> <a href="GestionSection.aspx?id=<%=Session["id"]%>&do=AllSec" class="btn btn-secondary btn-block mb-4">Annuler</a>
-                        
+                         <div class="col-6">
+                           <asp:Button ID="btnAddSection" CssClass=" btn-primary btn text-center" runat="server" Text="Ajouter" OnClick="btnAddSection_Click" />
+                        </div>
+                        <div class="col-6">
+                           <a href="GestionSection.aspx?id=<%=Session["id"]%>&do=AllSec" class=" btn-secondary btn text-center ">Annuler</a>
+                        </div>
+                      </div>
         <br />
         <br />
 
-                  <%}else
+                  <%}
+                      else
 if (Request.QueryString["do"].Equals("editSec"))
                   {%>
-                    					<h2 class="badge bg-primary">Modifier Section</h2>
+                    					<h2 class="text-center text-white bg-primary">Modifier Section</h2>
 
                       <!-- Cataloge input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                               <label class="form-label" for="DropDownFormationEdit">Formation Professionnelles</label>
                               <asp:DropDownList ID="DropDownFormationEdit" runat="server"></asp:DropDownList>
                             
                           </div>
 
                           <!-- Numero de la section input -->
-                          <div class="form-outline mb-4">   
+                          <div class=" mb-4">   
                               <label class="form-label" for="numSectionEdit">Numéro de la section</label>
                             <asp:TextBox ID="numSectionEdit" runat="server" CssClass="form-control"></asp:TextBox>
                             
                           </div>
 
                           <!-- Semestre input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                               <label class="form-label" for="DropDownListSemestreEdit">Semestre</label>
                               <asp:DropDownList ID="DropDownListSemestreEdit" CssClass="form-select" runat="server">
 
@@ -436,7 +547,7 @@ if (Request.QueryString["do"].Equals("editSec"))
                           </div> 
                             
                            <!-- Mode Organisation input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                              
                             <label class="form-label" for="modeOrgEdit">Mode Organisation de la section</label>
                             <asp:TextBox ID="modeOrgEdit" runat="server" CssClass="form-control"></asp:TextBox>
@@ -445,7 +556,7 @@ if (Request.QueryString["do"].Equals("editSec"))
                           </div> 
 
                             <!-- Mode Gestion input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                             
                             <label class="form-label" for="RadioButtonmodeGesEdit">Mode Gestion</label>
 
@@ -459,7 +570,7 @@ if (Request.QueryString["do"].Equals("editSec"))
                           </div>
 
                          <!-- Date debut input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                              
                             <label class="form-label" for="debutForEdit">Date Début</label>
                             <input id="debutForEdit" name = "debutForEdit"  class="form-control" runat="server" type="Date" />
@@ -467,7 +578,7 @@ if (Request.QueryString["do"].Equals("editSec"))
                           </div> 
 
                         <!-- Date fin input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                              
                             <label class="form-label" for="finForEdit">Date Fin</label>
                             <input id="finForEdit" name = "finForEdit"  class="form-control" runat="server" type="Date" />
@@ -476,7 +587,7 @@ if (Request.QueryString["do"].Equals("editSec"))
                           </div> 
 
                         <!-- Tuteur Section input -->
-                          <div class="form-outline mb-4">
+                          <div class=" mb-4">
                              
                             <label class="form-label" for="DropDowntuteurSecEdit">Tuteur Section</label>
                             <asp:DropDownList ID="DropDowntuteurSecEdit" runat="server"></asp:DropDownList>
@@ -488,34 +599,50 @@ if (Request.QueryString["do"].Equals("editSec"))
 
 
                           <!-- Submit button -->
-                         
-                           <asp:Button ID="btnEditSection" CssClass="btn btn-primary btn-block mb-4" runat="server" Text="Save" OnClick="btnEditSection_Click" /> 
-                           <a href="GestionSection.aspx?id=<%=Session["id"]%>&do=AllSec" class="btn btn-secondary btn-block mb-4">Annuler</a>
-                           <div class="row">
-                               <div class="col-12">
-							        <div class="form-outline mb-4 ">
+                            <div class="row">
+                                 <div class="col-6">
+							        <div class=" mb-4 ">
+                                        <asp:Button ID="btnEditSection" CssClass=" btn-primary form-control mb-4" runat="server" Text="Save" OnClick="btnEditSection_Click" /> 
+                                    </div>
+                                 </div>
 
-								
+                                 <div class="col-6">
+							        <div class=" mb-2 ">
+                                         <a href="GestionSection.aspx?id=<%=Session["id"]%>&do=AllSec" class=" btn-secondary form-control mb-4">Annuler</a>
+                                    </div>
+                                 </div>
+                               <div class="col-6">
+							        <div class=" mb-2 ">
+
 								        <a target="_blank"  class="btn btn-danger form-control" href="reports/ProcesVerbalSection.aspx?id=<%=Session["id"]%>&do=impression&idSec=<%=Request.QueryString["idSec"]%>">PV d'ouverture de la section</a>
-
 
 							        </div>
 						        </div>
+                               <div class="col-6">
+							        <div class="mb-4 ">
+
+								        <a target="_blank"  class="btn btn-warning form-control" href="reports/ListeStagiairesIncorpores.aspx?id=<%=Session["id"]%>&do=impression&idSec=<%=Request.QueryString["idSec"]%>">Liste Des Stagiaires Incorpores</a>
+
+							        </div>
+						        </div>
+
                            </div>
                         
         <br />
         <br />
 
-                  <%}else if (Request.QueryString["do"].Equals("deleteSec"))
+                  <%}
+                      else 
+if (Request.QueryString["do"].Equals("deleteSec"))
                 {    
                 %> 
                             					<h2 class="badge bg-primary">Supprimer Section</h2>
                             <div class='alert alert-danger' role='alert'>
                                 <h3> Voulez vous confirmer de supprimer La Section :<b><asp:Label ID="SecToDrop" runat="server" Text=""> </asp:Label> </b></h3>
 
-                                <asp:Button ID="btnDropSection" CssClass="btn btn-danger" runat="server" Text="Confirmer" OnClick="btnDropSection_Click"/> 
+                                <asp:Button ID="btnDropSection" CssClass=" btn-danger" runat="server" Text="Confirmer" OnClick="btnDropSection_Click"/> 
                             
-                                <a href="GestionSection.aspx?id=<%=Session["id"]%>&do=AllSec" class="btn btn-secondary"> Annuler</a>
+                                <a href="GestionSection.aspx?id=<%=Session["id"]%>&do=AllSec" class=" btn-secondary"> Annuler</a>
 
                                 </div>
 

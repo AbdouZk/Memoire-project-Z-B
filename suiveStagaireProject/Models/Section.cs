@@ -10,26 +10,25 @@ namespace suiveStagaireProject.Models
     {
         private myLinqToSqlDataContext dc = new myLinqToSqlDataContext();
 
-        public Section(int idSec, DateTime dateOuv, DateTime? dateFin, int? numSection, char semestre, string tuteurSection, char modeGestionForm, string modeOrgaForm, int idCat)
+        public Section(int idSec, DateTime dateOuv, DateTime? dateFin, int? numSection,  string tuteurSection, char modeGestionForm, string modeOrgaForm, int idCat)
         {
             this.idSec = idSec;
             this.dateOuv = dateOuv;
             this.dateFin = dateFin;
             this.numSection = numSection;
-            this.semestre = semestre;
             this.tuteurSection = tuteurSection;
             this.modeGestionForm = modeGestionForm;
             this.modeOrgaForm = modeOrgaForm;
             this.idCat = idCat;
         }
 
-        public Section(DateTime dateOuv, DateTime? dateFin, int? numSection, char semestre, string tuteurSection, char modeGestionForm, string modeOrgaForm, int idCat)
+        public Section(DateTime dateOuv, DateTime? dateFin, int? numSection,  string tuteurSection, char modeGestionForm, string modeOrgaForm, int idCat)
         {
             this.idSec = idSec;
             this.dateOuv = dateOuv;
             this.dateFin = dateFin;
             this.numSection = numSection;
-            this.semestre = semestre;
+           
             this.tuteurSection = tuteurSection;
             this.modeGestionForm = modeGestionForm;
             this.modeOrgaForm = modeOrgaForm;
@@ -50,8 +49,8 @@ namespace suiveStagaireProject.Models
         public void addSection(Section section)
         {
 
-            dc.ExecuteCommand("INSERT INTO Section (dateOuv,dateFin,numSection,semestre,tuteurSection,modeGestionForm,modeOrgaForm,idCat) VALUES ({0},{1},{2},{3},{4},{5},{6},{7})",
-            section.dateOuv,section.dateFin,section.numSection,section.semestre,section.tuteurSection,section.modeGestionForm,section.modeOrgaForm, section.idCat);
+            dc.ExecuteCommand("INSERT INTO Section (dateOuv,dateFin,numSection,tuteurSection,modeGestionForm,modeOrgaForm,idCat) VALUES ({0},{1},{2},{3},{4},{5},{6})",
+            section.dateOuv,section.dateFin,section.numSection,section.tuteurSection,section.modeGestionForm,section.modeOrgaForm, section.idCat);
 
             dc.SubmitChanges();
         }     
@@ -65,8 +64,7 @@ namespace suiveStagaireProject.Models
             {
                 s.dateOuv = section.dateOuv;
                 s.dateFin = section.dateFin;
-                s.numSection = section.numSection;
-                s.semestre = section.semestre; 
+                s.numSection = section.numSection; 
                 s.tuteurSection = section.tuteurSection;
                 s.modeGestionForm = section.modeGestionForm;
                 s.modeOrgaForm = section.modeOrgaForm;
@@ -89,9 +87,10 @@ namespace suiveStagaireProject.Models
 
             var query = (
                             from s in dc.Sections
-                            join cat in dc.CatalogeSections
-                            on s.idCat equals cat.idCataloge
-                            select new ListeSections(s.idSec, cat.codeSpe+" "+s.numSection.ToString(), cat.intituleSpe, s.semestre.ToString(), s.dateOuv.ToString(), s.dateFin.ToString() , s.modeGestionForm.ToString())
+                            join cat in dc.CatalogeSections on s.idCat equals cat.idCataloge
+                            //join sem in dc.Sec_Mod_Sems on s.idSec equals sem.secId
+                           // join numSec in dc.Semestres on sem.semId equals numSec.idSemestre
+                            select new ListeSections(s.idSec, cat.codeSpe+" "+s.numSection.ToString(), cat.intituleSpe, "1", s.dateOuv.ToString(), s.dateFin.ToString() , s.modeGestionForm.ToString())
                         
                          ).ToList<ListeSections>();
 
@@ -192,7 +191,7 @@ namespace suiveStagaireProject.Models
                     c => c.idSec,
                     (ab, c) => new { ab.TableA, ab.TableB, TableC = c }
                 )
-                .Where(joined => joined.TableB.nat != "Algerian" && joined.TableA.idSection == id)
+                .Where(joined => (joined.TableB.nat != "Algerian" || joined.TableB.nat != "") && joined.TableA.idSection == id)
                 .Count();
 
             return count;
