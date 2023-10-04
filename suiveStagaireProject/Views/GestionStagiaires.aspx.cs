@@ -123,8 +123,8 @@ namespace suiveStagaireProject.Views
             try
             {
                 // Recupération des données 
-                string numInsc = numInscAdd.Text, nom = nomAdd.Text, prenom = prenomAdd.Text,
-                    sexe = RadioButtonListSex.SelectedValue, lieuNais = lieuNaisAdd.Text, nat = natAdd.Text,
+                string numInsc = numInscAdd.Text, nom = nomAdd.Text, prenom = prenomAdd.Text,status="Admis",
+                    sexe = RadioButtonListSex.SelectedValue, lieuNais = lieuNaisAdd.Text, nat = "",
                     sitFam = dropDownSitFamAdd.SelectedValue, telephone = telPerAdd.Value, email = emailAdd.Value,
                     sang = DropDownListSangAdd.SelectedValue, pPere = ppereadd.Value, nMere = nmereadd.Value, pMere = pmereadd.Value,
                     proPere = profPereadd.Value, proMere = profMereadd.Value, adress = adresseadd.Value, telTuteur = telTuteuradd.Value,
@@ -143,6 +143,15 @@ namespace suiveStagaireProject.Views
 
                 DateTime dateNai=DateTime.Parse( dateNaiAdd.Value);
 
+                if (radioGroupNat.SelectedValue.Equals("Etrangere"))
+                {
+                    nat = natAdd.Text;
+                }
+                else
+                {
+                    nat = radioGroupNat.SelectedValue;
+                }
+
 
                 // Add Personne part
 
@@ -155,7 +164,7 @@ namespace suiveStagaireProject.Views
                 detailsStagiaire.addDetailStagiaire(ds);
 
                 //add Stagiaire
-                Stagiaire stg = new Stagiaire(numInsc,img,codeSec,idPersonne,idDetails);
+                Stagiaire stg = new Stagiaire(numInsc,img, status, codeSec,idPersonne,idDetails);
                 stagiaire.addStagiaire(stg);
 
 
@@ -174,8 +183,8 @@ namespace suiveStagaireProject.Views
             try
             {
                 // Recupération des données 
-                string numInsc = numInscAdd.Text, nom = nomAdd.Text, prenom = prenomAdd.Text,
-                    sexe = RadioButtonListSex.SelectedValue, lieuNais = lieuNaisAdd.Text, nat = natAdd.Text,
+                string numInsc = numInscAdd.Text, nom = nomAdd.Text, prenom = prenomAdd.Text, status="Admis",
+                    sexe = RadioButtonListSex.SelectedValue, lieuNais = lieuNaisAdd.Text, nat = "",
                     sitFam = dropDownSitFamAdd.SelectedValue, telephone = telPerAdd.Value, email = emailAdd.Value,
                     sang = DropDownListSangAdd.SelectedValue, pPere = ppereadd.Value, nMere = nmereadd.Value, pMere = pmereadd.Value,
                     proPere = profPereadd.Value, proMere = profMereadd.Value, adress = adresseadd.Value, telTuteur = telTuteuradd.Value,
@@ -186,14 +195,22 @@ namespace suiveStagaireProject.Views
 
                 int sitMed = int.Parse(RadioButtonListsitMed.SelectedValue),
                     codeSec = int.Parse(DropDownListcodeSecadd.SelectedValue),
-                    idPersonne, idDetails = 0, idStg =int.Parse( Request.QueryString["isStg"]);
+                    idPersonne=0, idDetails = 0, idStg =int.Parse( Request.QueryString["idStg"]);
 
-                idDetails = detailsStagiaire.getLastId() + 1;
-                idPersonne = personnelInfo.getLastId() + 1;
+                idDetails =(int) stagiaire.getStagiaire(idStg).detailsInfoId;
+                idPersonne = (int)stagiaire.getStagiaire(idStg).personnelInfoId;
 
 
                 DateTime dateNai = DateTime.Parse(dateNaiAdd.Value);
 
+                if (radioGroupNat.SelectedValue.Equals("Etrangere"))
+                {
+                    nat = natAdd.Text;
+                }
+                else
+                {
+                    nat = radioGroupNat.SelectedValue;
+                }
 
                 // Add Personne part
 
@@ -206,7 +223,7 @@ namespace suiveStagaireProject.Views
                 detailsStagiaire.editDetailStagiaire(ds,idDetails);
 
                 //add Stagiaire
-                Stagiaire stg = new Stagiaire(numInsc, img, codeSec, idPersonne, idDetails);
+                Stagiaire stg = new Stagiaire(numInsc, img, status, codeSec, idPersonne, idDetails);
                 stagiaire.editStagiaire(stg,idStg);
 
 
@@ -215,7 +232,7 @@ namespace suiveStagaireProject.Views
             }
             catch (Exception ex)
             {
-                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>Echèc De Mofification </div><br/>";
+                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>Echèc De Mofification "+ex.Message+"</div><br/>";
 
             }
         }
@@ -260,5 +277,9 @@ namespace suiveStagaireProject.Views
 
             }
         }
+
+      
+
+       
     }
 }

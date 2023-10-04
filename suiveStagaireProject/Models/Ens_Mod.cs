@@ -44,5 +44,13 @@ namespace suiveStagaireProject.Models
 
             dc.SubmitChanges();
         }
+        public List<Object> getModuleByEns(int idEns)
+        {
+            return (from me in dc.Ens_Mods
+                    join m in dc.Modules on me.modId equals m.idModule
+                    where me.ensId==idEns
+                    select new { libMod = m.libelle, idMod = me.modId }
+                    ).ToList<Object>();
+        }
     }
 }

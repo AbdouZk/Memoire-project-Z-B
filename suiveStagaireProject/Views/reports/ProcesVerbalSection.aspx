@@ -24,11 +24,11 @@
 
                                 <h6 class="col-12 text-start  mt-5 ">Direction de la formation professionnelle wilaya de Tizi Ouzou</h6>
 
-                                <h6 class="col-12 text-start mt-2 mb-3"> ETABLISSEMENT : Hadni Said Oude Aissi</h6>
+                                <h6 class="col-12 text-start mt-2 mb-5"> ETABLISSEMENT : Hadni Said Oude Aissi</h6>
                                    
 
 
-                                                                          <h3 class="col-12  text-center mt-4 mb-4 fw-bold e"><B class="text-uppercas">Proces Verbal d'ouverture de la section </B> (<% if(DSec.ModeGes=="R"){Response.Write("Résidentielle");}else{Response.Write("Apprantisage");} %>)</h3>
+                                                                          <h3 class="col-12  text-center mt-5 mb-5 fw-bold e"><B class="text-uppercas">Proces Verbal d'ouverture de la section </B> (<% if(DSec.ModeGes=="R"){Response.Write("Résidentielle");}else{Response.Write("Apprantisage");} %>)</h3>
                                 
 
                                 <div class="col-6  mt-3">Numéro	 : <b><%=DSec.NumSec %></b></div>
@@ -69,7 +69,7 @@
         <div class="row justify-content-center" > 
 
                                                             <span class="no-print  col-4 btn btn-primary mt-3 mb-5 me-2" onclick="window.print()">Imprimer</span>
-                                                            <span class="no-print col-4 btn btn-secondary mt-3 mb-5 me-2" onclick="window.close()" >Annuler</span>
+                                                            <span class="no-print col-4 btn btn-secondary mt-3 mb-5 me-2" onclick="window.history.back()" >Annuler</span>
         </div>
 
 </div>

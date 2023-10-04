@@ -113,7 +113,7 @@
                         <div class="col-6">
                           <div class=" mt-3 mb-4">
                              
-                              <asp:Button runat="server" ID="btnAffecterModule" class="form-control btn btn-primary" Text="Affecter" OnClick="btnAffecterModule_Click" > </asp:Button>
+                              <asp:Button runat="server" ID="btnAffecterModule" class=" btn btn-primary" Text="Affecter" OnClick="btnAffecterModule_Click" > </asp:Button>
                             
                           </div>
                         </div>
@@ -121,7 +121,7 @@
                         <div class="col-6">
                           <div class=" mt-3 mb-4">
                              
-                              <a class="form-control btn btn-secondary" href="GestionModules.aspx?id=<%=Session["id"] %>&do=AllModules"><i class="fas fa-arrow-alt-circle-left"></i> Reteur</a>
+                              <a class=" btn btn-danger" href="GestionModules.aspx?id=<%=Session["id"] %>&do=AllModules"><i class="fas fa-arrow-alt-circle-left"></i> Reteur</a>
                             
                           </div>
                         </div>
@@ -154,7 +154,7 @@
             }
             else
             {
-                Response.Write("<div class='alert alert-danger'>Vous pouvez pas naviguer avec URL</div>");
+                 Response.Redirect("404-page.aspx");
             }
 
             %>

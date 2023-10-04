@@ -38,8 +38,6 @@ namespace suiveStagaireProject.Models
             this.trustID = trustId;
         }
 
-
-
         // return all users 
         public List<User> getUsers()
         {
@@ -48,7 +46,6 @@ namespace suiveStagaireProject.Models
 
             return listUsers;
         }
-
 
         // return one special user
         public User getUser(int id)
@@ -67,8 +64,6 @@ namespace suiveStagaireProject.Models
 
             return Us;
         }
-
-
 
         public void addUser(User u)
         {

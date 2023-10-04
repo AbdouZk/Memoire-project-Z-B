@@ -42,23 +42,9 @@
 			<div class="container">
 
 				<div class="LogIn">
-						<!-- Pills navs -->
-						<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-						  <li class="nav-item" role="presentation">
-							<a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
-							  aria-controls="pills-login" aria-selected="true" onclick="toLogin()">Login</a>
-						  </li>
-						  <li class="nav-item" role="presentation">
-							<a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
-							  aria-controls="pills-register" aria-selected="false" onclick="toRegister()">Register</a>
-						  </li>
-	  
-	  
-						</ul>
-						<!-- Pills navs -->
+						
 	
-						<!-- Pills content -->
-						<div class="tab-content">
+						<div class="">
 							<div class="tab-pane fade show active " id="pills-login" role="tabpanel" aria-labelledby="tab-login">
 	
 								<h2>Log in</h2>
@@ -107,61 +93,6 @@
 					</div>
 		 
 
-							<div class="tab-pane fade " id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-					<h2>Register</h2>
-
-	
-	    
-					  <!-- Username input -->
-					  <div class=" mb-4">
-			
-						<asp:TextBox ID="usernameReg" runat="server" CssClass="form-control" MaxLength="10" ></asp:TextBox>
-						<label class="form-label" for="registerName">UserName</label>
-					  </div>
-	
-					  <!-- Password input -->
-					  <div class=" mb-4">
-
-			
-						  <asp:TextBox ID="passReg" runat="server" CssClass="form-control" MaxLength="10"  TextMode="Password"></asp:TextBox>
-						<label class="form-label" for="registerPassword">Password</label>
-		
-					  </div>
-
-					  <!--Confirmation Password input -->
-					  <div class=" mb-4">
-
-			
-						<asp:TextBox ID="confPassReg" runat="server" CssClass="form-control" MaxLength="10" TextMode="Password" ></asp:TextBox>
-						<label class="form-label" for="confpassword">Confirmation Password</label>
-						  <br />
-			  			
-            
-			
-					  </div>
-
-					<%--  <!--Group ID  Select --%>
-					  <div class=" mb-4">
-
-
-						<label class="form-label" for="confpassword">Group ID </label>
-						  <asp:DropDownList ID="DropDownGroupId" CssClass="form-select" runat="server">
-
-								<asp:ListItem Value="0">Please Select</asp:ListItem>  
-								<asp:ListItem Value="1">Admin </asp:ListItem>  
-								<asp:ListItem Value="2">Chef Service</asp:ListItem>  
-								<asp:ListItem Value="3">Agent Service</asp:ListItem>  
-								<asp:ListItem Value="4">Enseignant</asp:ListItem>  
-					  
-						  </asp:DropDownList>
-		
-             
-					  </div> 
-	
-					  <!-- Submit button -->
-					  <asp:Button ID="Button2" runat="server" CssClass="btn btn-primary btn-block" Text="Register" OnClick="Button2_Click" />
-	    
-				  </div>
 			  				
 
 						</div>

@@ -3,7 +3,7 @@
     <title>Liste Stagiaires Incorpores</title>
     <style>
         table{
-            width: 100%;
+            width: 98%;
             border:1px solid;
 
         } 
@@ -14,7 +14,7 @@
         td{
             border:1px solid;
             text-align:center;
-            font-size:10px
+            font-size:11px
 
         }
 
@@ -36,9 +36,9 @@
                                                                           
 
                                 <h3 class="col-12  text-center mt-3 mb-4 fw-bold">Liste des stagiaires incorpores </h3> 
-
-            
-                <table >
+    
+    <div class="">
+                <table class="">
                     <tr >
                         <td style="width: 10%;">N° Inscription</td>
                         <td style="width: 16%;">Nom et Prenom</td>
@@ -87,12 +87,12 @@
         <div class="row justify-content-center no-print " > 
 
                                                             <span class=" col-4 btn btn-primary mt-3 mb-5 me-2" onclick="window.print()">Imprimer</span>
-                                                            <span class="col-4 btn btn-secondary mt-3 mb-5 me-2" onclick="window.close()" >Annuler</span>
+                                                            <span class="col-4 btn btn-secondary mt-3 mb-5 me-2" onclick=" window.history.back()" >Annuler</span>
         </div>
 
+        
 
-
-
+        </div>
                                                         
 
 

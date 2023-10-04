@@ -30,8 +30,7 @@
             }
             else
             {
-                Response.Write("<div class='alert alert-danger'>Vous pouvez pas naviguer avec URL</div>");
-            }
+             Response.Redirect("404-page.aspx");            }
 
             %>
 

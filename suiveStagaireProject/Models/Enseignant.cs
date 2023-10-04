@@ -36,7 +36,12 @@ namespace suiveStagaireProject.Models
         {
             return (from e in dc.Enseignants where e.idEnseiginant==id select e).Single();
         }
-        
+
+        public Enseignant getEnseignatByUserId(int id)
+        {
+            return (from e in dc.Enseignants where e.userId == id select e).Single();
+        }
+
 
         public object getEnseignantsNames()
         {

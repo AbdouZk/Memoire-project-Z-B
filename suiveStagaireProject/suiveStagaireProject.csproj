@@ -111,13 +111,17 @@
     <Compile Include="Models\Donnees\Coordonnees.cs" />
     <Compile Include="Models\Enseignant.cs" />
     <Compile Include="Models\Ens_Mod.cs" />
+    <Compile Include="Models\Ens_Sec.cs" />
     <Compile Include="Models\Examen.cs" />
     <Compile Include="Models\Metier\detailsEnseignant.cs" />
+    <Compile Include="Models\Metier\detailsEnsSecSem.cs" />
+    <Compile Include="Models\Metier\detailsModSecSem.cs" />
     <Compile Include="Models\Metier\detailsSection.cs" />
     <Compile Include="Models\Metier\detailsStagiaire.cs" />
     <Compile Include="Models\Metier\ListeEnseignant.cs" />
     <Compile Include="Models\Metier\ListeSections.cs" />
     <Compile Include="Models\Metier\ListeStagiaires.cs" />
+    <Compile Include="Models\Metier\ListeStagiairesNotes.cs" />
     <Compile Include="Models\Module.cs" />
     <Compile Include="Models\myLinqToSql.designer.cs">
       <AutoGen>True</AutoGen>
@@ -128,6 +132,7 @@
     <Compile Include="Models\Section.cs" />
     <Compile Include="Models\Sec_Mod_Sem.cs" />
     <Compile Include="Models\Stagiaire.cs" />
+    <Compile Include="Models\Stg_Exm.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Views\404-page.aspx.cs">
       <DependentUpon>404-page.aspx</DependentUpon>

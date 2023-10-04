@@ -38,13 +38,19 @@ namespace suiveStagaireProject.Models
         }
         public Module getModule(string name)
         {
-            return (from m in dc.Modules where m.libelle == name select m).Single();
+            return (from m in dc.Modules where m.libelle==name select m).Single();
         }
         public List<Module> getModules()
         {
             return (from m in dc.Modules select m).ToList<Module>();
 
         }
+        public List<Module> getModules(string name)
+        {
+            return (from m in dc.Modules where m.libelle.Contains(name) select m).ToList<Module>();
+
+        }
+
         public int getLastModuleId()
         {
             return dc.Modules.OrderByDescending(item => item.idModule).Select(item => item.idModule).FirstOrDefault();

@@ -222,78 +222,6 @@ namespace suiveStagaireProject.Views
         protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonmodeGesAdd;
 
         /// <summary>
-        /// DropDownEnsAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownEnsAdd;
-
-        /// <summary>
-        /// btnAffecEnsSec control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAffecEnsSec;
-
-        /// <summary>
-        /// listEnseignants control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox listEnseignants;
-
-        /// <summary>
-        /// DropDownModules control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownModules;
-
-        /// <summary>
-        /// noteEl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText noteEl;
-
-        /// <summary>
-        /// confMod control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText confMod;
-
-        /// <summary>
-        /// btnAffecModSec control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAffecModSec;
-
-        /// <summary>
-        /// listBoxModules control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox listBoxModules;
-
-        /// <summary>
         /// debutForAdd control.
         /// </summary>
         /// <remarks>
@@ -321,94 +249,58 @@ namespace suiveStagaireProject.Views
         protected global::System.Web.UI.WebControls.DropDownList DropDowntuteurSecAdd;
 
         /// <summary>
-        /// btnAddSection control.
+        /// btnSuivantSec control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddSection;
+        protected global::System.Web.UI.WebControls.Button btnSuivantSec;
 
         /// <summary>
-        /// DropDownFormationEdit control.
+        /// btnSuivantSecEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownFormationEdit;
+        protected global::System.Web.UI.WebControls.Button btnSuivantSecEdit;
 
         /// <summary>
-        /// numSectionEdit control.
+        /// btnAnnulerSectionAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numSectionEdit;
+        protected global::System.Web.UI.WebControls.Button btnAnnulerSectionAdd;
 
         /// <summary>
-        /// DropDownListSemestreEdit control.
+        /// btnAnnulerSectionEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListSemestreEdit;
+        protected global::System.Web.UI.WebControls.Button btnAnnulerSectionEdit;
 
         /// <summary>
-        /// modeOrgEdit control.
+        /// btnFicheOuvertureSec control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modeOrgEdit;
+        protected global::System.Web.UI.WebControls.Button btnFicheOuvertureSec;
 
         /// <summary>
-        /// RadioButtonmodeGesEdit control.
+        /// btnListeStagSec control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonmodeGesEdit;
-
-        /// <summary>
-        /// debutForEdit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl debutForEdit;
-
-        /// <summary>
-        /// finForEdit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl finForEdit;
-
-        /// <summary>
-        /// DropDowntuteurSecEdit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDowntuteurSecEdit;
-
-        /// <summary>
-        /// btnEditSection control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditSection;
+        protected global::System.Web.UI.WebControls.Button btnListeStagSec;
 
         /// <summary>
         /// SecToDrop control.
@@ -427,6 +319,105 @@ namespace suiveStagaireProject.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDropSection;
+
+        /// <summary>
+        /// searchEns control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl searchEns;
+
+        /// <summary>
+        /// btnsearchEns control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnsearchEns;
+
+        /// <summary>
+        /// btnSuivantEns control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSuivantEns;
+
+        /// <summary>
+        /// btnAnnulerEns control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAnnulerEns;
+
+        /// <summary>
+        /// listBoxModAff control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox listBoxModAff;
+
+        /// <summary>
+        /// noteEl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText noteEl;
+
+        /// <summary>
+        /// coef control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText coef;
+
+        /// <summary>
+        /// btnAffMod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAffMod;
+
+        /// <summary>
+        /// btnRetMod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRetMod;
+
+        /// <summary>
+        /// btnSuivantMod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSuivantMod;
+
+        /// <summary>
+        /// btnAnnulerMod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAnnulerMod;
 
         /// <summary>
         /// NotDoAlert control.

@@ -14,6 +14,8 @@ namespace suiveStagaireProject.Views
         CatalogeSection cataloge = new CatalogeSection();
         Branchee branche = new Branchee();
         Module module = new Module();
+        Ens_Sec ens_sec = new Ens_Sec();
+        Sec_Mod_Sem sec_mod_sem = new Sec_Mod_Sem();
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -96,9 +98,8 @@ namespace suiveStagaireProject.Views
                     CatToDrop.Visible = false;
                 }
 
-                if (Request.QueryString["do"].Equals("addSec") )
+                if (Request.QueryString["do"].Equals("add-editSec") )
                 {
-                    
                     Enseignant ens = new Enseignant();
 
                     if (DropDownFormationAdd.Items.Count == 0)
@@ -119,65 +120,57 @@ namespace suiveStagaireProject.Views
                         DropDowntuteurSecAdd.DataBind();
                     }
 
-                    if (DropDownEnsAdd.Items.Count == 0)
+
+                    if (Request.QueryString["idSec"] != null && Request.QueryString["idSem"] != null)
                     {
-                        DropDownEnsAdd.DataSource = ens.getEnseignantsNames();
-                        DropDownEnsAdd.DataValueField = "idEns";
-                        DropDownEnsAdd.DataTextField = "nameEns";
+                        if (numSectionAdd.Text.Equals(""))
+                        {
+                            int idSec = int.Parse(Request.QueryString["idSec"]);
 
-                        DropDownEnsAdd.DataBind();
+                            DropDownFormationAdd.SelectedValue = section.getSection(idSec).idCat.ToString();
+                            numSectionAdd.Text = section.getSection(idSec).numSection.ToString();
+                            DropDownListSemestreAdd.SelectedValue = Request.QueryString["idSem"];
+                            modeOrgAdd.Text = section.getSection(idSec).modeOrgaForm;
+                            RadioButtonmodeGesAdd.SelectedValue = section.getSection(idSec).modeGestionForm.ToString();
+                            string deb = section.getSection(idSec).dateOuv.ToString("yyyy-MM-dd");
+                            string f = section.getSection(idSec).dateFin.Value.ToString("yyyy-MM-dd");
+
+                            debutForAdd.Value = deb;
+                            finForAdd.Value = f;
+                            DropDowntuteurSecAdd.SelectedValue = section.getSection(idSec).tuteurSection;
+
+                            btnSuivantSec.Visible = false;
+                            btnSuivantSecEdit.Visible = true;
+                            btnAnnulerSectionAdd.Visible = false;
+                            btnAnnulerSectionEdit.Visible = true;
+                            btnFicheOuvertureSec.Visible = true;
+                            btnListeStagSec.Visible = true;
+                        }
+
                     }
-                    if (DropDownModules.Items.Count == 0)
-                    {
-                        DropDownModules.DataSource = module.getModulesNames();
-                        DropDownModules.DataValueField = "idMod";
-                        DropDownModules.DataTextField = "libMod";
-
-                        DropDownModules.DataBind();
-                    }
-
-
-                }
-
-                if (Request.QueryString["do"].Equals("editSec") && Request.QueryString["idSec"] != null)
-                {
-                    CatalogeSection cat = new CatalogeSection();
-                    Section sec = new Section();
-                    Enseignant ens = new Enseignant();
-                    sec = sec.getSection(int.Parse(Request.QueryString["idSec"]));
-
                     
 
-                    if (DropDownFormationEdit.Items.Count == 0)
+
+
+                }
+
+               
+                
+
+                if (Request.QueryString["do"].Equals("aORrMod") && Request.QueryString["idSec"] != null && Request.QueryString["idSem"] != null)
+                {
+
+                    if (listBoxModAff.Items.Count == 0)
                     {
-                        // Fill all formations
-                        DropDownFormationEdit.DataSource = cat.getListeCatalogeSec();
-                        DropDownFormationEdit.DataTextField = "codeSpe";
-                        DropDownFormationEdit.DataValueField = "idCataloge";
-                        DropDownFormationEdit.DataBind();
+                        listBoxModAff.DataSource = module.getModulesNames();
+                        listBoxModAff.DataValueField = "idMod";
+                        listBoxModAff.DataTextField = "libMod";
 
-                        // Fill all Enseignats names
-                        DropDowntuteurSecEdit.DataSource = ens.getEnseignantsNames();
-                        DropDowntuteurSecEdit.DataValueField = "nameEns";
-                        DropDowntuteurSecEdit.DataTextField = "nameEns";
-                        DropDowntuteurSecEdit.DataBind();
-
-
-                        DropDownFormationEdit.SelectedValue = sec.idCat.ToString();
-                        numSectionEdit.Text = sec.numSection.ToString();
-                        //DropDownListSemestreEdit.SelectedValue = sec.semestre.ToString();
-                        modeOrgEdit.Text = sec.modeOrgaForm;
-                        RadioButtonmodeGesEdit.SelectedValue = sec.modeGestionForm.ToString();
-
-                        string debut = sec.dateOuv.ToString("yyyy-MM-dd");
-                        string fin = sec.dateFin.Value.ToString("yyyy-MM-dd");
-
-                        debutForEdit.Value = debut;
-                        finForEdit.Value = fin;
-                        DropDowntuteurSecEdit.SelectedValue = sec.tuteurSection;
+                        listBoxModAff.DataBind();
                     }
                 }
-               
+
+
             }
             catch (Exception ex)
             {
@@ -248,184 +241,323 @@ namespace suiveStagaireProject.Views
             }
         }
 
-        protected void btnAddSection_Click(object sender, EventArgs e)
-        {
-            try 
-            {
-                int idCataloge =int.Parse( DropDownFormationAdd.SelectedValue);
-                int numSection = int.Parse(numSectionAdd.Text);
-                char semestre = char.Parse(DropDownListSemestreAdd.SelectedValue);
-                if (semestre == '0') { semestre = '1'; }
-                string modeOrg = modeOrgAdd.Text;
-                char modeGes = char.Parse(RadioButtonmodeGesAdd.SelectedValue);
-                string debut = debutForAdd.Value ;
-                string fin = finForAdd.Value;
-                string tuteur = DropDowntuteurSecAdd.SelectedValue;
-
-                Section sec = new Section(DateTime.Parse(debut), DateTime.Parse(fin), numSection,tuteur,modeGes,modeOrg,idCataloge);
-                
-                
-                
-                section.addSection(sec);
-
-                NotDoAlert.Text = "<div class='alert alert-success' role='alert'>Bien Ajouter</div><br/>";
-
-            }
-            catch (Exception ex)
-            {
-                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>"+ex.Message+" </div><br/>";
-
-            }
-        }
-
-        protected void btnEditSection_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int id = int.Parse(Request.QueryString["idSec"]);
-
-                int idCataloge = int.Parse(DropDownFormationEdit.SelectedValue);
-                int numSection = int.Parse(numSectionEdit.Text);
-                char semestre = char.Parse(DropDownListSemestreEdit.SelectedValue);
-                string modeOrg = modeOrgEdit.Text;
-                char modeGes = char.Parse(RadioButtonmodeGesEdit.SelectedValue);
-                string debut = debutForEdit.Value.ToString();
-                string fin = finForEdit.Value.ToString();
-                string tuteur = DropDowntuteurSecEdit.SelectedValue;
-
-                Section sec = new Section(DateTime.Parse(debut), DateTime.Parse(fin), numSection, tuteur, modeGes, modeOrg, idCataloge);
-
-                section.editSection(sec,id);
-
-                NotDoAlert.Text = "<div class='alert alert-success' role='alert'>Bien Modifer</div><br/>";
-
-            }
-            catch (Exception ex)
-            {
-                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>Echèc du Modification </div><br/>";
-
-            }
-        }
-
         protected void btnDropSection_Click(object sender, EventArgs e)
         {
             try
             {
 
-                Section sec = section.getSection(int.Parse(Request.QueryString["idSec"]));
-                section.deleteSection(sec);
-                Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllSec");
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        protected void btnAffecEnsSec_Click(object sender, EventArgs e)
-        {
-            try {
-                string idEns = DropDownEnsAdd.SelectedValue;
-                string nameEns = DropDownEnsAdd.SelectedItem.Text;
-                
-
-                List<ListItem> allEns = new List<ListItem>();
-
-            
-                foreach (ListItem item in listEnseignants.Items)
+                if (Request.QueryString["idSec"] == null)
                 {
-                    
-                    allEns.Add(item);
-                }              
+                    Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllSec");
 
-
-                if (allEns.Count == 0)
-                {
-                    listEnseignants.Items.Add("#" + idEns + " " + nameEns);
-                    listEnseignants.DataBind();
                 }
                 else
                 {
-                    bool find = false;
-                    foreach (ListItem item in allEns)
-                    {
-                        if (item.Value.Equals("#" + idEns + " " + nameEns))
-                        {
-                            find = true;
-                            break;
-                            
-                        }
-                       
+                    int idSec = int.Parse(Request.QueryString["idSec"]);
+                    ens_sec.deleteSec_Ens_SemBySection(idSec);
+                    sec_mod_sem.deleteSec_Mod_SemBySection(idSec);
 
-                    }
-                    if (!find)
-                    {
-                        listEnseignants.Items.Add("#" + idEns + " " + nameEns);
-                        listEnseignants.DataBind();
-                    }
+                    section.deleteSection(section.getSection(idSec));
+
+                    Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllSec");
+
                 }
-                
-                
-            } catch (Exception ex) 
-            {
             }
+            catch (Exception ex)
+            {
 
+            }
         }
 
-        protected void btnAffecModSec_Click(object sender, EventArgs e)
+        protected void btnsearchEns_Click(object sender, EventArgs e)
         {
             try
             {
-                if (!confMod.Value.Equals("") && !noteEl.Value.Equals(""))
+                if (!searchEns.Value.Equals(""))
                 {
-                    string idMod = DropDownModules.SelectedValue;
-                    string libMod = DropDownModules.SelectedItem.Text;
-                    string nEli = noteEl.Value;
-                    string cof = confMod.Value;
 
-
-                    List<ListItem> allMod = new List<ListItem>();
-
-
-                    foreach (ListItem item in listBoxModules.Items)
-                    {
-
-                        allMod.Add(item);
-                    }
-
-
-                    if (allMod.Count == 0)
-                    {
-                        listBoxModules.Items.Add("#" + idMod + " " + libMod + " Coenf:" + cof + " Note Eli:" + nEli);
-                        listBoxModules.DataBind();
-                    }
-                    else
-                    {
-                        bool find = false;
-                        foreach (ListItem item in allMod)
-                        {
-                            if (item.Value=="#" + idMod + " " + libMod + " Coenf:" + cof + " Note Eli:" + nEli)
-                            {
-                                find = true;
-                                break;
-
-                            }
-
-                        }
-                        if (!find)
-                        {
-                            listBoxModules.Items.Add("#" + idMod + " " + libMod + " Coenf:" + cof + " Note Eli:" + nEli);
-                            listBoxModules.DataBind();
-                        }
-                    }
+                    Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=aORr" + "&idSec=" + Request.QueryString["idSec"] + "&idSem=" + Request.QueryString["idSem"]+ "&searchEns=" + searchEns.Value);
 
                 }
+                else
+                {
 
-               
+                    Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=aORr"+"&idSec=" +Request.QueryString["idSec"]+"&idSem=" + Request.QueryString["idSem"]);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        protected void btnSuivantSec_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idSec = section.getLastId() + 1;
+                int idCataloge = int.Parse(DropDownFormationAdd.SelectedValue);
+                int numSection = int.Parse(numSectionAdd.Text);
+                char semestre = char.Parse(DropDownListSemestreAdd.SelectedValue);
+                if (semestre == '0') { semestre = '1'; }
+                string modeOrg = modeOrgAdd.Text;
+                char modeGes = char.Parse(RadioButtonmodeGesAdd.SelectedValue);
+                string debut = debutForAdd.Value;
+                string fin = finForAdd.Value;
+                string tuteur = DropDowntuteurSecAdd.SelectedValue;
+
+
+                if (section.countSecById(idSec) !=0)
+                {             
+                    section.deleteSection(section.getSection(idSec));
+                }
+
+                Section sec = new Section(idSec, DateTime.Parse(debut), DateTime.Parse(fin), numSection, tuteur, modeGes, modeOrg,semestre, idCataloge);
+                section.addSection(sec);
+
+                Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=aORr" + "&idSec=" + idSec + "&idSem=" + semestre);
+
 
             }
             catch (Exception ex)
             {
+                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>Echec de continuer </div><br/>";
+
+            }
+        }
+
+        protected void btnSuivantEns_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idSec =int.Parse( Request.QueryString["idSec"]);
+                int semestre = int.Parse(Request.QueryString["idSem"]);
+
+                Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=aORrMod" + "&idSec=" + idSec + "&idSem=" + semestre);
+
+
+            }
+            catch (Exception ex)
+            {
+                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>Erreur De Saisir </div><br/>";
+
+            }
+        }
+
+        protected void btnAnnulerEns_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idSec = int.Parse(Request.QueryString["idSec"]);
+                int semestre = int.Parse(Request.QueryString["idSem"]);
+
+                Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=add-editSec" + "&idSec=" + idSec + "&idSem=" + semestre);
+
+
+            }
+            catch (Exception ex)
+            {
+                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>Erreur De Saisir </div><br/>";
+
+            }
+        }
+
+        protected void btnSuivantMod_Click(object sender, EventArgs e)
+        {
+            try
+            {
+               
+
+                Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllSec");
+
+
+            }
+            catch (Exception ex)
+            {
+                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>Echèc d'Ajouter </div><br/>";
+
+            }
+        }
+
+        protected void btnAnnulerMod_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idSec = int.Parse(Request.QueryString["idSec"]);
+                int semestre = int.Parse(Request.QueryString["idSem"]);
+
+                Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=aORr" + "&idSec=" + idSec + "&idSem=" + semestre);
+
+
+            }
+            catch (Exception ex)
+            {
+                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>Erreur De Saisir </div><br/>";
+
+            }
+        }
+
+        protected void btnAffMod_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if ( Request.QueryString["idSem"] != null && Request.QueryString["idSec"] != null)
+                {
+                    int idMod = int.Parse(listBoxModAff.SelectedValue);
+                    int idSem = int.Parse(Request.QueryString["idSem"]);
+                    int idSec = int.Parse(Request.QueryString["idSec"]);
+                    int noteEli = int.Parse(noteEl.Value);
+                    int coenf = int.Parse(coef.Value);
+
+                    if (sec_mod_sem.countSecModSemByAll(idSec, idSem, idMod) == 0)
+                    {
+                        sec_mod_sem.addSec_Mod_Sem(new Sec_Mod_Sem(idSec, idMod, idSem, noteEli, coenf));
+                    }
+
+                    string currentUrl = Request.Url.ToString();
+
+                    string newUrl = currentUrl.Replace($"do={ Request.QueryString["do"]}", $"do={"aORrMod"}");
+
+                    // Redirect to the updated URL
+                    Response.Redirect(newUrl);
+                }
+                else { Response.Redirect("404-page.aspx"); }
+
+            }
+            catch (Exception ex)
+            {
+                NotDoAlert.Text = "<span class='alert alert-danger'> Echèc d'affectation Echec d'affectation <span>";
+            }
+        }
+
+        protected void btnRetMod_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Request.QueryString["idSem"] != null && Request.QueryString["idSec"] != null)
+                {
+                    int idMod = int.Parse(listBoxModAff.SelectedValue);
+                    int idSem = int.Parse(Request.QueryString["idSem"]);
+                    int idSec = int.Parse(Request.QueryString["idSec"]);
+
+
+                    if (sec_mod_sem.countSecModSemByAll(idSec, idSem, idMod) != 0)
+                    {
+                        sec_mod_sem.deleteSec_Mod_Sem(sec_mod_sem.getEns_SecByAll(idSec, idSem, idMod));
+                    }
+
+                    string currentUrl = Request.Url.ToString();
+
+                    string newUrl = currentUrl.Replace($"do={ Request.QueryString["do"]}", $"do={"aORrMod"}");
+
+                    // Redirect to the updated URL
+                    Response.Redirect(newUrl);
+                }
+                else { Response.Redirect("404-page.aspx"); }
+
+            }
+            catch (Exception ex)
+            {
+                NotDoAlert.Text = "<span class='alert alert-danger'> Echèc de reterait <span>";
+            }
+        }
+
+        protected void btnAnnulerSectionAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Request.QueryString["idSec"] == null )
+                {
+                    Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllSec");
+
+                }
+                else
+                {
+                    int idSec =int.Parse( Request.QueryString["idSec"]);
+                    ens_sec.deleteSec_Ens_SemBySection(idSec);
+                    sec_mod_sem.deleteSec_Mod_SemBySection(idSec);
+                    
+                    section.deleteSection(section.getSection(idSec));
+
+                    Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllSec");
+
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'> Echèc de Annuler </div><br/>";
+
+            }
+        }
+
+        protected void btnSuivantSecEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idSec =int.Parse( Request.QueryString["idSec"]);
+                int idCataloge = int.Parse(DropDownFormationAdd.SelectedValue);
+                int numSection = int.Parse(numSectionAdd.Text);
+                char semestre = char.Parse(DropDownListSemestreAdd.SelectedValue);
+                if (semestre == '0') { semestre = '1'; }
+                string modeOrg = modeOrgAdd.Text;
+                char modeGes = char.Parse(RadioButtonmodeGesAdd.SelectedValue);
+                string debut = debutForAdd.Value;
+                string fin = finForAdd.Value;
+                string tuteur = DropDowntuteurSecAdd.SelectedValue;
+
+
+                
+                    Section sec = new Section(idSec, DateTime.Parse(debut), DateTime.Parse(fin), numSection, tuteur, modeGes, modeOrg,semestre, idCataloge);
+                    section.editSection(sec,idSec);
+                
+
+                
+
+                Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=aORr" + "&idSec=" + idSec + "&idSem=" + semestre);
+
+
+            }
+            catch (Exception ex)
+            {
+                NotDoAlert.Text = "<div class='alert alert-danger' role='alert'>Echec de continuer </div><br/>";
+
+            }
+        }
+
+        protected void btnAnnulerSectionEdit_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllSec");
+
+        }
+
+        protected void btnFicheOuvertureSec_Click(object sender, EventArgs e)
+        {
+            try {
+                
+                Response.Redirect("reports/ProcesVerbalSection.aspx?id="+Session["id"]+"&do=impression&idSec="+Request.QueryString["idSec"]);
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        protected void btnListeStagSec_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                Response.Redirect("reports/ListeStagiairesIncorpores.aspx?id=" + Session["id"] + "&do=impression&idSec=" + Request.QueryString["idSec"]);
+
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }

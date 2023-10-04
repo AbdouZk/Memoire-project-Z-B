@@ -40,7 +40,14 @@ namespace suiveStagaireProject.Models
         {
             return (from s in dc.Stagiaires select s).ToList<Stagiaire>();
         }
-        
+        public List<ListeStagiaires> getStagiaires(int idSec)
+        {
+            return (from s in dc.Stagiaires 
+                    join sec in dc.Sections on s.idSection equals sec.idSec
+                    where sec.idSec==idSec 
+                    select new ListeStagiaires(s.id,"","","",s.statusStg,s.PersonnelInfo.nom+" "+s.PersonnelInfo.prenom,"","")).ToList<ListeStagiaires>();
+        }
+
         public Stagiaire getStagiaire(int id)
         {
             return (from s in dc.Stagiaires where s.id==id select s).Single();
@@ -49,8 +56,8 @@ namespace suiveStagaireProject.Models
         public void addStagiaire(Stagiaire stg)
         {
 
-            dc.ExecuteCommand("INSERT INTO Stagiaire (numInsc,img,idSection,personnelInfoId,detailsInfoId) VALUES ({0},{1},{2},{3},{4})",
-              stg.numInsc,stg.img,stg.idSection,stg.personnelInfoId,stg.detailsInfoId);
+            dc.ExecuteCommand("INSERT INTO Stagiaire (numInsc,img,statusStg,idSection,personnelInfoId,detailsInfoId) VALUES ({0},{1},{2},{3},{4},{5})",
+              stg.numInsc,stg.img,stg.statusStg,stg.idSection,stg.personnelInfoId,stg.detailsInfoId);
             dc.SubmitChanges();
         }
 
@@ -69,6 +76,7 @@ namespace suiveStagaireProject.Models
             {
                 s.numInsc = stg.numInsc;
                 s.img = stg.img;
+                s.statusStg = stg.statusStg;
                 s.idSection = stg.idSection;
                 
 

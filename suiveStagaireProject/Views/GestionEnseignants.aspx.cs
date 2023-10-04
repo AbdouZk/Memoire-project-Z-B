@@ -1,4 +1,5 @@
-﻿using suiveStagaireProject.Models;
+﻿using Scrypt;
+using suiveStagaireProject.Models;
 using suiveStagaireProject.Models.Metier;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace suiveStagaireProject.Views
         Enseignant enseignant = new Enseignant();
         PersonnelInfo personnelInfo = new PersonnelInfo();
         detailsEnseignant dens = new detailsEnseignant();
+        User user = new User();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -119,10 +121,21 @@ namespace suiveStagaireProject.Views
                 int
                     idPer = personnelInfo.getLastId()+1;
 
+                // add info to personnel info table
                 PersonnelInfo pInfo = new PersonnelInfo(idPer,nom,prenom,dateNai,lieuNai,sexe,adresse,email,telp);
                 personnelInfo.addPersonnelInfo(pInfo);
 
-                Enseignant ens = new Enseignant(dateDebut, filier,null,idPer);
+                // add a user for this enseignant
+                ScryptEncoder encode = new ScryptEncoder();
+                string use = nom+"."+prenom.ElementAt(0);
+                string pass = nom+dateNai.Year;
+                pass = encode.Encode(pass);
+                User us = new User(use, pass, 4, 0, DateTime.Now);
+                user.addUser(us);
+
+                // add the enseignant
+                int idUser = user.getUserLog(use).id;
+                Enseignant ens = new Enseignant(dateDebut, filier,idUser,idPer);
                 enseignant.addEnseignant(ens);
 
                 msgEns.Text = "Bien Ajouter";

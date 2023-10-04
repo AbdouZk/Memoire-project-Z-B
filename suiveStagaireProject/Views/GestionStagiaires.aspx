@@ -27,10 +27,10 @@
 
                if (Request.QueryString["do"].Equals("add-edit"))
                {%>
-                            
+                           <h2 class="d-block p-2 text-center text-white bg-info ">Ajouter Stagiaire</h2> 
           <div class="addStagiaireBody">
 	
-					<h2 class="d-block p-2 text-center bg-info ">Ajouter Stagiaire</h2>
+					
 					<fieldset>
 						<legend class="badge bg-info">Informations Personnel</legend>
 
@@ -63,7 +63,7 @@
 							
 
 
-							<div class="col-6 col-md-4">
+							<div class="col-6 col-md-6">
 						
 								<div class=" mb-4">
 									<label class="form-label"  for="dateNaiAdd">Date Naissance : </label>
@@ -71,7 +71,7 @@
 								</div>
 
 							</div>
-							<div class="col-6 col-md-4">
+							<div class="col-6 col-md-6">
 								
 								<div class=" mb-4">
 									<label class="form-label" for="lieuNaisAdd">Lieu Naissance : </label>
@@ -81,18 +81,29 @@
 							</div>
 
 
-							<div class="col-12 col-md-4">
+							<div class="col-12 ">
+								<label class="form-label"  for="nat">Nationalité : </label>
+								<div class=" row mb-4">
+									<div class="col-6">
+											
+											<asp:RadioButtonList ID="radioGroupNat" runat="server" CssClass="form-check"  >
+												<asp:ListItem Value="Algerian"  Selected="True" Text="Algérien" />
+												<asp:ListItem Value="Etrangere" Text="Etrangère" />
+											</asp:RadioButtonList>
+									</div>
+									<div class="col-6">
+										
 								
-								<div class=" mb-4">
-									<label class="form-label"  for="nat">Nationalité : </label>
-									<asp:TextBox  ID="natAdd" CssClass="form-control" runat="server"></asp:TextBox>
+										<asp:TextBox  ID="natAdd" CssClass="form-control" runat="server" Enabled="false"></asp:TextBox>
+
+									</div>
 								</div>
 
 							</div>
 
 
 								<div class="col-12 col-md-6">
-									<div class=" mb-4 btn-group">
+									<div class=" mb-4 btn-group p-2">
 										<label class="form-label">Sexe: </label>
 										
 										<asp:RadioButtonList CssClass="form-check" ID="RadioButtonListSex" runat="server">
@@ -152,7 +163,7 @@
 						<div class="row">
 
 							<div class="col-12 col-md-6">
-									<div class=" mb-4 btn-group">
+									<div class=" mb-4 btn-group p-2">
 										<label class="form-label">Situation Médicale : </label>
 										
 										<asp:RadioButtonList CssClass="form-check" ID="RadioButtonListsitMed" runat="server">
@@ -326,20 +337,20 @@
 
 					</fieldset>			
 					<div class="row">
-						<div class="col-12 col-md-6">
+						<div class="col-12 col-md-6 text-center">
 							<div class=" mb-4 ">
 
-								<asp:Button Text="Ajouter" ID="btnAjouterStgAdd" runat="server" CssClass="btn btn-success form-control " OnClick="btnAjouterStgAdd_Click" Visible="false"/>
-							    <asp:Button Text="Save" ID="btnsaveEditStg" runat="server" CssClass="btn btn-success form-control" OnClick="saveEditStg_Click"  Visible="false"/>
+								<asp:Button Text="Ajouter" ID="btnAjouterStgAdd" runat="server" CssClass="btn btn-success  " OnClick="btnAjouterStgAdd_Click" Visible="false"/>
+							    <asp:Button Text="Save" ID="btnsaveEditStg" runat="server" CssClass="btn btn-success " OnClick="saveEditStg_Click"  Visible="false"/>
 
 							</div>
 						</div>
 						
 
-						<div class="col-12 col-md-6">
+						<div class="col-12 col-md-6 text-center">
 							<div class=" mb-4 ">
 
-								<a  class="btn btn-secondary form-control" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&do=AllStg">Annuler</a>
+								<a  class="btn btn-danger" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&do=AllStg">Annuler</a>
 
 							</div>
 						</div>
@@ -351,7 +362,7 @@
 		</div>
                     <%}
                         else
-if (Request.QueryString["do"].Equals("delete"))
+			   if (Request.QueryString["do"].Equals("delete"))
                         {
 
 
@@ -370,9 +381,8 @@ if (Request.QueryString["do"].Equals("delete"))
                                     <%
 
                                         }
-
-                                        else
-if (Request.QueryString["do"].Equals("details"))
+						else
+			   if (Request.QueryString["do"].Equals("details"))
                                         { suiveStagaireProject.Models.Metier.detailsStagiaire Dstag = new suiveStagaireProject.Models.Metier.detailsStagiaire();
                                             Dstag = stagiaire.detailsStagiaires(int.Parse(Request.QueryString["idStg"]));
 											%>
@@ -453,7 +463,7 @@ if (Request.QueryString["do"].Equals("details"))
 									<div class="col-12 col-md-6 ">
 										<div class=" mb-4 ">
 
-											<a  class="btn btn-warning form-control" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&do=edit&idStg=<%=Dstag.Id %>"><i class="fas fa-info-circle"></i> Details </a>
+											<a target="_blank" class="btn btn-warning form-control" href="reports/AttestationDeStage.aspx?id=<%=Session["id"]%>&do=impression&idStg=<%=Dstag.Id %>"><i class="fas fa-info-circle"></i> Attestation De Stage </a>
 
 										</div>
 									</div>
@@ -462,11 +472,11 @@ if (Request.QueryString["do"].Equals("details"))
 						</section>
 
                         <%}
-                            else
-                    if (Request.QueryString["do"].Equals("AllStg"))
-                            {
-                                if (Request.QueryString["searchStg"]!=null) { listeStagiaires = stagiaire.viewStagiairesSearch(Request.QueryString["searchStg"]); }
-								else
+                        else
+               if (Request.QueryString["do"].Equals("AllStg")){
+                            
+						if (Request.QueryString["searchStg"]!=null) { listeStagiaires = stagiaire.viewStagiairesSearch(Request.QueryString["searchStg"]); }
+						else
                                 { listeStagiaires = stagiaire.viewStagiaires();}
 
                                 
@@ -481,7 +491,7 @@ if (Request.QueryString["do"].Equals("details"))
 							  </div>
 							  </div>
 							 <div class="col-4 col-md-2">
-							  <asp:Button ID="btnsearchStg" CssClass="btn btn-success form-control mb-2 mt-5" runat="server" Text="Recharcher" OnClick="btnsearchStg_Click">	</asp:Button>
+							  <asp:Button ID="btnsearchStg" CssClass="btn btn-success mb-2 mt-5" runat="server" Text="Recharcher" OnClick="btnsearchStg_Click">	</asp:Button>
 							</div>
 							
 
@@ -494,8 +504,8 @@ if (Request.QueryString["do"].Equals("details"))
                               <th scope="col">Nom / Prenom</th>
                               <th scope="col">Date/Lieu Naissance</th>
                               <th scope="col">Section</th>
-                              <th scope="col">Statut</th>
-                              <th scope="col">Options</th>
+                              
+                              <th scope="col" style="width:400px">Options</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -507,17 +517,17 @@ if (Request.QueryString["do"].Equals("details"))
                                   <td><%=s.Nom +"  "+s.Prenom%> </td>
                                   <td><%=s.DateLieuNais%> </td>
                                   <td><%=s.CodeSec%> </td>
-                                  <td><%=s.Status%> </td>
+                                  
                               
                                   <td>
                                       <!-- Ajouter -->
-                                      <asp:Button ID="btnAddStag" CssClass="btn btn-primary" runat="server" Text="Ajouter" OnClick="btnAddStag_Click" />
+                                      <asp:Button  ID="btnAddStag" CssClass="btn btn-primary" runat="server" Text="Ajouter" OnClick="btnAddStag_Click" />
                                       <!-- Editer -->
-                                      <a class="btn btn-warning" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&idStg=<%=s.IdStg%>&do=add-edit&opt=edit">Details</a>
+                                      <a  class="btn btn-warning" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&idStg=<%=s.IdStg%>&do=add-edit&opt=edit">Details</a>
                                       <!-- Supprimer -->  
-                                      <a class="btn btn-danger" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&idStg=<%=s.IdStg%>&do=delete">Supprimer</a> 
+                                      <a  class="btn btn-danger" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&idStg=<%=s.IdStg%>&do=delete">Supprimer</a> 
 									  <!-- Detalis -->  
-                                      <a class="btn btn-secondary mx-4" href="GestionStagiaires.aspx?id=<%=Session["id"]%>&idStg=<%=s.IdStg%>&do=details">Carte</a>
+                                      <a style="width:330px" class="btn btn-secondary mt-2"  href="GestionStagiaires.aspx?id=<%=Session["id"]%>&idStg=<%=s.IdStg%>&do=details">Carte</a>
 
 
                                   </td>
@@ -537,22 +547,13 @@ if (Request.QueryString["do"].Equals("details"))
 
 
                   <%}
-                    else
-                    {
-                           
-                        
-
-
-                    }
+						
 
           }
           else
           {
-                   
-                    
 
-            NotDoAlert.Text= " <div class='alert alert-danger center' role='alert'> Vous pouvez pas naviguer à partir de l'URL </ div > "; 
-              
+			 Response.Redirect("404-page.aspx");		              
           }
 
 
@@ -565,5 +566,23 @@ if (Request.QueryString["do"].Equals("details"))
 
        
     </div>
+
+	 <script>
+        
+         var inputField = document.getElementById("ContentPlaceHolder1_natAdd");
+         var toggleButton1 = document.getElementById("ContentPlaceHolder1_radioGroupNat_1");
+         var toggleButton0 = document.getElementById("ContentPlaceHolder1_radioGroupNat_0");
+
+        // Add a click event listener to the button Radio natAdd 
+        toggleButton1.addEventListener("click", function() {
+			
+            inputField.disabled = !inputField.disabled;
+		});
+
+		toggleButton0.addEventListener("click", function () {
+			
+            inputField.disabled = !inputField.disabled;
+        });
+     </script>
 
 </asp:Content>

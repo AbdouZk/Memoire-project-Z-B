@@ -11,14 +11,13 @@
                 suiveStagaireProject.Models.Enseignant enseignant=new suiveStagaireProject.Models.Enseignant();
                 List<suiveStagaireProject.Models.Metier.ListeEnseignant> listeEnseignants=new List<suiveStagaireProject.Models.Metier.ListeEnseignant>();
 
-                if (Request.QueryString["do"]=="action")
-                {
-
-                }else if (Request.QueryString["do"] == "add-edit")
+              if (Request.QueryString["do"] == "add-edit")
                 {%>
+		 
+					<h2 class="d-block p-2 text-center bg-info ">Ajouter Enseignant</h2>
                     <div class="addStagiaireBody">
 	
-					<h2 class="d-block p-2 text-center bg-info ">Ajouter Enseignant</h2>
+					
 					<fieldset>
 						<legend class="badge bg-info">Informations Personnel</legend>
 
@@ -42,7 +41,7 @@
 							
 
 
-							<div class="col-6 col-md-4">
+							<div class="col-6 ">
 						
 								<div class=" mb-4">
 									<label class="form-label"  for="dateNaiAdd">Date Naissance : </label>
@@ -50,7 +49,7 @@
 								</div>
 
 							</div>
-							<div class="col-6 col-md-4">
+							<div class="col-6 ">
 								
 								<div class=" mb-4">
 									<label class="form-label" for="lieuNaisAdd">Lieu Naissance : </label>
@@ -60,7 +59,7 @@
 							</div>
 
 
-								<div class="col-12 col-md-6">
+								<div class="col-12 ">
 									<div class=" mb-4 btn-group">
 										<label class="form-label">Sexe: </label>
 										
@@ -130,19 +129,19 @@
 			
 					<div class="row">
 
-						<div class="col-12 col-md-6">
+						<div class="col-12 col-md-6 text-center">
 							<div class=" mb-4 ">
 
-								<a  class="btn btn-secondary form-control" href="GestionEnseignants.aspx?id=<%=Session["id"]%>&do=AllEns"><i class="fas fa-arrow-alt-circle-left"></i> Reteur</a>
+								<a  class="btn btn-danger " href="GestionEnseignants.aspx?id=<%=Session["id"]%>&do=AllEns"><i class="fas fa-arrow-alt-circle-left"></i> Reteur</a>
 
 							</div>
 						</div>
 
-						<div class="col-12 col-md-6">
+						<div class="col-12 col-md-6 text-center">
 							<div class=" mb-4 ">
 
-								<asp:Button Text="Ajouter" ID="btnAjouterEnsAdd" runat="server" CssClass="btn btn-success form-control " OnClick="btnAjouterEnsAdd_Click" Visible="false"/>
-								<asp:Button Text="Save" ID="btnSaveEns" runat="server" CssClass="btn btn-success form-control " OnClick="btnSaveEns_Click" Visible="false"/>
+								<asp:Button Text="Ajouter" ID="btnAjouterEnsAdd" runat="server" CssClass="btn btn-success  " OnClick="btnAjouterEnsAdd_Click" Visible="false"/>
+								<asp:Button Text="Save" ID="btnSaveEns" runat="server" CssClass="btn btn-success  " OnClick="btnSaveEns_Click" Visible="false"/>
 
 							</div>
 						</div>
@@ -155,7 +154,8 @@
 
 		</div>
 
-                <%}else if (Request.QueryString["do"] == "AllEns")
+                <%}
+			  else if (Request.QueryString["do"] == "AllEns")
                 {
                     if (Request.QueryString["searchEns"] != null){
 							listeEnseignants = enseignant.getListeEnseignantsSearch(Request.QueryString["searchEns"]); 
@@ -230,10 +230,8 @@
 
                <%
 
-                }else if (Request.QueryString["do"] == "edit")
-                {
-
-                }else if (Request.QueryString["do"] == "delete")
+                }
+              else if (Request.QueryString["do"] == "delete")
                 {
 				
 						   
@@ -256,7 +254,7 @@
             }
             else
             {
-                Response.Write("<div class='alert alert-danger'>Vous pouvez pas naviguer avec URL</div>");
+                  Response.Redirect("404-page.aspx");
             }
 
             %>

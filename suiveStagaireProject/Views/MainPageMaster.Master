@@ -105,7 +105,7 @@
             <b>G</b> Des Notes
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
-            <li> <asp:Button ID="btnSaisieNote"     CssClass="dropdown-item" runat="server" Text="Saisie Notes Section" />               </li>
+            <li> <asp:Button ID="btnSaisieNote"     CssClass="dropdown-item" runat="server" Text="Saisie Notes Section" OnClick="btnSaisieNote_Click"/>               </li>
             <li> <asp:Button ID="btnSaisieNoteR"    CssClass="dropdown-item" runat="server" Text="Saisie Notes Section (RATT) " />       </li>
             <li> <asp:Button ID="btnDeliNote"       CssClass="dropdown-item" runat="server" Text="Delibiration des notes" />             </li>
             <li> <asp:Button ID="btnDeliNoteR"      CssClass="dropdown-item" runat="server" Text="Delibiration des notes (RATT)" />      </li>

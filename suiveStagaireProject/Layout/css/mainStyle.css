@@ -22,6 +22,9 @@ footer {
 }
 
 /* No print */
+@page {
+    margin: 0;
+}
 
 @media print {
        
@@ -36,6 +39,8 @@ footer {
         page-break-after: always;
     }
 }
+/* Hide header and footer */
+
 
 
 /* Nav bar */
@@ -79,8 +84,10 @@ nav li b{
 
 /* Gestion Stagiaire page */
 
-.addStagiaireBody{
-    background-color:floralwhite;
+.addStagiaireBody {
+    background-color: floralwhite;
+    padding: inherit;
+    box-shadow: grey 0px 6px 8px 2px;
 }
 
 .gradient-custom {

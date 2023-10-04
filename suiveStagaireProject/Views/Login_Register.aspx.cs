@@ -61,56 +61,6 @@ namespace suiveStagaireProject.Views
             }
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            User user = new User();
-            ScryptEncoder encoder = new ScryptEncoder();
-            try
-            {
-                string use = usernameReg.Text;
-                string pass = passReg.Text; 
-                string passConf = confPassReg.Text;
-                int groupId = int.Parse(DropDownGroupId.SelectedValue);
-
-             
-
-                if (use.Equals("") || pass.Equals("")) {
-                    // error1 
-                    errors.Text = "username ou password invalid";
-                    errors.Visible = true;
-                    errorLog.Visible = false;
-
-
-                }
-                else if (!pass.Equals(passConf))
-                {
-                    // error2 
-                    errors.Text = "c'est pas le meme password";
-                    errors.Visible = true;
-                    errorLog.Visible = false;
-
-
-                }
-                else 
-                {
-                    pass = encoder.Encode(pass);
-                    User us = new User(use, pass,groupId);
-                    u.registerUser(us);
-
-                    successEg.Text = "You have been register sucsessfuly";
-                    successEg.Visible = true;
-                    errorLog.Visible = false;
-
-
-                }
-
-
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
+       
     }
 }

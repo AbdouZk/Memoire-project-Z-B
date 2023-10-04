@@ -75,7 +75,7 @@ namespace suiveStagaireProject
 
         protected void btnCRUDsec_Click(object sender, EventArgs e)
         {
-            Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=addSec");
+            Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=add-editSec");
         }
 
         protected void btnListSec_Click(object sender, EventArgs e)
@@ -121,6 +121,12 @@ namespace suiveStagaireProject
         protected void btnCrudens_Click(object sender, EventArgs e)
         {
             Response.Redirect("GestionEnseignants.aspx?id=" + Session["id"] + "&do=add-edit&opt=add");
+        }
+
+        protected void btnSaisieNote_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionNotes.aspx?id=" + Session["id"] + "&do=chooseSec");
+
         }
     }
 }
