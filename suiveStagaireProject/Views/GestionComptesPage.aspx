@@ -32,18 +32,19 @@
 
                         if (Request.QueryString["do"].Equals("add"))
                         {%>
-                                <div class="tab-pane " id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-		                        <h2 class="badge bg-primary">Ajouter User</h2>
-	    
+                            <h2 class="h3 bg-info text-center text-white p-2">Ajouter User</h2>
+                                <div class="tab-pane addStagiaireBody">
+		                        
+	                                <div class="row">
 	                                  <!-- Username input -->
-	                                  <div class=" mb-4">
+	                                  <div class=" mb-3 col-12">
 			                            <label class="form-label" for="registerName">UserName</label>
 			                            <asp:TextBox ID="usernameAddUser" runat="server" CssClass="form-control" MaxLength="10" ></asp:TextBox>
 			                           
 	                                  </div>
 	
 	                                  <!-- Password input -->
-	                                  <div class=" mb-4">
+	                                  <div class=" mb-3 col-12">
                                           <label class="form-label" for="passAddUser">Password</label>
 			                              <asp:TextBox ID="passAddUser" runat="server" CssClass="form-control" MaxLength="10"  TextMode="Password"></asp:TextBox>
 	                                    
@@ -51,7 +52,7 @@
 	                                  </div>
 
 		                              <!--Confirmation Password input -->
-	                                  <div class=" mb-4">
+	                                  <div class=" mb-4 col-12">
 	                                    <label class="form-label" for="confPassAddUser">Confirmation Password</label>
 			                            <asp:TextBox ID="confPassAddUser" runat="server" CssClass="form-control" MaxLength="10" TextMode="Password" ></asp:TextBox>
 	                                    
@@ -61,7 +62,7 @@
 	                                  </div>
 
 		                            <%--  <!--Group ID  Select --%>
-	                                  <div class=" mb-4">
+	                                  <div class=" mb-3 col-6">
 
 	                                    <label class="form-label" for="DropDownGroupId">Group Users </label>
 			                              <asp:DropDownList ID="DropDownGroupId" CssClass="form-select" runat="server">
@@ -78,7 +79,7 @@
 	                                  </div> 
 
                                      <%--  <!--Trust ID  Select --%>
-	                                  <div class=" mb-4">
+	                                  <div class=" mb-4 col-6">
 
 	                                    <label class="form-label" for="DropDownTrustId">Activé / Disactiver</label>
 			                              <asp:DropDownList ID="DropDownTrustId" CssClass="form-select" runat="server">
@@ -96,20 +97,20 @@
                                 
 	
 	                                  <!-- Submit button -->
-                                    <div class="row">
+                                    
                                         <div class="col-6 text-center">
 	                                  <asp:Button ID="btnAjouterUser" runat="server" CssClass="btn btn-primary" Text="Ajouter" OnClick="btnAjouterUser_Click" />
                                             </div>
                                        <div class="col-6 text-center">
 	                                   <a href="GestionComptesPage.aspx?id=<%=Session["id"]%>&do=" class="btn btn-danger ">Annuler</a>
                                         </div>
-                                    </div>
+                                    
                                     <br />
                                     <br />
                                      <asp:Label ID="errors" runat="server" CssClass="alert alert-danger" Visible="false" ></asp:Label>
                                      <asp:Label ID="seccuss" runat="server" CssClass="alert alert-success" Visible="false" ></asp:Label>
 
-
+                                    </div>
 	                              </div>
                             
                             
@@ -122,9 +123,9 @@
                             
                         %>               
                             
-                            
-                            <div class="tab-pane " id="pills-edit" role="tabpanel" aria-labelledby="tab-register">
-		                        <h2 class="badge bg-primary">Editer User</h2>
+                            <h2 class="h3 bg-info text-center">Editer User</h2>
+                            <div class="tab-pane addStagiaireBody">
+		                        
 	    
 	                                  <!-- Username input -->
 	                                  <div class=" mb-4">
@@ -238,7 +239,14 @@
                            
              %> 
 
-                            <h3 class=" d-block p-2 bg-info text-white"> Liste Des Comptes</h3>
+                            <h3 class=" d-block p-2 bg-info text-white p-2 text-center"> Liste Des Comptes</h3>
+
+        
+                         <!-- Ajouter -->  
+                        <div class="text-end mb-3 mt-3">
+                         <a  class="btn btn-primary " href="GestionComptesPage.aspx?id=<%=Session["id"]%>&do=add">Ajouter <i class="fa fa-plus fa-lg"></i></a>
+                        </div> 
+                        
                          <table class="table">
                               <thead class="table-dark">
                                 <tr>
@@ -246,7 +254,7 @@
                                   <th scope="col">Username</th>
                                   <th scope="col">Role</th>
                                   <th scope="col">Date</th>
-                                  <th scope="col">Situation (Active/Disactive)</th>
+                                  <th scope="col">Status (Active/Disactive)</th>
                                   <th scope="col">Options</th>
                                 </tr>
                               </thead>
@@ -267,13 +275,12 @@
                                               }
                                           
                                       %></td>
-                                      <td><%Response.Write( u.date); %></td>
+                                      <td><%Response.Write( u.date.Value.ToShortDateString()); %></td>
                                       <td><% if(u.trustID==0){%><span class="badge bg-danger">Disactiver</span> <%}else{%><span class="badge bg-success">Activé</span> <%} %></td>
                                       <td>
                                           <!-- Active ou Disactiver -->
                                           <% if(u.trustID==1){%> <a class="btn btn-danger" href="GestionComptesPage.aspx?id=<%=u.id%>&do=disactive">Disactive</a>  <% }else{%>  <a class="btn btn-success" href="GestionComptesPage.aspx?id=<%=u.id%>&do=active">Activé</a>   <%   }   %>
-                                           <!-- Ajouter -->
-                                          <asp:Button ID="btnAddUser" CssClass="btn btn-primary" runat="server" Text="Ajouter" OnClick="btnAddUser_Click" />
+                                          
                                           <!-- Editer -->
                                           <a class="btn btn-warning" href="GestionComptesPage.aspx?id=<%=u.id%>&do=edit">Editer</a>
                                           <!-- Supprimer -->

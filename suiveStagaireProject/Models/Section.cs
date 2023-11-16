@@ -10,64 +10,44 @@ namespace suiveStagaireProject.Models
     {
         private myLinqToSqlDataContext dc = new myLinqToSqlDataContext();
 
-        public Section(int idSec, DateTime dateOuv, DateTime? dateFin, int? numSection,  string tuteurSection, char modeGestionForm, string modeOrgaForm,char sSec, int idCat)
+        public Section(string codeSection, DateTime dateOuv, DateTime dateFin, string tuteurSection, char modeGestionForm, int? semestreId, int idCat)
         {
-            this.idSec = idSec;
+            this.codeSection = codeSection;
             this.dateOuv = dateOuv;
             this.dateFin = dateFin;
-            this.numSection = numSection;
             this.tuteurSection = tuteurSection;
             this.modeGestionForm = modeGestionForm;
-            this.modeOrgaForm = modeOrgaForm;
-            this.sSec = sSec;
+            this.semestreId = semestreId;
             this.idCat = idCat;
         }
 
-        public Section(DateTime dateOuv, DateTime? dateFin, int? numSection,  string tuteurSection, char modeGestionForm, string modeOrgaForm,char sSec, int idCat)
+        public Section getSection(string code)
         {
-            
-            this.dateOuv = dateOuv;
-            this.dateFin = dateFin;
-            this.numSection = numSection;          
-            this.tuteurSection = tuteurSection;
-            this.modeGestionForm = modeGestionForm;
-            this.modeOrgaForm = modeOrgaForm;
-            this.sSec = sSec;
-            this.idCat = idCat;
-            
+            return (from s in dc.Sections where s.codeSection == code select s).Single();
         }
-
-        public Section getSection(int id)
-        {
-            return (from s in dc.Sections where s.idSec == id select s).Single();
-        }
-
         public List<Section> getAllSection()
         {
             return (from s in dc.Sections select s).ToList<Section>();
         }
         public void addSection(Section section)
         {
-
-            dc.ExecuteCommand("INSERT INTO Section (idSec,dateOuv,dateFin,numSection,tuteurSection,modeGestionForm,modeOrgaForm,sSec,idCat) VALUES ({0},{1},{2},{3},{4},{5},{6},{7},{8})",
-            section.idSec, section.dateOuv,section.dateFin,section.numSection,section.tuteurSection,section.modeGestionForm,section.modeOrgaForm,section.sSec, section.idCat);
+            dc.ExecuteCommand("INSERT INTO Section (codeSection,dateOuv,dateFin,tuteurSection,modeGestionForm,semestreId,idCat) VALUES ({0},{1},{2},{3},{4},{5},{6})",
+            section.codeSection, section.dateOuv,section.dateFin,section.tuteurSection,section.modeGestionForm,section.semestreId, section.idCat);
 
             dc.SubmitChanges();
         }        
-        public void editSection(Section section,int id)
+        public void editSection(Section section, string code)
         {
 
-            var sec = from s in dc.Sections where s.idSec==id select s;
+            var sec = from s in dc.Sections where s.codeSection== code select s;
 
             foreach(var s in sec)
             {
                 s.dateOuv = section.dateOuv;
                 s.dateFin = section.dateFin;
-                s.numSection = section.numSection; 
                 s.tuteurSection = section.tuteurSection;
                 s.modeGestionForm = section.modeGestionForm;
-                s.modeOrgaForm = section.modeOrgaForm;
-                s.sSec = section.sSec;
+                s.semestreId = section.semestreId;
                 s.idCat = section.idCat;
                 
             }
@@ -80,51 +60,32 @@ namespace suiveStagaireProject.Models
             dc.Sections.DeleteOnSubmit(section);
             dc.SubmitChanges();
         }
-        public List<ListeSections> viewSections()
+        public int nbrMonthStudy(string codeSection)
         {
+            DateTime databaseDate = (from s in dc.Sections where s.codeSection == codeSection select s.dateOuv).Single(); ;
 
-            var query = (
-                            from s in dc.Sections
-                            join cat in dc.CatalogeSections on s.idCat equals cat.idCataloge
-                            
-                            select new ListeSections(s.idSec, cat.codeSpe+" "+s.numSection.ToString(), cat.intituleSpe, s.sSec.ToString(), s.dateOuv.ToString(), s.dateFin.ToString() , s.modeGestionForm.ToString())
-                        
-                         ).ToList<ListeSections>();
+            int monthsDifference = ((DateTime.Now.Year - databaseDate.Year) * 12) + DateTime.Now.Month - databaseDate.Month;
 
-            return query;
+            return monthsDifference;
         }
-        public detailsSection detailsSections(int id)
-        {
-
-            var query = (
-                            from s in dc.Sections
-                            join cat in dc.CatalogeSections
-                            on s.idCat equals cat.idCataloge
-                            where s.idSec==id
-                            select new detailsSection(cat.codeSpe,s.numSection.ToString(),cat.intituleSpe,s.modeOrgaForm,s.modeGestionForm.ToString(),s.dateOuv.ToString(),s.dateFin.ToString(),cat.niveauFormation.ToString(),s.tuteurSection,0,0,0,0)
-
-                         ).Single();
-
-            return query;
-        }
-        public int nbrStagSection(int id)
+        public int nbrStagSection(string code)
         {
 
             var count = dc.Stagiaires
                 .Join(
                     dc.Sections,
                     a => a.idSection,
-                    b => b.idSec,
+                    b => b.codeSection,
                     (a, b) => new { TableA = a, TableB = b }
                 )
                
-                .Where(joined => joined.TableA.idSection == id)
+                .Where(joined => joined.TableA.idSection == code)
                 .Count();
 
             return count;
 
         }
-        public int nbrGirlsSection(int id)
+        public int nbrGirlsSection(string code)
         {
 
             var count = dc.Stagiaires
@@ -137,16 +98,16 @@ namespace suiveStagaireProject.Models
                 .Join(
                     dc.Sections,
                     ab => ab.TableA.idSection,  
-                    c => c.idSec,           
+                    c => c.codeSection,           
                     (ab, c) => new { ab.TableA, ab.TableB, TableC = c }
                 )
-                .Where(joined => joined.TableB.sexe == "Femme" &&  joined.TableA.idSection == id) 
+                .Where(joined => joined.TableB.sexe == "Femme" &&  joined.TableA.idSection == code) 
                 .Count();
 
             return count;
 
         }
-        public int nbrHandicapeSection(int id)
+        public int nbrHandicapeSection(string code)
         {
 
             var count = dc.Stagiaires
@@ -159,16 +120,16 @@ namespace suiveStagaireProject.Models
                 .Join(
                     dc.Sections,
                     ab => ab.TableA.idSection,
-                    c => c.idSec,
+                    c => c.codeSection,
                     (ab, c) => new { ab.TableA, ab.TableB, TableC = c }
                 )
-                .Where(joined => joined.TableB.sitMedical == 0 && joined.TableA.idSection == id)
+                .Where(joined => joined.TableB.sitMedical == 0 && joined.TableA.idSection == code)
                 .Count();
 
             return count;
 
         }
-        public int nbrEtrangerSection(int id)
+        public int nbrEtrangerSection(string code)
         {
 
             var count = dc.Stagiaires
@@ -181,26 +142,33 @@ namespace suiveStagaireProject.Models
                 .Join(
                     dc.Sections,
                     ab => ab.TableA.idSection,
-                    c => c.idSec,
+                    c => c.codeSection,
                     (ab, c) => new { ab.TableA, ab.TableB, TableC = c }
                 )
-                .Where(joined => (joined.TableB.nat != "Algerian" ) && joined.TableA.idSection == id)
+                .Where(joined => (joined.TableB.nat != "Algerian" ) && joined.TableA.idSection == code)
                 .Count();
 
             return count;
 
         }
-        public int getLastId()
-        {
-            return dc.Sections.OrderByDescending(item => item.idSec).Select(item => item.idSec).FirstOrDefault();
-        }
-
-        public int countSecById(int id)
+        public int countSecById(string code)
         {
             int rowCount = dc.Sections
-                           .Where(item => item.idSec == idSec)
+                           .Where(item => item.codeSection == code)
                            .Count();
             return rowCount;
+        }
+        public int getAcutualSem(string codeSection)
+        {
+            DateTime startDate = (from s in dc.Sections where s.codeSection == codeSection select s.dateOuv).Single();
+            DateTime DateNow  = DateTime.Now;
+
+
+            return ((DateNow.Year - startDate.Year) * 12) + DateNow.Month - startDate.Month;
+        }
+        public int getNbrOfItem()
+        {
+            return dc.Sections.Count();
         }
     }
 }

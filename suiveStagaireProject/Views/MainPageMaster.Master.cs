@@ -1,4 +1,5 @@
-﻿using System;
+﻿using suiveStagaireProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,20 @@ namespace suiveStagaireProject
             {
                 Response.Redirect("Login_Register.aspx");
             }
+
+            User user = new User();
+            Enseignant enseignant = new Enseignant();
+            if (Session["groupId"].Equals("4")) 
+            {
+                userWelcome.Text = "<p>Bienvenue " + enseignant.getEnseignatByUserId(int.Parse(Session["id"].ToString())).PersonnelInfo.nom + enseignant.getEnseignatByUserId(int.Parse(Session["id"].ToString())).PersonnelInfo.prenom + "</p> ";
+
+            }
+            else
+            {
+                userWelcome.Text = "<p>Bienvenue " + user.getUser(int.Parse(Session["id"].ToString())).username + "</p> ";
+
+            }
+            
 
             lblYear.Text = DateTime.Now.Year.ToString()+" - "+ (int.Parse(DateTime.Now.Year.ToString())+1);
            
@@ -68,10 +83,7 @@ namespace suiveStagaireProject
            
         }
 
-        protected void btnCRUDcat_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=addCat");
-        }
+     
 
         protected void btnCRUDsec_Click(object sender, EventArgs e)
         {
@@ -96,10 +108,7 @@ namespace suiveStagaireProject
 
         }
 
-        protected void btnListcat_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("GestionSection.aspx?id=" + Session["id"] + "&do=AllCat");
-        }
+        
 
         protected void btnListModules_Click(object sender, EventArgs e)
         {
@@ -125,7 +134,80 @@ namespace suiveStagaireProject
 
         protected void btnSaisieNote_Click(object sender, EventArgs e)
         {
-            Response.Redirect("GestionNotes.aspx?id=" + Session["id"] + "&do=chooseSec");
+            Response.Redirect("GestionNotes.aspx?id=" + Session["id"] + "&do=chooseSec&opt=saisirS");
+
+        }
+
+        protected void btnAjouterFormation_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionFormation.aspx?id=" + Session["id"] + "&do=addCat");
+        }
+
+        protected void btnListeFormation_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionFormation.aspx?id=" + Session["id"] + "&do=AllCat");
+
+        }
+
+        protected void btnAjouetrExm_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionSeances.aspx?id=" + Session["id"] + "&do=AllSeances");
+
+        }
+
+        protected void btnListeExm_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionExamens.aspx?" + Session["id"]+ "&do=AllExamens");
+        }
+
+        protected void btnAjouterSeance_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionSeances.aspx?id=" + Session["id"] + "&do=add-edit&opt=add");
+        }
+
+        protected void btnListeSeances_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionSeances.aspx?id=" + Session["id"] + "&do=AllSeances");
+        }
+
+        protected void btnAjouterBr_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionBranches.aspx?id=" + Session["id"] + "&do=add-edit&opt=add");
+
+        }
+
+        protected void btnListesBr_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionBranches.aspx?id=" + Session["id"] + "&do=AllBranches");
+
+        }
+
+        protected void btnCrudEmp_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionEmployeurs.aspx?id=" + Session["id"] + "&do=add-edit&opt=add");
+
+        }
+
+        protected void btnListeEmp_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionEmployeurs.aspx?id=" + Session["id"] + "&do=AllEmp");
+        }
+
+        protected void btnDeliNote_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionNotes.aspx?id=" + Session["id"] + "&do=chooseSec&opt=DelebS");
+
+        }
+
+        protected void btnSaisieNoteR_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionNotes.aspx?id=" + Session["id"] + "&do=chooseSec&opt=saisirR");
+
+        }
+
+        protected void btnDeliNoteR_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionNotes.aspx?id=" + Session["id"] + "&do=chooseSec&opt=DelebR");
 
         }
     }

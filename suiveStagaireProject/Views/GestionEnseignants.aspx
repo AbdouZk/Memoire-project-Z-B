@@ -166,7 +166,7 @@
 
 							%>
                           <h3 class=" d-block p-2 bg-info text-white"> Liste Des Enseignants</h3>
-
+		
 						<div class="row justify-content-end">
                             <div class="col-8 col-md-4"">
 							  <div class="">
@@ -180,6 +180,13 @@
 							
 
 						</div>
+				
+										  <!-- Ajouter -->  
+                        <div class="text-end mb-3 mt-3">
+                         <a  class="btn btn-primary " href="GestionEnseignants.aspx?id=<%=Session["id"]%>&do=add-edit&opt=add">Ajouter <i class="fa fa-plus fa-lg"></i></a>
+                        </div>  
+
+
                      <table class="table">
                           <thead class="table-dark">
                             <tr>
@@ -203,8 +210,7 @@
                                   
                               
                                   <td>
-                                      <!-- Ajouter -->
-          								  <a class="btn btn-primary" href="GestionEnseignants.aspx?id=<%=Session["id"]%>&idEns=<%=e.IdEns%>&do=add-edit&opt=add">Ajouter</a>
+                        
                                       <!-- Editer -->
                                       <a class="btn btn-warning" href="GestionEnseignants.aspx?id=<%=Session["id"]%>&idEns=<%=e.IdEns%>&do=add-edit&opt=edit">Edit</a>
                                       <!-- Supprimer -->  

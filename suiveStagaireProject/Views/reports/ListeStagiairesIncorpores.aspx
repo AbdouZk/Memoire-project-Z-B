@@ -25,9 +25,8 @@
     
     <%
         suiveStagaireProject.Models.Stagiaire stagiaire= new suiveStagaireProject.Models.Stagiaire();
-        List <suiveStagaireProject.Models.Metier.detailsStagiaire> Listestag= new List<suiveStagaireProject.Models.Metier.detailsStagiaire>();
 
-        Listestag=stagiaire.listeStagiairesSection(int.Parse(Request.QueryString["idSec"]));
+       
         
         %>
 
@@ -37,8 +36,8 @@
 
                                 <h3 class="col-12  text-center mt-3 mb-4 fw-bold">Liste des stagiaires incorpores </h3> 
     
-    <div class="">
-                <table class="">
+    <div style="margin:5px">
+                <table >
                     <tr >
                         <td style="width: 10%;">N° Inscription</td>
                         <td style="width: 16%;">Nom et Prenom</td>
@@ -49,18 +48,18 @@
                         <td style="width: 10%;">Observation</td>
                     </tr>
 
-                    <% foreach(var dStg in Listestag){
+                    <% foreach(var dStg in stagiaire.getStagiairesBySec(Request.QueryString["idSec"])){
 
                             %>
 
                         <tr>
-                            <td><%=dStg.NumInsc %></td>
-                            <td><%=dStg.Nom+" "+dStg.Prenom %></td>
-                            <td><%=dStg.DateNai.ToShortDateString()+" "+dStg.LieuNai %></td>
-                            <td><%=dStg.PrenomPere %></td>
-                            <td><%=dStg.Nom+" "+dStg.PrenomPere %></td>
-                            <td><%=dStg.Adresse %></td>
-                            <td>Admis</td>
+                            <td><%=dStg.numInsc %></td>
+                            <td><%=dStg.PersonnelInfo.nom+" "+dStg.PersonnelInfo.prenom %></td>
+                            <td><%=dStg.PersonnelInfo.dateNai.Value.ToShortDateString()+" "+dStg.PersonnelInfo.lieuNai %></td>
+                            <td><%=dStg.DetailsStagiaire.prenomPere %></td>
+                            <td><%=dStg.DetailsStagiaire.nomMere+" "+dStg.DetailsStagiaire.prenomMere %></td>
+                            <td><%=dStg.PersonnelInfo.adresse %></td>
+                            <td><%=dStg.statusStg %></td>
                         </tr>
 
                     <%

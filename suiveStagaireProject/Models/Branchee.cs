@@ -10,6 +10,11 @@ namespace suiveStagaireProject.Models
     {
         private myLinqToSqlDataContext dc = new myLinqToSqlDataContext();
 
+        public Branchee(string libileBrache, string libileBracheAr)
+        {
+            this.libileBrache = libileBrache;
+            LibileBracheAr = libileBracheAr;
+        }
 
         public List<Branchee> getListeBranchees()
         {
@@ -19,7 +24,13 @@ namespace suiveStagaireProject.Models
 
             return listeBrachee;
         }
+        public Branchee getListeBranchee(int id)
+        {
+            
+            return (from b in dc.Branchees where b.idBrache==id select b).Single();
 
+           
+        }
         public string getBracheName(int id)
         {
             Branchee branche = new Branchee();
@@ -29,6 +40,26 @@ namespace suiveStagaireProject.Models
             return branche.libileBrache;
         }
 
-        
+        public void addBranche(Branchee b)
+        {
+            dc.ExecuteCommand("INSERT INTO Branchees (libileBrache,LibileBracheAr) VALUES({0},{1})", b.libileBrache,b.LibileBracheAr);
+            dc.SubmitChanges();
+        }
+
+        public void editBranche(Branchee branchee,int idB)
+        {
+            var query = from b in dc.Branchees where b.idBrache == idB select b;
+            foreach(var b in query)
+            {
+                b.libileBrache = branchee.libileBrache;
+                b.LibileBracheAr = branchee.LibileBracheAr;
+            }
+        }
+
+        public void deleteBranche(Branchee b)
+        {
+            dc.Branchees.DeleteOnSubmit(b);
+            dc.SubmitChanges();
+        }
     }
 }

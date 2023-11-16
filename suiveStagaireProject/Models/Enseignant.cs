@@ -36,13 +36,10 @@ namespace suiveStagaireProject.Models
         {
             return (from e in dc.Enseignants where e.idEnseiginant==id select e).Single();
         }
-
         public Enseignant getEnseignatByUserId(int id)
         {
             return (from e in dc.Enseignants where e.userId == id select e).Single();
         }
-
-
         public object getEnseignantsNames()
         {
 
@@ -56,13 +53,11 @@ namespace suiveStagaireProject.Models
                         
                    };
         }
-
         public void addEnseignant(Enseignant ens)
         {
-            dc.ExecuteCommand("INSERT INTO Enseignant (dateDebut,specialite,personnelInfosId) VALUES ({0},{1},{2})",ens.dateDebut,ens.specialite,ens.personnelInfosId);
+            dc.ExecuteCommand("INSERT INTO Enseignant (dateDebut,specialite,userId,personnelInfosId) VALUES ({0},{1},{2},{3})",ens.dateDebut,ens.specialite,ens.userId,ens.personnelInfosId);
             dc.SubmitChanges();
         }
-
         public void editEnseignant(Enseignant ens,int id)
         {
         
@@ -77,13 +72,11 @@ namespace suiveStagaireProject.Models
 
             dc.SubmitChanges();
         }
-
         public void deleteEnseignant(Enseignant ens)
         {
             dc.Enseignants.DeleteOnSubmit(ens);
             dc.SubmitChanges();
         }
-
         public List<ListeEnseignant> getListeEnseignants()
         {
             return (from e in dc.Enseignants
@@ -92,7 +85,6 @@ namespace suiveStagaireProject.Models
                     ).ToList<ListeEnseignant>();
                     
         }
-
         public List<ListeEnseignant> getListeEnseignantsSearch(string name)
         {
             return (from e in dc.Enseignants
@@ -102,7 +94,11 @@ namespace suiveStagaireProject.Models
                     ).ToList<ListeEnseignant>();
 
         }
-
+        public List<Object> getSectionByEns(int id)
+        {
+            var ListSec = (from s in dc.Seances where s.idEns == id select s).GroupBy(item => item.idSec).Select(item=> item.First());
+            return (from s in ListSec  select new { CodeSec = s.Section.codeSection }).ToList<Object>();
+        }
         public detailsEnseignant getDetailsEnseignant(int id)
         {
 
@@ -111,6 +107,10 @@ namespace suiveStagaireProject.Models
                     where e.idEnseiginant==id
                     select new detailsEnseignant(e.idEnseiginant, e.specialite, e.dateDebut.Value, "", "", e.personnelInfosId.ToString(), de.nom, de.prenom,de.adresse,de.dateNai.Value,de.lieuNai,de.sexe,de.email,de.telephone)
                     ).Single();
+        }
+        public int getNbrOfItem()
+        {
+            return dc.Enseignants.Count();
         }
     }
 }

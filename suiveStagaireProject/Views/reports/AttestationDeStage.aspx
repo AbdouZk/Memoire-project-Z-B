@@ -6,9 +6,9 @@
 
     <%
         suiveStagaireProject.Models.Stagiaire stagiaire= new suiveStagaireProject.Models.Stagiaire();
-        suiveStagaireProject.Models.Metier.detailsStagiaire Dstag= new suiveStagaireProject.Models.Metier.detailsStagiaire();
+        suiveStagaireProject.Models.Stagiaire Dstag= new suiveStagaireProject.Models.Stagiaire();
 
-        Dstag=stagiaire.detailsStagiaires(int.Parse(Request.QueryString["idStg"]));
+        Dstag=stagiaire.getStagiaire(int.Parse(Request.QueryString["idStg"]));
         
         %>
 
@@ -24,29 +24,29 @@
                                    
 
 
-                                                                          <h3 class="col-12  text-center mt-4 mb-4 fw-bold">ATTESTATION DE STAGE</h3>
+                                                                          <h3 class="col-12  text-center mt-4 mb-4 fw-bold">CERTIFICAT DE SCOLARITE</h3>
                                 <p class="fs-5 mt-3">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Je soussigné, Directeur de l'établissement certifie que le stagiaire inscrit sous </p> 
-                                <p class="fs-5 mt-2" > le N°: <b><%=Dstag.NumInsc %></b></p>
+                                <p class="fs-5 mt-2" > le N°: <b><%=Dstag.numInsc %></b></p>
 
-                                <div class="col-6  mt-3">Prénom	 : <b><%=Dstag.Prenom %></b></div>
-                                <div class="col-6 mt-3">Nom     :<b> <%=Dstag.Nom %></b></div>
+                                <div class="col-6  mt-3">Prénom	 : <b><%=Dstag.PersonnelInfo.prenom %></b></div>
+                                <div class="col-6 mt-3">Nom     :<b> <%=Dstag.PersonnelInfo.nom %></b></div>
                                 
-                                <div class="col-12  mt-3">Date et lieu de naissance :	<b><%=Dstag.DateNai.ToShortDateString() %></b> </div>
-                                <div class="col-6  mt-3">À  :    <b>  <%=Dstag.LieuNai %>       </b>               </div>
+                                <div class="col-12  mt-3">Date et lieu de naissance :	<b><%=Dstag.PersonnelInfo.dateNai.Value.ToShortDateString() %></b> </div>
+                                <div class="col-6  mt-3">À  :    <b>  <%=Dstag.PersonnelInfo.lieuNai %>       </b>               </div>
 
 
-                                <div class="col-12  mt-3">Adresse :   <b> <%=Dstag.Adresse %>  </b>                </div>
+                                <div class="col-12  mt-3">Adresse :   <b> <%=Dstag.PersonnelInfo.adresse %>  </b>                </div>
             
-                                <div class="col-12  mt-3">Suit la formation dans la spécialité : <b><%=Dstag.LibForm %></b>	 </div>
+                                <div class="col-12  mt-3">Suit la formation dans la spécialité : <b><%=Dstag.Section.CatalogeSection.intituleSpe %></b>	 </div>
 
-                                <div class="col-6  mt-3">Niveau de qualification :<b> <% if(Dstag.NivForm=="4"){Response.Write("BT");}else{Response.Write("BTS");} %>  </b>    </div>
-                                <div class="col-6  mt-3">Gestion de formation    :<b> <% if(Dstag.ModeGes=="R"){Response.Write("Résidentielle");}else{Response.Write("Apprantisage");} %> </b>   </div>
+                                <div class="col-6  mt-3">Niveau de qualification :<b> <% if(Dstag.Section.CatalogeSection.niveauFormation==4){Response.Write("BT");}else{Response.Write("BTS");} %>  </b>    </div>
+                                <div class="col-6  mt-3">Gestion de formation    :<b> <% if(Dstag.Section.modeGestionForm=='R'){Response.Write("Résidentielle");}else{Response.Write("Apprantisage");} %> </b>   </div>
 
 
 
                                 <div class="col-12  mt-3 mb-3">Année de formation : <b> <%=DateTime.Now.Year +" - "+(int.Parse(DateTime.Now.Year.ToString())+1) %>   </b>   </div>
 
-                                <div class="col-6  mt-3 mb-5">Du : <b> <%=Dstag.DateOuv.ToShortDateString() %>  </b>      </div> <div class="col-6  mt-3">Au :  <b> <%=Dstag.DateFin.ToShortDateString() %> </b>     </div>
+                                <div class="col-6  mt-3 mb-5">Du : <b> <%=Dstag.Section.dateOuv.ToShortDateString() %>  </b>      </div> <div class="col-6  mt-3">Au :  <b> <%=Dstag.Section.dateFin.ToShortDateString() %> </b>     </div>
                                
 
                 
@@ -77,5 +77,4 @@
 
 
 
-                                
-            </asp:Content>
+</asp:Content>

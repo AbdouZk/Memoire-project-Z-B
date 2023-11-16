@@ -11,7 +11,6 @@ namespace suiveStagaireProject.Views
     public partial class WebForm4 : System.Web.UI.Page
     {
         Module module = new Module();
-        Examen examen = new Examen();
         Enseignant enseignant = new Enseignant();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -52,25 +51,7 @@ namespace suiveStagaireProject.Views
                         }
                     }
 
-                    if (Request.QueryString["do"].Equals("affectation"))
-                    {
-                        if (dropDownEnseignants.Items.Count==0)
-                        {
-                            dropDownEnseignants.DataSource = enseignant.getEnseignantsNames();
-                            dropDownEnseignants.DataTextField = "nameEns";
-                            dropDownEnseignants.DataValueField = "idEns";
-                            dropDownEnseignants.DataBind();
-
-                            dropDownModules.DataSource = module.getModules();
-                            dropDownModules.DataValueField = "idModule";
-                            dropDownModules.DataTextField = "libelle";
-                            dropDownModules.DataBind();
-
-                        }
-
-
-
-                    }
+                   
 
 
                     if (Request.QueryString["do"].Equals("delete") && Request.QueryString["idModule"] != null)
@@ -105,29 +86,22 @@ namespace suiveStagaireProject.Views
             {
                 string libMod = libModule.Value;
                 int idmod = module.getLastModuleId() + 1;
+
+
+                module.addModule(new Module(idmod, libMod));
+
                
-              
-                  
+                msgModule.Text = "Bien Ajouter";
+                libModule.Value = "";
+                msgModule.Visible = true;
 
-                    module.addModule(new Module(idmod, libMod));
 
-                    examen.addExamen(new Examen("E1", (int)idmod));
-                    examen.addExamen(new Examen("E2", (int)idmod));
-                    examen.addExamen(new Examen("S", (int)idmod));
-                    examen.addExamen(new Examen("Ratt", (int)idmod));
 
-                    msgModule.Text = "Bien Ajouter";
-                    libModule.Value = "";
-                    msgModule.Visible = true;
-                
-            
-                
 
-                
             }
             catch (Exception ex)
             {
-                msgModule.Text = "Echèc d'jouter";
+                msgModule.Text = "Echèc d'ajouter";
                 msgModule.Visible = true;
             }
         }
@@ -136,30 +110,18 @@ namespace suiveStagaireProject.Views
         {
             try
             {
-                int idmod =int.Parse(Request.QueryString["idModule"]);
+                int idmod = int.Parse(Request.QueryString["idModule"]);
 
-                // delete All Exemen's Module
-                examen.DeleteExamen(idmod);
-                examen.DeleteExamen(idmod);
-                examen.DeleteExamen(idmod);
-                examen.DeleteExamen(idmod);
-
-                // delete item from table between Module and Enseignant
-                Ens_Mod em = new Ens_Mod();
-                em.deleteEM(idmod);
-
-                // delete item from table between Module and Section and Semestre
-
-
+              
                 // delete Module 
                 module.deleteModule(module.getModule(idmod));
 
-                Response.Redirect("GestionModules.aspx?id="+Session["id"]+"&do=AllModules");
+                Response.Redirect("GestionModules.aspx?id=" + Session["id"] + "&do=AllModules");
 
             }
             catch (Exception ex)
             {
-                
+                msgModule.Text = "On peut pas supprimer cet Module, Il apartient à des sections ";
             }
         }
 
@@ -185,26 +147,6 @@ namespace suiveStagaireProject.Views
 
         }
 
-        protected void btnAffecterModule_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int idEns =int.Parse( dropDownEnseignants.SelectedValue);
-                int idmod = int.Parse(dropDownModules.SelectedValue);
-                Ens_Mod em = new Ens_Mod();
-                em.AddEns_Mod(new Ens_Mod(idEns, idmod));
-               
-                msgModule.Text = "Bien Affecté";
-                msgModule.Visible = true;
-
-
-            }
-            catch (Exception ex)
-            {
-                msgModule.Text = "Echèc D'Affectation";
-                msgModule.Visible = true;
-            }
-
-        }
+        
     }
 }

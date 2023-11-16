@@ -42,33 +42,6 @@ namespace suiveStagaireProject.Views
         protected global::System.Web.UI.WebControls.Button btnSaveModule;
 
         /// <summary>
-        /// dropDownModules control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropDownModules;
-
-        /// <summary>
-        /// dropDownEnseignants control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropDownEnseignants;
-
-        /// <summary>
-        /// btnAffecterModule control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAffecterModule;
-
-        /// <summary>
         /// ModToDrop control.
         /// </summary>
         /// <remarks>

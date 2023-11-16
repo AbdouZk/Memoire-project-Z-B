@@ -45,45 +45,32 @@
 						
 	
 						<div class="">
-							<div class="tab-pane fade show active " id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+							<div >
 	
-								<h2>Log in</h2>
+								<h2 class="text-center mb-5 p-3">Log in <i class="fas fa-sign-in-alt"></i></h2>
 		
 
 								<!-- user input -->
 
 							  <div class=" mb-4" >
-								<asp:TextBox ID="usernameLog" runat="server" CssClass="form-control" ></asp:TextBox>
-								<label class="form-label" for="username">
-								  Username</label>
+								  <label class="form-label" for="username">Nom d'utilisateur</label>
+								<input id="usernameLogin" runat="server" class="form-control" maxlength="50" required="required" />
+								
+								  
 							  </div>
 
 							  <!-- Password input -->
 							  <div class=" mb-4">
-								<asp:TextBox ID="passwordLog" runat="server" CssClass="form-control" TextMode="Password" ></asp:TextBox>
-								<label class="form-label" for="password">Password</label>
+								  <label class="form-label" for="password">Mot de passe</label>
+								<input id="passwordLogin" runat="server" class="form-control" type="password" maxlength="10" required="required"/>
+								
 							  </div>
 
-							  <!-- 2 column grid layout for inline styling -->
-							  <div class="row mb-4">
-									<div class="col d-flex justify-content-center">
-									  <!-- Checkbox -->
-									  <div class="form-check">
-										<asp:CheckBox CssClass="form-check-input" ID="CheckRemember" Checked="true" runat="server" />
-										<label class="form-check-label" for="form1Example3"> Remember me </label>
-									  </div>
-									</div>
-
-									<div class="col">
-								  <!-- forgot password link -->
-								  <a href="#">Forgot password?</a>
-								</div>
-			  	
-							  </div>
-
+							 
+								<div class="text-center">
 							  <!-- Submit button -->
-							  <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary btn-block" Text="Login" OnClick="Button1_Click" />
-
+							  <asp:Button ID="Button1" Width="250" runat="server" CssClass="btn btn-primary " Text="Login" OnClick="Button1_Click" />
+								</div>
 							   <br /> <br />
 									<div class="">
 			  
@@ -98,12 +85,8 @@
 						</div>
 						<br />
 						<br />
-						<div>
-						<asp:Label ID="errors" runat="server" CssClass="alert alert-danger" Visible="false" />
-						<asp:Label ID="successEg" runat="server" CssClass="alert alert-success" Visible="false" />
-
-						</div>
-				<!-- Pills content -->
+						
+			
 				</div>	
 
 			</div>
@@ -119,6 +102,15 @@
 		<p>&copy All Right Reserved <asp:Label ID="lblYear" runat="server" Text=""></asp:Label></p>
         </center>
     </footer>
+
+    <script>
+        history.pushState(null, null, document.URL);
+
+        // Add a popstate event listener to prevent manual back navigation
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+    </script>
 
 	 <!-- bootstrap js file  -->
     <script src="../Layout/js/bootstrap.js"></script>

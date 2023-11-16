@@ -101,7 +101,16 @@
     <Content Include="Views\reports\AttestationDeStage.aspx" />
     <Content Include="Views\reports\ProcesVerbalSection.aspx" />
     <Content Include="Views\reports\ListeStagiairesIncorpores.aspx" />
+    <Content Include="Views\reports\AttestationDeStageAr.aspx" />
+    <Content Include="Views\reports\DelebirationSenthese.aspx" />
+    <Content Include="Views\reports\ReleveNotes.aspx" />
+    <Content Include="Views\reports\NoteIpression.aspx" />
     <Content Include="Views\Statistiques.aspx" />
+    <Content Include="Views\GestionBranches.aspx" />
+    <Content Include="Views\GestionFormation.aspx" />
+    <Content Include="Views\GestionEmployeurs.aspx" />
+    <Content Include="Views\GestionSeances.aspx" />
+    <Content Include="Views\GestionExamens.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -109,30 +118,25 @@
     <Compile Include="Models\CatalogeSection.cs" />
     <Compile Include="Models\DetailsStagiaire.cs" />
     <Compile Include="Models\Donnees\Coordonnees.cs" />
+    <Compile Include="Models\Employeur.cs" />
     <Compile Include="Models\Enseignant.cs" />
-    <Compile Include="Models\Ens_Mod.cs" />
-    <Compile Include="Models\Ens_Sec.cs" />
-    <Compile Include="Models\Examen.cs" />
+    <Compile Include="Models\Exam.cs" />
     <Compile Include="Models\Metier\detailsEnseignant.cs" />
-    <Compile Include="Models\Metier\detailsEnsSecSem.cs" />
-    <Compile Include="Models\Metier\detailsModSecSem.cs" />
-    <Compile Include="Models\Metier\detailsSection.cs" />
-    <Compile Include="Models\Metier\detailsStagiaire.cs" />
     <Compile Include="Models\Metier\ListeEnseignant.cs" />
     <Compile Include="Models\Metier\ListeSections.cs" />
     <Compile Include="Models\Metier\ListeStagiaires.cs" />
-    <Compile Include="Models\Metier\ListeStagiairesNotes.cs" />
     <Compile Include="Models\Module.cs" />
     <Compile Include="Models\myLinqToSql.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>myLinqToSql.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Note.cs" />
     <Compile Include="Models\PersonnelInfo.cs" />
+    <Compile Include="Models\Seance.cs" />
     <Compile Include="Models\Section.cs" />
-    <Compile Include="Models\Sec_Mod_Sem.cs" />
+    <Compile Include="Models\Semestre.cs" />
     <Compile Include="Models\Stagiaire.cs" />
-    <Compile Include="Models\Stg_Exm.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Views\404-page.aspx.cs">
       <DependentUpon>404-page.aspx</DependentUpon>
@@ -233,12 +237,75 @@
     <Compile Include="Views\reports\ListeStagiairesIncorpores.aspx.designer.cs">
       <DependentUpon>ListeStagiairesIncorpores.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\reports\AttestationDeStageAr.aspx.cs">
+      <DependentUpon>AttestationDeStageAr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\reports\AttestationDeStageAr.aspx.designer.cs">
+      <DependentUpon>AttestationDeStageAr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\reports\DelebirationSenthese.aspx.cs">
+      <DependentUpon>DelebirationSenthese.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\reports\DelebirationSenthese.aspx.designer.cs">
+      <DependentUpon>DelebirationSenthese.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\reports\ReleveNotes.aspx.cs">
+      <DependentUpon>ReleveNotes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\reports\ReleveNotes.aspx.designer.cs">
+      <DependentUpon>ReleveNotes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\reports\NoteIpression.aspx.cs">
+      <DependentUpon>NoteIpression.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\reports\NoteIpression.aspx.designer.cs">
+      <DependentUpon>NoteIpression.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Statistiques.aspx.cs">
       <DependentUpon>Statistiques.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Statistiques.aspx.designer.cs">
       <DependentUpon>Statistiques.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GestionBranches.aspx.cs">
+      <DependentUpon>GestionBranches.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GestionBranches.aspx.designer.cs">
+      <DependentUpon>GestionBranches.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GestionFormation.aspx.cs">
+      <DependentUpon>GestionFormation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GestionFormation.aspx.designer.cs">
+      <DependentUpon>GestionFormation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GestionEmployeurs.aspx.cs">
+      <DependentUpon>GestionEmployeurs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GestionEmployeurs.aspx.designer.cs">
+      <DependentUpon>GestionEmployeurs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GestionSeances.aspx.cs">
+      <DependentUpon>GestionSeances.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GestionSeances.aspx.designer.cs">
+      <DependentUpon>GestionSeances.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GestionExamens.aspx.cs">
+      <DependentUpon>GestionExamens.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GestionExamens.aspx.designer.cs">
+      <DependentUpon>GestionExamens.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

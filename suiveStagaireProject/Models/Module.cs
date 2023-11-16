@@ -36,6 +36,17 @@ namespace suiveStagaireProject.Models
         {
             return (from m in dc.Modules where m.idModule == id select m).Single();
         }
+        public List<Object> getModuleBySection(string code)
+        {
+            List<Seance> listeSeances= (from s in dc.Seances
+                                        join m in dc.Modules on s.idMod equals m.idModule
+                                        where s.idSec == code
+                                        select s).GroupBy(item => item.idMod).Select(grp => grp.First()).ToList<Seance>();
+
+
+            return (from obj in listeSeances select new {idMod=obj.idMod, libMod=obj.Module.libelle }).ToList<Object>();
+        }
+
         public Module getModule(string name)
         {
             return (from m in dc.Modules where m.libelle==name select m).Single();
@@ -55,17 +66,11 @@ namespace suiveStagaireProject.Models
         {
             return dc.Modules.OrderByDescending(item => item.idModule).Select(item => item.idModule).FirstOrDefault();
         }
-        public List<Object> getModulesNames()
+
+        public int getNbrOfItem()
         {
-            return (from m in dc.Modules
-                    select new {
-                        idMod=m.idModule,
-                        libMod=m.libelle
-            
-            }).ToList<Object>();
-
+            return dc.Modules.Count();
         }
-
 
     }
 }

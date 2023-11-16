@@ -5,15 +5,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <%
-      suiveStagaireProject.Models.Section section= new suiveStagaireProject.Models.Section();
-        suiveStagaireProject.Models.Metier.detailsSection DSec= new suiveStagaireProject.Models.Metier.detailsSection();
-
-        DSec=section.detailsSections(int.Parse(Request.QueryString["idSec"]));
-        DSec.NbrFilles=section.nbrGirlsSection(int.Parse(Request.QueryString["idSec"]));
-        DSec.Nbrhandicape=section.nbrHandicapeSection(int.Parse(Request.QueryString["idSec"]));
-        DSec.Nbretrangere=section.nbrEtrangerSection(int.Parse(Request.QueryString["idSec"]));
-        DSec.NbrStag=section.nbrStagSection(int.Parse(Request.QueryString["idSec"]));
+        suiveStagaireProject.Models.Section section= new suiveStagaireProject.Models.Section();
+        suiveStagaireProject.Models.Section sec= new suiveStagaireProject.Models.Section();
         
+
+        string codeSec = Request.QueryString["idSec"];
+        sec=section.getSection(codeSec);
+        
+
         %>
     
     <div style="margin-top:0px" class="container">
@@ -28,29 +27,28 @@
                                    
 
 
-                                                                          <h3 class="col-12  text-center mt-5 mb-5 fw-bold e"><B class="text-uppercas">Proces Verbal d'ouverture de la section </B> (<% if(DSec.ModeGes=="R"){Response.Write("Résidentielle");}else{Response.Write("Apprantisage");} %>)</h3>
+                                                                          <h3 class="col-12  text-center mt-5 mb-5 fw-bold e"><B class="text-uppercas">Proces Verbal d'ouverture de la section </B> (<% if(sec.modeGestionForm=='R'){Response.Write("Résidentielle");}else{Response.Write("Apprantisage");} %>)</h3>
                                 
 
-                                <div class="col-6  mt-3">Numéro	 : <b><%=DSec.NumSec %></b></div>
+                                <div class="col-6  mt-3">Numéro	 : <b><%=sec.getSection(codeSec).codeSection.ElementAt(section.getSection(codeSec).codeSection.Length-1).ToString()  %></b></div>
                                 <div class="col-6 mt-3">Date     :<b><%=DateTime.Now.ToShortDateString() %> </b></div>
                                 
 
-                               <div class="col-12  mt-3 mb-3">Spécialité :   <b> <%=DSec.LibFor %></b>                </div>
+                               <div class="col-12  mt-3 mb-3">Spécialité :   <b> <%=sec.CatalogeSection.Branchee.libileBrache %></b>                </div>
+                 
 
-                                <div class="col-12  mt-3 mb-3">Mode d'organisation de la formation :   <b><%=DSec.ModeOrg %> </b>                </div>
+                                <div class="col-12  mt-3 mb-3">Mode de gestion de la formation :   <b> <% if(sec.modeGestionForm=='R'){Response.Write("Résidentielle");}else{Response.Write("Apprantisage");} %> </b>                </div>
 
-                                <div class="col-12  mt-3 mb-3">Mode de gestion de la formation :   <b> <% if(DSec.ModeGes=="R"){Response.Write("Résidentielle");}else{Response.Write("Apprantisage");} %> </b>                </div>
+                                <div class="col-6  mt-3 mb-3">Code de la section :	<b><%=sec.codeSection %></b> </div>
+                                <div class="col-6  mt-3 mb-3">Niveau de qualification :<b>  <% if(sec.CatalogeSection.niveauFormation=='4'){Response.Write("BT");}else{Response.Write("BTS");} %> </b>    </div>
 
-                                <div class="col-6  mt-3 mb-3">Code de la section :	<b><%=DSec.CodeSec %></b> </div>
-                                <div class="col-6  mt-3 mb-3">Niveau de qualification :<b>  <% if(DSec.NivSec=="4"){Response.Write("BT");}else{Response.Write("BTS");} %> </b>    </div>
-
-                                <div class="col-6  mt-3 mb-3">Début de formation : <b><%=DSec.DebSec %>   </b>      </div>
-                                <div class="col-6  mt-3 mb-3">Fin de formation :  <b><%=DSec.FinSec %> </b>     </div>
+                                <div class="col-6  mt-3 mb-3">Début de formation : <b><%=sec.dateOuv.ToShortDateString() %>   </b>      </div>
+                                <div class="col-6  mt-3 mb-3">Fin de formation :  <b><%=sec.dateFin.ToShortDateString() %> </b>     </div>
                                 
             
-                                <div class="col-12  mt-3">Nombre de stagiaires : <b><%=DSec.NbrStag +"  , Dont filles :"+DSec.NbrFilles+" , Dont handicapés : "+DSec.Nbrhandicape+" , Dont étrangers : "+DSec.Nbretrangere %></b>	 </div>
+                                <div class="col-12  mt-3">Nombre de stagiaires : <b><%=section.nbrStagSection(codeSec) +"  , Dont filles :"+section.nbrGirlsSection(codeSec)+" , Dont handicapés : "+section.nbrHandicapeSection(codeSec)+" , Dont étrangers : "+section.nbrEtrangerSection(codeSec) %></b>	 </div>
 
-                                <div class="col-12  mt-3 mb-5">Tuteur de la section :<b> <%=DSec.TurtSec %> </b>    </div>
+                                <div class="col-12  mt-3 mb-5">Tuteur de la section :<b> <%=sec.tuteurSection %> </b>    </div>
                                 
                                
                                
@@ -73,4 +71,6 @@
         </div>
 
 </div>
+
+
 </asp:Content>

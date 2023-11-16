@@ -16,10 +16,28 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+    z-index:1;
     height: 2.5rem;
     background-color: darkslategrey;
     color: ghostwhite;
+
 }
+
+/*start button up */
+
+.btn-up {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    background-color: transparent;
+    border: none;
+    color: var(--main-color);
+
+}
+
+
+/*end button up*/
 
 /* No print */
 @page {
@@ -38,21 +56,60 @@ footer {
     .page-break-after {
         page-break-after: always;
     }
+    .grey-background {
+        background-color: lightgray;
+    }
+
+    -webkit-print-color-adjust: exact;
 }
 /* Hide header and footer */
-
+.grey-background {
+    background-color: lightgray;
+}
 
 
 /* Nav bar */
 
 .divPlus{
-    margin-right:100px
+    margin-right:100px;
+
 
 }
-nav li b{
+.navbar {
+    z-index: 2;
+}
+li b{
     color:red
 }
 
+.sidebar {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    height: 95%;
+    opacity: .2;
+    transition: opacity 0.7s;
+    border-radius: 50px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 0.1em;
+
+}
+    .sidebar::-webkit-scrollbar {
+        width: 0.1em;
+    }
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+.sidebar:hover{
+   
+    opacity:1
+}
 /* LogIn & Register page */
 .Log_Reg_Page {
     background-color: azure;
@@ -81,13 +138,59 @@ nav li b{
 }
 
 
+/* Home page */
 
-/* Gestion Stagiaire page */
+.image-About img{
+  
+    border-radius:30px;
+}
 
+.formation .card {
+    height: 650px;
+    text-wrap: balance;
+    box-shadow: black -5px 5px 8px -5px;
+}
+    .card:hover {
+        box-shadow: #000000 -7px 5px 8px -5px;
+    }
+
+.stats-total {
+    height: 650px;
+   
+}
+.stats-item {
+    height: 280px;
+    width:32%;
+    padding:30px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    align-content: center;
+    text-align:center;
+    border-radius:25px;
+    opacity:.9;
+    color:white;
+    background-color:cadetblue;
+    box-shadow: black -5px 5px 8px -5px;
+}
+    .stats-item:hover {
+        opacity:1;
+        box-shadow: #000000 -7px 5px 8px -5px;
+    }
+    /* Gestion Stagiaire page */
 .addStagiaireBody {
     background-color: floralwhite;
-    padding: inherit;
+    padding: 10px;
     box-shadow: grey 0px 6px 8px 2px;
+    margin-bottom: 50px
+}
+
+/* Gestion Seance page */
+
+.AddExmModal {
+    display: block;
+    background: #000000a8;
 }
 
 .gradient-custom {

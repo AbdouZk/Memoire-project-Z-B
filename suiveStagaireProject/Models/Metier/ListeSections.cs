@@ -7,7 +7,6 @@ namespace suiveStagaireProject.Models.Metier
 {
     public class ListeSections
     {
-        private int idSec;
         private string codeSec;
         private string libSec;
         private string semestre;
@@ -20,9 +19,9 @@ namespace suiveStagaireProject.Models.Metier
            
         }
 
-        public ListeSections(int idSec, string codeSec, string libSec, string semestre, string debSec, string finSec, string modeGesSec)
+        public ListeSections( string codeSec, string libSec, string semestre, string debSec, string finSec, string modeGesSec)
         {
-            this.IdSec = idSec;
+            
             this.CodeSec = codeSec;
             this.LibSec = libSec;
             this.Semestre = semestre;
@@ -31,7 +30,6 @@ namespace suiveStagaireProject.Models.Metier
             this.ModeGesSec = modeGesSec;
         }
 
-        public int IdSec { get => idSec; set => idSec = value; }
         public string CodeSec { get => codeSec; set => codeSec = value; }
         public string LibSec { get => libSec; set => libSec = value; }
         public string Semestre { get => semestre; set => semestre = value; }

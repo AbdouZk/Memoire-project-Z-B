@@ -31,10 +31,171 @@
  
 
   <form id="form1" runat="server">
+
+       
+
+            <!-- Sidebar -->
+                <nav class="sidebar navbar navbar-dark bg-dark ">
+                     <div class="container-fluid">
+                          <button
+                              class="navbar-toggler mb-3"
+                              type="button"
+                              data-mdb-toggle="collapse"
+                              data-mdb-target="#navbarSupportedContent0"
+                              aria-controls="navbarToggleExternalContent"
+                              aria-expanded="false"
+                              aria-label="Toggle navigation"
+                            >
+                    <i class="fas fa-angle-double-right fa-lg"></i>                          </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent0">
+                       
+
+                        <ul class="navbar-nav flex-column">
+                          
+                            <li class="nav-item dropdown mb-2 mt-1">
+                              <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "4" || Session["groupId"].ToString() == "3") {%>visually-hidden<% } %>"  id="navbarDropdown00" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <b>G</b> Branches
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown00">
+                                <li> <asp:Button ID="btnAjouterBr" CssClass="dropdown-item" runat="server" Text="Ajouter" OnClick="btnAjouterBr_Click" />       </li>
+                                <li> <asp:Button ID="btnListesBr" CssClass="dropdown-item" runat="server" Text="Liste des Branches" OnClick="btnListesBr_Click" />      </li>
+            
+                              </ul>
+                            </li>
+
+                            <li class="nav-item dropdown mb-2 mt-1">
+                              <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "4" || Session["groupId"].ToString() == "3") {%>visually-hidden<% } %>"  id="navbarDropdown0" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <b>G</b> Formation
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown0">
+                                <li> <asp:Button ID="btnAjouterFormation" CssClass="dropdown-item" runat="server" Text="Ajouter" OnClick="btnAjouterFormation_Click" />       </li>
+                                <li> <asp:Button ID="btnListeFormation" CssClass="dropdown-item" runat="server" Text="Liste des Formation"  OnClick="btnListeFormation_Click"/>      </li>
+            
+                              </ul>
+                            </li>
+
+                            <li class="nav-item dropdown mb-2 mt-1">
+                              <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "4" || Session["groupId"].ToString() == "3") {%>visually-hidden<% } %>"  id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <b>G</b> Modules
+                              </a>
+                              <ul class="dropdown-menu " aria-labelledby="navbarDropdown3">
+                                 <li> <asp:Button ID="btnCRUDmodules" CssClass="dropdown-item" runat="server" Text="Ajouter" OnClick="btnCRUDmodules_Click"/>       </li>
+                                 <li> <asp:Button ID="btnListModules" CssClass="dropdown-item" runat="server" Text="Liste modules " OnClick="btnListModules_Click"/>       </li>
+    
+                              </ul>
+                            </li>
+
+                            <li class="nav-item dropdown mb-2 mt-1">
+                              <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "4" || Session["groupId"].ToString() == "3") {%>visually-hidden<% } %>"  id="navbarDropdown9" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <b>G</b> Enseignant
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown9">
+                                <li> <asp:Button ID="btnCrudens"    CssClass="dropdown-item"   runat="server" Text="Ajouter" OnClick="btnCrudens_Click" />       </li>
+                                <li> <asp:Button ID="btnListeEns"   CssClass="dropdown-item"   runat="server" Text="Listes Enseignants" OnClick="btnListeEns_Click"/>       </li>
+                                
+         
+                              </ul>
+                            </li>
+
+                            <li class="nav-item dropdown mb-2 mt-1">
+                              <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "4" || Session["groupId"].ToString() == "3") {%>visually-hidden<% } %>"  id="navbarDropdown10" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <b>G</b> Employeur
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown10">
+                                <li> <asp:Button ID="btnCrudEmp"    CssClass="dropdown-item"   runat="server" Text="Ajouter" OnClick="btnCrudEmp_Click" />       </li>
+                                <li> <asp:Button ID="btnListeEmp"   CssClass="dropdown-item"   runat="server" Text="Listes Employeurs" OnClick="btnListeEmp_Click"/>       </li>
+                                
+         
+                              </ul>
+                            </li>
+
+                             <li class="nav-item dropdown mb-2 mt-1">
+                              <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "4" || Session["groupId"].ToString() == "3") {%>visually-hidden<% } %>"  id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <b>G</b> Sections
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+
+                                <li> <asp:Button ID="btnCRUDsec" CssClass="dropdown-item" runat="server" Text="Ajouter" OnClick="btnCRUDsec_Click" />  </li>
+                                <li> <asp:Button ID="btnListSec" CssClass="dropdown-item" runat="server" Text="Liste des Sections"  OnClick="btnListSec_Click"/>  </li>
+                             
+            
+                             </ul>
+                            </li>
+
+                                 <li class="nav-item dropdown mb-2 mt-1">
+                              <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "4") {%>visually-hidden<% } %>"  id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <b>G</b> Stagiaires
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                                <li> <asp:Button ID="BtnCRUDsta" CssClass="dropdown-item" runat="server" Text="Ajouter" OnClick="BtnCRUDsta_Click"/>     </li>
+                                <li> <asp:Button ID="btnListeStagaires" CssClass="dropdown-item" runat="server" Text="Liste des Stagiaires" OnClick="btnListeStagaires_Click" />  </li>           
+         
+                              </ul>
+                            </li>
+
+                            <li class="nav-item dropdown mb-2 mt-1">
+                              <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "4" || Session["groupId"].ToString() == "3") {%>visually-hidden<% } %>"  id="navbarDropdown8" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <b>G</b> Seances
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown8">
+                                <li> <asp:Button ID="btnAjouterSeance"    CssClass="dropdown-item"   runat="server" Text="Ajouter" OnClick="btnAjouterSeance_Click" />       </li>
+                                <li> <asp:Button ID="btnListeSeances"   CssClass="dropdown-item"   runat="server" Text="Listes Seances" OnClick="btnListeSeances_Click"/>       </li>
+                               
+         
+                              </ul>
+                            </li>
+
+                            <li class="nav-item dropdown mb-2 mt-1">
+                              <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "4" || Session["groupId"].ToString() == "3") {%>visually-hidden<% } %>"  id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <b>G</b> Examens
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
+                                <li> <asp:Button ID="btnAjouetrExm"    CssClass="dropdown-item"   runat="server" Text="Ajouter" OnClick="btnAjouetrExm_Click" />       </li>
+                                <li> <asp:Button ID="btnListeExm"   CssClass="dropdown-item"   runat="server" Text="Listes Examens" OnClick="btnListeExm_Click"/>       </li>
+                               
+         
+                              </ul>
+                            </li>
+
+                             
+                                <li class="nav-item dropdown mb-2 mt-1">
+                                <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") ) {%>visually-hidden<% } %>"  id="navbarDropdown5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <b>G</b> Des Notes
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
+                                   <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "3" || Session["groupId"].ToString() == "2") { }else{ %><li> <asp:Button ID="btnSaisieNote"     CssClass="dropdown-item" runat="server" Text="Saisie Notes " OnClick="btnSaisieNote_Click"/>               </li>
+                                <li> <asp:Button ID="btnSaisieNoteR"    CssClass="dropdown-item" runat="server" Text="Saisie Notes (RATT) " OnClick="btnSaisieNoteR_Click" />       </li><%} %>
+                                <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "4") { }else{ %><li> <asp:Button ID="btnDeliNote"       CssClass="dropdown-item" runat="server" Text="Delibiration " OnClick="btnDeliNote_Click" />             </li>
+                                <li> <asp:Button ID="btnDeliNoteR"      CssClass="dropdown-item" runat="server" Text="Delibiration (RATT)" OnClick="btnDeliNoteR_Click"/>      </li><%} %>
+         
+                              </ul>
+                            </li>
+
+                               <li class="nav-item dropdown mb-2 mt-1">
+                              <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() != "1" ) {%>visually-hidden<% } %>"  id="navbarDropdown7" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <b>G</b> Des Comptes
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown7">
+                                <li> <asp:Button ID="btnCRUDcomptes" CssClass="dropdown-item" runat="server" Text="Ajouter/Editer/Supprimer" OnClick="btnCRUDcomptes_Click" />               </li>
+                                <li> <asp:Button ID="btnListeComp" CssClass="dropdown-item" runat="server" Text="Listes Des Comptes" OnClick="btnListeComp_Click" />             </li>
+            
+         
+                              </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                     </div>
+                </nav>
+           
+       
+
     
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="Homepage.aspx"><img src="../Layout/images/INSFP-LOGO-BLACK.jpg" width="35" height="35" style="margin:0 5px"/>INSFP</a>
+     <a class="navbar-brand" href="Homepage.aspx"><img src="../Layout/images/INSFP-LOGO-BLACK.jpg" width="35" height="35" style="margin:0 5px"/>INSFP</a>
+
     <button
       class="navbar-toggler"
       type="button"
@@ -44,112 +205,48 @@
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <i class="fas fa-bars"></i>
+                <i class="fas fa-angle-double-down fa-lg"></i>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="Homepage.aspx">Accueil</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "4" || Session["groupId"].ToString() == "3") {%>disabled<% } %>" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <b>G</b> Sections
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-            <li> <asp:Button ID="btnCRUDcat" CssClass="dropdown-item" runat="server" Text="Ajouter/Editer/Supprimer (Formation)" OnClick="btnCRUDcat_Click" />       </li>
-            <li> <asp:Button ID="btnListcat" CssClass="dropdown-item" runat="server" Text="Liste des formations " OnClick="btnListcat_Click" />       </li>
-            <li> <asp:Button ID="btnCRUDsec" CssClass="dropdown-item" runat="server" Text="Ajouter/Editer/Supprimer (Section)" OnClick="btnCRUDsec_Click" />  
-            <li> <asp:Button ID="btnListSec" CssClass="dropdown-item" runat="server" Text="Liste des Sections"  OnClick="btnListSec_Click"/>                      </li>
-            </li>
-            
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "4") {%>disabled<% } %>" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <b>G</b> Stagiaires
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-            <li> <asp:Button ID="BtnCRUDsta" CssClass="dropdown-item" runat="server" Text="Ajouter/Editer/Supprimer" OnClick="BtnCRUDsta_Click"/>     </li>
-            <li> <asp:Button ID="btnListeStagaires" CssClass="dropdown-item" runat="server" Text="Liste des Stagiaires" OnClick="btnListeStagaires_Click" />  </li>
 
-            
-            
-         
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "4" || Session["groupId"].ToString() == "3") {%>disabled<% } %>" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <b>G</b> Modules
-          </a>
-          <ul class="dropdown-menu " aria-labelledby="navbarDropdown3">
-             <li> <asp:Button ID="btnCRUDmodules" CssClass="dropdown-item" runat="server" Text="Ajouter/Editer/Supprimer" OnClick="btnCRUDmodules_Click"/>       </li>
-             <li> <asp:Button ID="btnListModules" CssClass="dropdown-item" runat="server" Text="Liste modules " OnClick="btnListModules_Click"/>       </li>
-        
-         
-          </ul>
-        </li>
-           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "4" || Session["groupId"].ToString() == "3") {%>disabled<% } %>" href="#" id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <b>G</b> Enseignant
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
-            <li> <asp:Button ID="btnCrudens"    CssClass="dropdown-item"   runat="server" Text="Ajouter/Editer/Supprimer" OnClick="btnCrudens_Click" />       </li>
-            <li> <asp:Button ID="btnListeEns"   CssClass="dropdown-item"   runat="server" Text="Listes Enseignants" OnClick="btnListeEns_Click"/>       </li>
-            <li> <asp:Button ID="btnMessageEns" CssClass="dropdown-item"   runat="server" Text="Messages" />       </li>
-         
-          </ul>
-        </li>
 
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() == "3" ) {%>disabled<% } %>" href="#" id="navbarDropdown5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <b>G</b> Des Notes
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
-            <li> <asp:Button ID="btnSaisieNote"     CssClass="dropdown-item" runat="server" Text="Saisie Notes Section" OnClick="btnSaisieNote_Click"/>               </li>
-            <li> <asp:Button ID="btnSaisieNoteR"    CssClass="dropdown-item" runat="server" Text="Saisie Notes Section (RATT) " />       </li>
-            <li> <asp:Button ID="btnDeliNote"       CssClass="dropdown-item" runat="server" Text="Delibiration des notes" />             </li>
-            <li> <asp:Button ID="btnDeliNoteR"      CssClass="dropdown-item" runat="server" Text="Delibiration des notes (RATT)" />      </li>
-         
-          </ul>
-        </li>
+      <ul class="navbar-nav me-auto  ">
 
-           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle <%if (Session["trustId"].ToString().Equals("0") || Session["groupId"].ToString() != "1" ) {%>disabled<% } %>" href="#" id="navbarDropdown7" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <b>G</b> Des Comptes
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown7">
-            <li> <asp:Button ID="btnCRUDcomptes" CssClass="dropdown-item" runat="server" Text="Ajouter/Editer/Supprimer" OnClick="btnCRUDcomptes_Click" />               </li>
-            <li> <asp:Button ID="btnActDis" CssClass="dropdown-item" runat="server" Text="Active/Disactive " OnClick="btnActDis_Click" />       </li>
-            <li> <asp:Button ID="btnListeComp" CssClass="dropdown-item" runat="server" Text="Listes Des Comptes" OnClick="btnListeComp_Click" />             </li>
+           <li class="nav-item"> <a class="nav-link active" aria-current="page" href="Homepage.aspx?id=<%=Session["id"] %>">Accueil</a> </li>
+           <li class="nav-item"><a class="nav-link active" href="Homepage.aspx?id=<%=Session["id"] %>#Statistiques">Statistiques</a> </li>
+           <li class="nav-item"><a class="nav-link active" href="Homepage.aspx?id=<%=Session["id"] %>#About"><b>Historiques</b></a></li>
+          <li class="nav-item"><a class="nav-link active" href="Homepage.aspx?id=<%=Session["id"] %>#Contact">Contact</a></li>
             
-         
-          </ul>
-        </li>
-
           </ul>
      
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav ">
           
-              <li class="nav-item dropdown" >
-                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Plus </a>
-
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown6">
-                <li><asp:Button ID="btnStatistiqueSec" CssClass="dropdown-item" runat="server" Text="Statistique" /> </li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">About us</a></li>
+                  
+                <li class="nav-item mx-2">
+            
+                 <img style="border-radius:50px" src="../Layout/images/photoProfile.png" width="30" height="30" />
+                </li>
+                <li class="nav-item">
+                 <asp:Label CssClass=" text-white" Text="" ID="userWelcome" runat="server" />
+    
+                </li>
                 
-                <li><hr class="dropdown-divider"></li>
+                
 
-              <li><asp:Button ID="BtnLogOut" CssClass="dropdown-item" runat="server" Text="Log Out" OnClick="BtnLogOut_Click" /></li>
+              <li class="nav-item mx-5"><asp:Button ID="BtnLogOut" CssClass="btn btn-secondary " runat="server" Text="Deconnecté" OnClick="BtnLogOut_Click" /></li>
+       
 
-              </ul>
-
-              </li>
         </ul>
+
     </div>
   </div>
 </nav>
-
+      <!--start  button up-->
+        <div class="btn-up">
+            <spam id="btnUP" onclick="topFunction()"><i class="fas fa-chevron-circle-up"></i></spam>
+        </div>
+      <!-- end button up-->
 
    
         <div>
@@ -163,7 +260,7 @@
 
     <footer class="">
         <center> 
-		<p>&copy All Right Reserved <asp:Label ID="lblYear" runat="server" Text=""></asp:Label></p>
+		<p>&copy All Rights Reserved <asp:Label ID="lblYear" runat="server" Text=""></asp:Label></p>
         </center>
     </footer>
 </form>

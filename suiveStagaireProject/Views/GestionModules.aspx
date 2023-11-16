@@ -14,7 +14,10 @@
                 {
                 %>
                 <h3 class="text-center bg-info text-white">Liste Des Modules</h3>
-                       
+                         <!-- Ajouter -->  
+                        <div class="text-end mb-3 mt-3">
+                         <a  class="btn btn-primary " href="GestionModules.aspx?id=<%=Session["id"]%>&do=add-edit&opt=add">Ajouter <i class="fa fa-plus fa-lg"></i></a>
+                        </div> 
                        <table class="table table-striped ">
                           <thead class="table-dark">
                             <tr>
@@ -31,9 +34,6 @@
                                     <td><%=m.idModule %></td>
                                     <td><%=m.libelle %></td>
                                     <td >
-                                      <!-- Ajouter -->
-                                      
-                                      <a class="btn btn-primary " href="GestionModules.aspx?id=<%=Session["id"]%>&do=add-edit&idModule=<%=m.idModule%>&opt=add">Ajouter</a>
                                       <!-- Editer -->
 
                                       <a class="btn btn-warning " href="GestionModules.aspx?id=<%=Session["id"]%>&do=add-edit&idModule=<%=m.idModule%>&opt=edit">Editer</a>
@@ -46,12 +46,14 @@
                               <%} %>
                           </tbody>
                         </table>
+        <br />
+        <br />
                 <%
                 }else if (Request.QueryString["do"] == "add-edit")
                 {
                 %>
-                        
-                    <div class="row">
+                        <h3 class="bg-info text-white text-center"> Ajouter Module</h3>
+                    <div class="row addStagiaireBody">
                         <div class="col-12">
                           <div class=" mt-3 mb-5">
                               <label class="form-label" for="DropDownFormationAdd">Libellé Module </label>
@@ -60,7 +62,7 @@
                           </div>
                         </div>
                         <div class="col-4">
-                          <div class=" mt-3 mb-2">
+                          <div class=" mt-3 mb-2 text-center">
                              
                               <asp:Button runat="server" ID="btnAddModule"  CssClass=" btn btn-success" Text="Ajouter" OnClick="btnAddModule_Click" Visible="false"/>
                               <asp:Button runat="server" ID="btnSaveModule"  CssClass=" btn btn-success" Text="Save" OnClick="btnSaveModule_Click" Visible="false"/>
@@ -69,7 +71,7 @@
                           </div>
                         </div>
                         <div class="col-4">
-                          <div class=" mt-3 mb-2">
+                          <div class=" mt-3 mb-2 text-center">
                              
                               <a class=" btn btn-secondary" href="GestionModules.aspx?id=<%=Session["id"] %>&do=AllModules">Annuler</a>
                             
@@ -77,59 +79,12 @@
 
                         </div>
 
-                         <div class="col-12">
-                          <div class=" mt-5 mb-2">
-                             
-                              <a class="form-control btn btn-warning" href="GestionModules.aspx?id=<%=Session["id"] %>&do=affectation">Affectation Des Modules</a>
-                            
-                          </div>
-
-                        </div>
+                        
                     </div> 
                 <%
 
-                }else if (Request.QueryString["do"] == "affectation")
-                {
-                %>
-                    <div class="row">
-        					        <h2 class="text-white text-center bg-primary">Affectation Sur Les Modules </h2>
-
-                        <div class="col-6">
-                          <div class=" mt-3 mb-5">
-                              <label class="form-label" for="DropDownFormationAdd">Libellé Module </label>
-                              <asp:DropDownList runat="server" ID="dropDownModules"  CssClass="form-control"></asp:DropDownList>
-                            
-                          </div>
-                        </div>
-                        <div class="col-6">
-                          <div class=" mt-3 mb-4">
-                              <label class="form-label" for="DropDownFormationAdd">Enseignants </label>
-
-                             <asp:DropDownList runat="server" ID="dropDownEnseignants" CssClass="form-control"></asp:DropDownList>
-                          </div>
-
-                            
-                        </div>
-                        <div class="col-6">
-                          <div class=" mt-3 mb-4">
-                             
-                              <asp:Button runat="server" ID="btnAffecterModule" class=" btn btn-primary" Text="Affecter" OnClick="btnAffecterModule_Click" > </asp:Button>
-                            
-                          </div>
-                        </div>
-
-                        <div class="col-6">
-                          <div class=" mt-3 mb-4">
-                             
-                              <a class=" btn btn-danger" href="GestionModules.aspx?id=<%=Session["id"] %>&do=AllModules"><i class="fas fa-arrow-alt-circle-left"></i> Reteur</a>
-                            
-                          </div>
-                        </div>
-                    </div>
-        
-                <%
-
-                }else if (Request.QueryString["do"] == "delete")
+                }
+                 else if (Request.QueryString["do"] == "delete")
                 {
                                %> 
         					        <h2 class="text-white text-center bg-primary">Supprimer un Module </h2>

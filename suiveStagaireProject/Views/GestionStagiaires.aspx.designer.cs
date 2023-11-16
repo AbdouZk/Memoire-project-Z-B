@@ -33,6 +33,15 @@ namespace suiveStagaireProject.Views
         protected global::System.Web.UI.WebControls.TextBox nomAdd;
 
         /// <summary>
+        /// nomAddAr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox nomAddAr;
+
+        /// <summary>
         /// prenomAdd control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace suiveStagaireProject.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox prenomAdd;
+
+        /// <summary>
+        /// prenomAddAr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox prenomAddAr;
 
         /// <summary>
         /// dateNaiAdd control.
@@ -58,6 +76,15 @@ namespace suiveStagaireProject.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox lieuNaisAdd;
+
+        /// <summary>
+        /// lieuNaisAddAr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox lieuNaisAddAr;
 
         /// <summary>
         /// radioGroupNat control.
@@ -195,6 +222,15 @@ namespace suiveStagaireProject.Views
         protected global::System.Web.UI.HtmlControls.HtmlInputText adresseadd;
 
         /// <summary>
+        /// adresseaddAr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText adresseaddAr;
+
+        /// <summary>
         /// telTuteuradd control.
         /// </summary>
         /// <remarks>
@@ -238,6 +274,24 @@ namespace suiveStagaireProject.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownListcodeSecadd;
+
+        /// <summary>
+        /// rORaStag control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox rORaStag;
+
+        /// <summary>
+        /// DropDownListEmp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListEmp;
 
         /// <summary>
         /// btnAjouterStgAdd control.
@@ -292,15 +346,6 @@ namespace suiveStagaireProject.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnsearchStg;
-
-        /// <summary>
-        /// btnAddStag control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddStag;
 
         /// <summary>
         /// NotDoAlert control.

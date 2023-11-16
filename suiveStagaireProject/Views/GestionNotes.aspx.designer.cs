@@ -24,15 +24,6 @@ namespace suiveStagaireProject.Views
         protected global::System.Web.UI.WebControls.DropDownList dropdownSections;
 
         /// <summary>
-        /// DropDownSemestre control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownSemestre;
-
-        /// <summary>
         /// btnSuivantSec control.
         /// </summary>
         /// <remarks>
@@ -40,6 +31,33 @@ namespace suiveStagaireProject.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSuivantSec;
+
+        /// <summary>
+        /// btnSuivantSecDel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSuivantSecDel;
+
+        /// <summary>
+        /// btnSuivantSecR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSuivantSecR;
+
+        /// <summary>
+        /// btnSuivantSecDelR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSuivantSecDelR;
 
         /// <summary>
         /// dropdownModules control.
@@ -60,13 +78,22 @@ namespace suiveStagaireProject.Views
         protected global::System.Web.UI.WebControls.Button btnSuivantMod;
 
         /// <summary>
+        /// btnSuivantModR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSuivantModR;
+
+        /// <summary>
         /// listStgs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox listStgs;
+        protected global::System.Web.UI.WebControls.DropDownList listStgs;
 
         /// <summary>
         /// e1 control.
@@ -105,22 +132,22 @@ namespace suiveStagaireProject.Views
         protected global::System.Web.UI.WebControls.Button btnIsererNote;
 
         /// <summary>
-        /// btnEditNote control.
+        /// btnSaveNote control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditNote;
+        protected global::System.Web.UI.WebControls.Button btnSaveNote;
 
         /// <summary>
-        /// btnDeleteNote control.
+        /// btnImprission control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDeleteNote;
+        protected global::System.Web.UI.WebControls.Button btnImprission;
 
         /// <summary>
         /// errorInsertNotes control.
@@ -130,5 +157,59 @@ namespace suiveStagaireProject.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label errorInsertNotes;
+
+        /// <summary>
+        /// listStgsR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList listStgsR;
+
+        /// <summary>
+        /// r control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox r;
+
+        /// <summary>
+        /// btnIsererNoteR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnIsererNoteR;
+
+        /// <summary>
+        /// btnSaveNoteR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaveNoteR;
+
+        /// <summary>
+        /// btnImprissionR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnImprissionR;
+
+        /// <summary>
+        /// errorInsertNotesR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorInsertNotesR;
     }
 }

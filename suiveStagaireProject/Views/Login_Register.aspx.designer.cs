@@ -24,31 +24,22 @@ namespace suiveStagaireProject.Views
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// usernameLog control.
+        /// usernameLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox usernameLog;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText usernameLogin;
 
         /// <summary>
-        /// passwordLog control.
+        /// passwordLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passwordLog;
-
-        /// <summary>
-        /// CheckRemember control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckRemember;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword passwordLogin;
 
         /// <summary>
         /// Button1 control.
@@ -67,24 +58,6 @@ namespace suiveStagaireProject.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label errorLog;
-
-        /// <summary>
-        /// errors control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errors;
-
-        /// <summary>
-        /// successEg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label successEg;
 
         /// <summary>
         /// lblYear control.

@@ -24,7 +24,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div >
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 
 
@@ -32,6 +32,14 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
+
+    <script>
+
+        window.onload = function () {
+            window.print();
+        };
+
+    </script>
 
 
      <!-- bootstrap js file  -->

@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <img style="width=100%" src="../Layout/images/404-page.png"  />
+            <a href="HomePage.aspx?id=<%=Session["id"]%>"> <img style="width=100%" src="../Layout/images/404-page.png"  /></a>
         </div>
     </form>
 </body>

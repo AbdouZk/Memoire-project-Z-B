@@ -119,23 +119,23 @@ namespace suiveStagaireProject.Views
                     lieuNai = lieuNaisAdd.Text, sexe = RadioButtonListSex.SelectedValue, adresse = adresseadd.Value,
                     email = emailAdd.Value, telp = telPerAdd.Value;
                 int
-                    idPer = personnelInfo.getLastId()+1;
+                    idPer = personnelInfo.getLastId() + 1;
 
                 // add info to personnel info table
-                PersonnelInfo pInfo = new PersonnelInfo(idPer,nom,prenom,dateNai,lieuNai,sexe,adresse,email,telp);
-                personnelInfo.addPersonnelInfo(pInfo);
+                PersonnelInfo pInfo = new PersonnelInfo(idPer, nom, prenom, dateNai, lieuNai, sexe, adresse, email, telp);
+                personnelInfo.addPersonnelInfoEns(pInfo);
 
                 // add a user for this enseignant
                 ScryptEncoder encode = new ScryptEncoder();
-                string use = nom+"."+prenom.ElementAt(0);
-                string pass = nom+dateNai.Year;
+                string use = email;
+                string pass = nom + dateNai.Year.ToString().Substring(2);
                 pass = encode.Encode(pass);
                 User us = new User(use, pass, 4, 0, DateTime.Now);
                 user.addUser(us);
 
                 // add the enseignant
                 int idUser = user.getUserLog(use).id;
-                Enseignant ens = new Enseignant(dateDebut, filier,idUser,idPer);
+                Enseignant ens = new Enseignant(dateDebut, filier, idUser, idPer);
                 enseignant.addEnseignant(ens);
 
                 msgEns.Text = "Bien Ajouter";
@@ -154,13 +154,13 @@ namespace suiveStagaireProject.Views
         {
             try
             {
-                int idEns =int.Parse( Request.QueryString["idEns"]);
+                int idEns = int.Parse(Request.QueryString["idEns"]);
                 Enseignant ens = enseignant.getEnseignat(idEns);
                 enseignant.deleteEnseignant(ens);
 
                 personnelInfo.deletePersonnelInfo(personnelInfo.getPersonnelInfo((int)ens.personnelInfosId));
 
-                Response.Redirect("GestionEnseignants.aspx?id="+Session["id"]+"&do=AllEns");
+                Response.Redirect("GestionEnseignants.aspx?id=" + Session["id"] + "&do=AllEns");
             }
             catch (Exception ex)
             {
@@ -179,14 +179,14 @@ namespace suiveStagaireProject.Views
                     lieuNai = lieuNaisAdd.Text, sexe = RadioButtonListSex.SelectedValue, adresse = adresseadd.Value,
                     email = emailAdd.Value, telp = telPerAdd.Value;
                 int
-                    idEns =int.Parse( Request.QueryString["idEns"]),
-                    idPer =(int) enseignant.getEnseignat(idEns).personnelInfosId;
+                    idEns = int.Parse(Request.QueryString["idEns"]),
+                    idPer = (int)enseignant.getEnseignat(idEns).personnelInfosId;
 
                 PersonnelInfo pInfo = new PersonnelInfo(idPer, nom, prenom, dateNai, lieuNai, sexe, adresse, email, telp);
-                personnelInfo.editPersonnelInfo(pInfo,idPer);
+                personnelInfo.editPersonnelInfoEns(pInfo, idPer);
 
                 Enseignant ens = new Enseignant(dateDebut, filier, null, idPer);
-                enseignant.editEnseignant(ens,idEns);
+                enseignant.editEnseignant(ens, idEns);
 
                 msgEns.Text = "Bien Modifier";
                 msgEns.Visible = true;

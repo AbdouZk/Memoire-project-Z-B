@@ -10,25 +10,6 @@ namespace suiveStagaireProject.Models
     {
         private myLinqToSqlDataContext dc = new myLinqToSqlDataContext();
 
-        public DetailsStagiaire(int id, string sang, int? sitMedical, string prenomPere, string nomMere, string prenomMere, string telTuteur, string nat, string derEtabFre, string nivScolaire, string sitFam, string profPere, string profMere, string sitFamParents, EntitySet<Stagiaire> stagiaires)
-        {
-            this.id = id;
-            this.sang = sang;
-            this.sitMedical = sitMedical;
-            this.prenomPere = prenomPere;
-            this.nomMere = nomMere;
-            this.prenomMere = prenomMere;
-            this.telTuteur = telTuteur;
-            this.nat = nat;
-            this.derEtabFre = derEtabFre;
-            this.nivScolaire = nivScolaire;
-            this.sitFam = sitFam;
-            this.profPere = profPere;
-            this.profMere = profMere;
-            this.sitFamParents = sitFamParents;
-            Stagiaires = stagiaires;
-        }
-
         public DetailsStagiaire(int id, string sang, int? sitMedical, string prenomPere, string nomMere, string prenomMere, string telTuteur, string nat, string derEtabFre, string nivScolaire, string sitFam, string profPere, string profMere, string sitFamParents)
         {
             this.id = id;
@@ -45,9 +26,7 @@ namespace suiveStagaireProject.Models
             this.profPere = profPere;
             this.profMere = profMere;
             this.sitFamParents = sitFamParents;
-            
         }
-    
 
         public DetailsStagiaire getDetailsStagiaire(int id)
         {

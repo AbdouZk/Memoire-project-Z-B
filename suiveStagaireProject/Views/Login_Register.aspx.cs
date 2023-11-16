@@ -13,7 +13,7 @@ namespace suiveStagaireProject.Views
 {
     public partial class Login_Register : System.Web.UI.Page
     {
-           User u = new User();
+           User u = new User(); ScryptEncoder encoder = new ScryptEncoder();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["id"] != null)
@@ -31,8 +31,8 @@ namespace suiveStagaireProject.Views
             ScryptEncoder encoder = new ScryptEncoder();
             try
             {
-                string use = usernameLog.Text;
-                string pass = passwordLog.Text;
+                string use = usernameLogin.Value;
+                string pass = passwordLogin.Value;
 
 
                 if (encoder.Compare(pass, u.getUserLog(use).password))
@@ -48,15 +48,17 @@ namespace suiveStagaireProject.Views
                 }
                 else
                 {
-                    errorLog.Text = "User don't existe !";
+                    errorLog.Text = "Utilisateur n'existe pas !";
                     errorLog.Visible = true;
-                    errors.Visible = false;
+                    
 
                 }
 
             }
             catch (Exception ex)
             {
+                errorLog.Text = "Utilisateur n'existe pas !";
+                errorLog.Visible = true;
 
             }
         }

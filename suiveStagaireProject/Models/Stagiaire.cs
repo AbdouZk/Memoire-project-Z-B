@@ -11,143 +11,146 @@ namespace suiveStagaireProject.Models
 
         private myLinqToSqlDataContext dc = new myLinqToSqlDataContext();
 
-        public Stagiaire(string numInsc, string img, int? idSection, int? personnelInfoId, int? detailsInfoId)
+        public Stagiaire(int id, string numInsc, string img, string statusStg, string idSection, int? personnelInfoId, int? detailsInfoId, int? epoloyeurID)
         {
-            this.numInsc = numInsc;
-            this.img = img;
-            this.idSection = idSection;
-            this.personnelInfoId = personnelInfoId;
-            this.detailsInfoId = detailsInfoId;
-        }
-
-        public Stagiaire(string numInsc, string img, int? idSection, int? personnelInfoId, int? detailsInfoId, DetailsStagiaire detailsStagiaire, PersonnelInfo personnelInfo) : this(numInsc, img, idSection, personnelInfoId, detailsInfoId)
-        {
-            DetailsStagiaire = detailsStagiaire;
-            PersonnelInfo = personnelInfo;
-        }
-
-        public Stagiaire(string numInsc, string img, string statusStg, int? idSection, int? personnelInfoId, int? detailsInfoId)
-        {
+            this.id = id;
             this.numInsc = numInsc;
             this.img = img;
             this.statusStg = statusStg;
             this.idSection = idSection;
             this.personnelInfoId = personnelInfoId;
             this.detailsInfoId = detailsInfoId;
+            this.employeurId = epoloyeurID;
         }
-
+        public Stagiaire(int id, string numInsc, string img, string statusStg, string idSection, int? personnelInfoId, int? detailsInfoId)
+        {
+            this.id = id;
+            this.numInsc = numInsc;
+            this.img = img;
+            this.statusStg = statusStg;
+            this.idSection = idSection;
+            this.personnelInfoId = personnelInfoId;
+            this.detailsInfoId = detailsInfoId;
+            
+        }
         public List<Stagiaire> getStagiaires()
         {
             return (from s in dc.Stagiaires select s).ToList<Stagiaire>();
         }
-        public List<ListeStagiaires> getStagiaires(int idSec)
+        public List<Stagiaire> getStagiaires(string search)
         {
-            return (from s in dc.Stagiaires 
-                    join sec in dc.Sections on s.idSection equals sec.idSec
-                    where sec.idSec==idSec 
-                    select new ListeStagiaires(s.id,"","","",s.statusStg,s.PersonnelInfo.nom+" "+s.PersonnelInfo.prenom,"","")).ToList<ListeStagiaires>();
+            return (from s in dc.Stagiaires where s.PersonnelInfo.nom.Contains(search) || s.PersonnelInfo.prenom.Contains(search) select s).ToList<Stagiaire>();
         }
-
         public Stagiaire getStagiaire(int id)
         {
             return (from s in dc.Stagiaires where s.id==id select s).Single();
         }
+        public List<Stagiaire> getStagiairesBySec(string codeSec)
+        {
+            return (from s in dc.Stagiaires where s.idSection == codeSec select s).OrderBy(item=> item.PersonnelInfo.nom).ToList<Stagiaire>();
+        }
+        public List<Stagiaire> getStagiairesBySecR(string codeSec)
+        {
+            return (from s in dc.Stagiaires where s.idSection == codeSec && s.statusStg=="Rattrapage" select s).OrderBy(item => item.PersonnelInfo.nom).ToList<Stagiaire>();
+        }
+        public List<Object> getStagiairesBySecAdmisRatt(string codeSec)
+        {
+            List<Stagiaire> list= (from s in dc.Stagiaires where s.idSection == codeSec && (s.statusStg=="Admis" || s.statusStg=="Rattrapage" ) select s).OrderBy(item => item.PersonnelInfo.nom).ToList<Stagiaire>();
+            return (from s in list select new { nom = s.PersonnelInfo.nom + " " + s.PersonnelInfo.prenom, idStg = s.id }).ToList<Object>();
+        }
+        public List<Object> getStagiairesBySec_Status(string codeSec, string status)
+        {
+            List<Stagiaire> list = (from s in dc.Stagiaires where s.idSection == codeSec && s.statusStg == status  select s).OrderBy(item => item.PersonnelInfo.nom).ToList<Stagiaire>();
+            return (from s in list select new { nom = s.PersonnelInfo.nom + " " + s.PersonnelInfo.prenom, idStg = s.id }).ToList<Object>();
+        }
+        public List<Object> getListStagiairesBySec(string codeSec)
+        {
+            List<Stagiaire> listeStags = (from s in dc.Stagiaires
+                                          where s.idSection == codeSec select s).OrderBy(item=>item.PersonnelInfo.nom).ToList<Stagiaire>();
 
-        public void addStagiaire(Stagiaire stg)
+            return (from s in listeStags  select new {nom=s.PersonnelInfo.nom+" "+s.PersonnelInfo.prenom+ " " + s.PersonnelInfo.dateNai.Value.ToShortDateString(), idStg=s.id }).ToList<Object>();
+        }
+        public void addStagiaireA(Stagiaire stg)
         {
 
-            dc.ExecuteCommand("INSERT INTO Stagiaire (numInsc,img,statusStg,idSection,personnelInfoId,detailsInfoId) VALUES ({0},{1},{2},{3},{4},{5})",
-              stg.numInsc,stg.img,stg.statusStg,stg.idSection,stg.personnelInfoId,stg.detailsInfoId);
+            dc.ExecuteCommand("INSERT INTO Stagiaire (id,numInsc,img,statusStg,idSection,personnelInfoId,detailsInfoId,employeurId) VALUES ({0},{1},{2},{3},{4},{5},{6},{7})",
+              stg.id,stg.numInsc, stg.img, stg.statusStg, stg.idSection, stg.personnelInfoId, stg.detailsInfoId,stg.employeurId);
             dc.SubmitChanges();
         }
+        public void addStagiaireR(Stagiaire stg)
+        {
 
+            dc.ExecuteCommand("INSERT INTO Stagiaire (id,numInsc,img,statusStg,idSection,personnelInfoId,detailsInfoId) VALUES ({0},{1},{2},{3},{4},{5},{6})",
+              stg.id, stg.numInsc, stg.img, stg.statusStg, stg.idSection, stg.personnelInfoId, stg.detailsInfoId);
+            dc.SubmitChanges();
+        }
         public void deleteStagiaire(Stagiaire stg)
         {
             dc.Stagiaires.DeleteOnSubmit(stg);
             dc.SubmitChanges();
         }
+        public void editStagiaireA(Stagiaire stg,int id)
+        {
 
-        public void editStagiaire(Stagiaire stg,int id)
+            var stag = from s in dc.Stagiaires where s.id == id select s;
+
+            foreach (var s in stag)
+            {             
+                
+                s.idSection = stg.idSection;
+                s.employeurId = stg.employeurId;
+            }
+
+
+            dc.SubmitChanges();
+        }
+        public void editStagiaireR(Stagiaire stg, int id)
         {
 
             var stag = from s in dc.Stagiaires where s.id == id select s;
 
             foreach (var s in stag)
             {
-                s.numInsc = stg.numInsc;
-                s.img = stg.img;
-                s.statusStg = stg.statusStg;
-                s.idSection = stg.idSection;
-                
-
+                s.employeurId = null;
+                s.idSection = stg.idSection;             
             }
 
 
             dc.SubmitChanges();
         }
-        
-        public List<ListeStagiaires> viewStagiaires()
+        public void stgChangeStatus( int id,string status)
         {
-            var query =(from s in dc.Stagiaires 
-                       join ss in dc.Sections on s.idSection equals ss.idSec
-                       join pi in dc.PersonnelInfos on s.personnelInfoId equals pi.idPersonne
-                       join cs in dc.CatalogeSections on ss.idCat equals cs.idCataloge
-                       select new ListeStagiaires(s.id,s.numInsc,cs.codeSpe+" "+ss.numSection.ToString(),pi.dateNai.ToString()+" "+pi.lieuNai, s.statusStg,pi.nom,pi.prenom,s.img)
-                       ).ToList<ListeStagiaires>();
 
-            return query;
+            var stag = from s in dc.Stagiaires where s.id == id select s;
+
+            foreach (var s in stag)
+            {
+                s.statusStg = status;
+                
+            }
+
+
+            dc.SubmitChanges();
         }
-
-        public List<ListeStagiaires> viewStagiairesSearch(string name)
+        public int getLastId()
         {
-            var query = (from s in dc.Stagiaires
-                         join ss in dc.Sections on s.idSection equals ss.idSec
-                         join pi in dc.PersonnelInfos on s.personnelInfoId equals pi.idPersonne
-                         join cs in dc.CatalogeSections on ss.idCat equals cs.idCataloge
-                         where pi.nom.Contains(name) || pi.prenom.Contains(name)
-                         select new ListeStagiaires(s.id, s.numInsc, cs.codeSpe + " " + ss.numSection.ToString(), pi.dateNai.ToString() + " " + pi.lieuNai,s.statusStg, pi.nom, pi.prenom, s.img)
-                       ).ToList<ListeStagiaires>();
-
-            return query;
+            return dc.Stagiaires.OrderByDescending(item => item.id).Select(item => item.id).FirstOrDefault();
         }
-
-        public List<detailsStagiaire> listeStagiairesSection(int id)
+        public int getNbrOfItem()
         {
-            List<detailsStagiaire> liste = (from s in dc.Stagiaires
-                         join ss in dc.Sections on s.idSection equals ss.idSec
-                         join pi in dc.PersonnelInfos on s.personnelInfoId equals pi.idPersonne
-                         join ds in dc.DetailsStagiaires on s.detailsInfoId equals ds.id
-                         join cs in dc.CatalogeSections on ss.idCat equals cs.idCataloge
-                         where s.idSection == id
-                         select new detailsStagiaire(ds.sang, (int)ds.sitMedical, ds.prenomPere, ds.nomMere, ds.prenomMere, ds.telTuteur, ds.nat, ds.derEtabFre, ds.nivScolaire, ds.sitFam, ds.profPere, ds.profMere, ds.sitFamParents,
-                                                     pi.nom, pi.prenom, (DateTime)pi.dateNai, pi.lieuNai, pi.sexe, pi.adresse, pi.email, pi.telephone,
-                                                     s.id, s.numInsc, s.img,s.statusStg, (int)s.idSection, (int)s.personnelInfoId, (int)s.detailsInfoId,
-                                                     ss.idSec, (DateTime)ss.dateOuv, (DateTime)ss.dateFin, (int)ss.numSection, ss.modeGestionForm.ToString(),
-                                                     cs.intituleSpe, cs.niveauFormation.ToString(), cs.codeSpe)
-                       ).ToList<detailsStagiaire>();
-
-            return liste;
+            return dc.Stagiaires.Count();
         }
-
-
-        public detailsStagiaire detailsStagiaires(int id)
+        public int getNbrOfGirls()
         {
-            var query = (from s in dc.Stagiaires
-                         join ss in dc.Sections on s.idSection equals ss.idSec
-                         join pi in dc.PersonnelInfos on s.personnelInfoId equals pi.idPersonne
-                         join ds in dc.DetailsStagiaires on s.detailsInfoId equals ds.id
-                         join cs in dc.CatalogeSections on ss.idCat equals cs.idCataloge
-                         where s.id==id
-                         select new detailsStagiaire(ds.sang,(int)ds.sitMedical,ds.prenomPere,ds.nomMere,ds.prenomMere,ds.telTuteur,ds.nat,ds.derEtabFre,ds.nivScolaire,ds.sitFam,ds.profPere,ds.profMere,ds.sitFamParents,
-                                                     pi.nom,pi.prenom,(DateTime)pi.dateNai,pi.lieuNai,pi.sexe,pi.adresse,pi.email,pi.telephone,
-                                                     s.id,s.numInsc,s.img, s.statusStg, (int)s.idSection, (int)s.personnelInfoId, (int)s.detailsInfoId,
-                                                     ss.idSec, (DateTime)ss.dateOuv, (DateTime)ss.dateFin, (int)ss.numSection, ss.modeGestionForm.ToString(),
-                                                     cs.intituleSpe,cs.niveauFormation.ToString(),cs.codeSpe)
-                       ).Single();
-
-            return query;
+            return dc.Stagiaires.Where(item=> item.PersonnelInfo.sexe=="Femme").Count();
         }
-
-
+        public int getNbrOfEtrangere()
+        {
+            return dc.Stagiaires.Where(item => item.DetailsStagiaire.nat!= "Algerian").Count();
+        }
+        public int getNbrOfHandicape()
+        {
+            return dc.Stagiaires.Where(item => item.DetailsStagiaire.sitMedical==0).Count();
+        }
     }
 }
